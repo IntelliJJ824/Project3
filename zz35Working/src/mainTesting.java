@@ -12,11 +12,15 @@ public class mainTesting {
             do {
                  runner.printTotalTime();
                  runner.printSituation();
+
+                 System.out.println("Please select the kinds of buildings or units you would control.");
+                 printSelection();//this is to print the selection for user to control.
                  userInput = reader.readLine();
+                 runner.setUserInput(userInput);
+
                  System.out.println();
             } while (!userInput.equals("quit"));
 
-            System.out.println("Game Over!!!");
             runner.end();
         } catch (IOException e) {
             e.getStackTrace();
@@ -27,5 +31,13 @@ public class mainTesting {
                 e.getStackTrace();
             }
         }
+    }
+
+    static public void printSelection() {
+        System.out.println("a.NEXUS b.PROBE c.PYLON d.ASSIMILATOR e.GATEWAY f.CYBERNETICS CORE"
+                + " g.ROBOTICS");
+        System.out.println("h.ZEALOT" + " i.STALKER" + " j.OBSERVER" + " k.IMMORTAL" + " l.IMMORTAL"
+                + " m.PHOENIX" + " n.VOID RAY");
+
     }
 }

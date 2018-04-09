@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 /**
@@ -33,16 +36,21 @@ public class process {
     static final int VOID_RAY = 14;
 
     //this is to store the type of the unit, and its newest ID.
-    ArrayList<Integer> idList = new ArrayList<>();
-    ArrayList<Integer> initialList = new ArrayList<>();
+    private ArrayList<Integer> idList = new ArrayList<>();
+    private ArrayList<Integer> initialList = new ArrayList<>();
 
     // this is to store all the units and building.
-    HashMap<Integer, Integer> totalmap = new HashMap<>();
+    private HashMap<Integer, Integer> totalmap = new HashMap<>();
 
     //This is the list to convert from number to specific name.
-    String[] convertList = {
+    private String[] convertList = {
             "NEXUS", "PROBE", "PYLON", "ASSIMILATOR", "GATEWAY", "CYBERNETICS CORE", "ROBOTICS FACILITY", "STARGATE",
             "ZEALOT", "STALKER", "SENTRY", "OBSERVER", "IMMORTAL", "PHOENIX", "VOID RAY"};
+
+    private int[] timeList = {
+            100, 17, 25, 30, 65, 50, 65, 60, //This is for buildings and probe
+            38, 42, 37, 40, 55, 35, 60 //This is for units
+    };
 
     /**
      * This constructor is to start the game.
@@ -91,7 +99,7 @@ public class process {
         totalmap.put(idList.get(NEXUS), secondsTotal);
 
         //This is to set the minerals and gas.
-        totalMinerals = 50;
+        totalMinerals = 250;
         totalGas = 0;
     }
 
@@ -120,6 +128,57 @@ public class process {
             }
         }
         System.out.println(situation);
+    }
+
+    public void setUserInput(String input) {
+        Scanner reader = new Scanner(new InputStreamReader(System.in)); //This is to scan user's action input.
+        switch (input.toLowerCase()) {
+            case("a"):
+                System.out.println("This is for " + convertList[NEXUS]);
+                break;
+            case("b"):
+                System.out.println("This is for " + convertList[PROBE]);
+                probe probeSelection = new probe(totalmap, idList.get(PROBE), initialList.get(PROBE),
+                        timeList[PROBE], secondsTotal,
+                        totalMinerals, totalGas);
+
+                System.out.print(convertList[PROBE] + ": ");
+                probeSelection.printIndivadualSituation();
+
+                //try to prompt user input the action for his selection.
+                probeSelection.printActionSelection();
+                String actionInput = reader.next();
+
+                //try to find out the amount of this action.
+                System.out.println("How many probe will take this action?");
+                String amount = reader.next();
+                probeSelection.processActionInput(actionInput, amount);
+
+                //get new Id
+                idList.set(PROBE, probeSelection.getNewId());
+
+                //get new map
+                totalmap.putAll(probeSelection.getTotalMap());
+
+                break;
+            case("c"):
+                System.out.println("This is for " + convertList[PYLON]);
+                break;
+            case("d"):
+                System.out.println("This is for " + convertList[ASSIMILATOR]);
+                break;
+            case("e"):
+                System.out.println("This is for " + convertList[GATEWAY]);
+                break;
+            case("quit"):
+                System.out.println("Game Over!!!");
+                break;
+            default:
+                System.out.println("Invalid Selection!");
+                break;
+        }
+        //method to update the map in the following codes.
+
     }
 
     /**
