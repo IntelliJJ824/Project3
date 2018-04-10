@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class probe extends typeOfConstruction{
-    private int numberOfAction, numberOfPatchWorking;
+    private int numberOfPatchWorking;
     private final int PROBE = 1;
     private List<Integer> mineralPatchList = new ArrayList<>();
 
@@ -24,7 +24,8 @@ public class probe extends typeOfConstruction{
      * This method is to print out the action that user might select.
      */
     public void printActionSelection() {
-        System.out.println("Select one of the options you want probe to do: \n"
+        System.out.println(
+                "Select one of the options you want probe to do: \n"
                 + "a. Build new probe, "
                 + "b.Assign to gather minerals c. Assign to gather gas. d. Nothing/Esc");
     }
@@ -119,14 +120,6 @@ public class probe extends typeOfConstruction{
             newId ++;
             totalMap.put(newId, currTime);
         }
-    }
-
-    /**
-     * This method is to get the newest Id for probes.
-     * @return the current newest Id after the building order.
-     */
-    public int getNewId() {
-        return newId;
     }
 
     /**

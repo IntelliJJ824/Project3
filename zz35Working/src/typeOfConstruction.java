@@ -6,7 +6,8 @@ import java.util.Set;
 abstract class typeOfConstruction {
 
     protected HashMap<Integer, Integer> totalMap = new HashMap<>();
-    protected int newId, initialId, constructTime, currTime, totalMinerals, totalGas, available, constructing;
+    protected int newId, initialId, constructTime, currTime, totalMinerals, totalGas, available, constructing,
+            numberOfAction;
 
     /**
      * This method is to pass the value from the situation.
@@ -15,6 +16,8 @@ abstract class typeOfConstruction {
      * @param initialId the setting id for the user's selection to control.
      * @param constructTime the required constructing time for the user's selection.
      * @param currTime the entire time for this game.
+     * @param totalGas the current total gas.
+     * @param totalMinerals the current total minerals.
      */
     public typeOfConstruction (HashMap<Integer, Integer> totalmap, int newId, int initialId, int constructTime,
                                int currTime,
@@ -77,6 +80,20 @@ abstract class typeOfConstruction {
         }
     }
 
+    /**
+     * The selection whether build or exit.
+     */
+    public void printGeneralSelection() {
+        System.out.println("Select one of the options you want probe to do: \na.Build b.Nothing/Esc");
+    }
+
+    public void setBuilding() {
+        for (int i = 0; i < numberOfAction; i++) {
+            newId ++;
+            totalMap.put(newId, currTime);
+        }
+    }
+
     //The following code is for getter.
 
     /**
@@ -92,5 +109,13 @@ abstract class typeOfConstruction {
      */
     public int getTotalMinerals() {
         return totalMinerals;
+    }
+
+    /**
+     * This method is to get the newest Id forall.
+     * @return the current newest Id after the building order.
+     */
+    public int getNewId() {
+        return newId;
     }
 }

@@ -12,7 +12,7 @@ public class mainTesting {
             do {
                  runner.printTotalTime();
                  runner.printSituation();
-
+                 System.out.println();
                  System.out.println("Please select the kinds of buildings or units you would control.");
                  printSelection();//this is to print the selection for user to control.
                  userInput = reader.readLine();

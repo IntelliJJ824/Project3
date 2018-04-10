@@ -203,7 +203,6 @@ public class process {
                 break;
 
             case("b"):
-                System.out.println("This is for " + convertList[PROBE]);
                 probe probeSelection = new probe(totalmap, idList.get(PROBE), initialList.get(PROBE),
                         timeList[PROBE], secondsTotal,
                         totalMinerals, totalGas,
@@ -246,8 +245,30 @@ public class process {
             case("c"):
                 System.out.println("This is for " + convertList[PYLON]);
                 break;
+
             case("d"):
-                System.out.println("This is for " + convertList[ASSIMILATOR]);
+                System.out.print(convertList[ASSIMILATOR] + ": ");
+                assimilator assimilatorSelection = new assimilator(
+                        totalmap, idList.get(ASSIMILATOR), initialList.get(ASSIMILATOR),
+                        timeList[ASSIMILATOR], secondsTotal,
+                        totalMinerals, totalGas
+                        );
+                assimilatorSelection.printIndivadualSituation();
+                assimilatorSelection.printGeneralSelection();//print the option for it.
+                String actionInputAs = reader.next();
+
+                if (actionInputAs.toLowerCase().equals("a")) { //construct begins with here.
+                    System.out.println("How many assimilator(s) do you want to construct?");
+                    String amount = reader.next();
+                    assimilatorSelection.processActionInput(amount);
+
+                    //update the hash map.
+                    totalmap.putAll(assimilatorSelection.getTotalMap());
+                    //get new id.
+                    idList.set(ASSIMILATOR, assimilatorSelection.getNewId());
+                    //get current minerals.
+                    totalMinerals = assimilatorSelection.getTotalMinerals();
+                }
                 break;
             case("e"):
                 System.out.println("This is for " + convertList[GATEWAY]);
