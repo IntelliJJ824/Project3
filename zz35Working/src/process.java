@@ -150,9 +150,11 @@ public class process {
                 String actionInput = reader.next();
 
                 //try to find out the amount of this action.
-                System.out.println("How many probe will take this action?");
-                String amount = reader.next();
-                probeSelection.processActionInput(actionInput, amount);
+                if (!actionInput.equals("d")) {
+                    System.out.println("How many probe will take this action?");
+                    String amount = reader.next();
+                    probeSelection.processActionInput(actionInput, amount);
+                }
 
                 //get new Id
                 idList.set(PROBE, probeSelection.getNewId());

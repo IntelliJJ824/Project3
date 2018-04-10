@@ -58,6 +58,6 @@ public class probe extends typeOfConstruction{
     }
 
     public int getNewId() {
-        return newId + numberOfAction;
+        return newId;
     }
 }
