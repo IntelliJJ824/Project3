@@ -6,7 +6,7 @@ import java.util.Set;
 abstract class typeOfConstruction {
 
     protected HashMap<Integer, Integer> totalMap = new HashMap<>();
-    protected int newId, initialId, constructTime, currTime, totalMinerals, totalGas;
+    protected int newId, initialId, constructTime, currTime, totalMinerals, totalGas, available, constructing;
 
     /**
      * This method is to pass the value from the situation.
@@ -32,8 +32,8 @@ abstract class typeOfConstruction {
      * This method is to print out the situation of user's selection.
      */
     public void printIndivadualSituation() {
-        int available = 0;
-        int constructing = 0;
+        available = 0;
+        constructing = 0;
         Set set = totalMap.entrySet();
         Iterator iterator = set.iterator();
         while (iterator.hasNext()) {

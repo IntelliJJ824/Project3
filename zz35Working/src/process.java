@@ -17,8 +17,7 @@ public class process {
     int totalGas;
 
     //The speed of gathering minerals.
-    int numberMaxVelocity = 0;
-    int numberMinVelocity = 0;
+    int numberMaxVelocity, numberMinVelocity, totalNumberPatchWorking;
 
     //This is buildings.
     static final int NEXUS = 0;
@@ -166,6 +165,11 @@ public class process {
      * This is to calculate the number of maximum speed of gathering and also on the otherwise.
      */
     public void MineralCalculator() {
+        //reset all the value and calculate again.
+        numberMaxVelocity = 0;
+        numberMinVelocity = 0;
+        totalNumberPatchWorking = 0;
+
         for (int i = 0; i < mineralPatchList.size(); i++) {
             int numberOfProbes =  mineralPatchList.get(i);
             if (numberOfProbes > 0 && numberOfProbes < 3) {     //first two probes to a mineral patch
@@ -175,6 +179,8 @@ public class process {
                 numberMinVelocity++;
             }
         }
+        //work out the total patch situation.
+        totalNumberPatchWorking = numberMinVelocity + numberMaxVelocity;
     }
 
     /**
@@ -200,7 +206,8 @@ public class process {
                 System.out.println("This is for " + convertList[PROBE]);
                 probe probeSelection = new probe(totalmap, idList.get(PROBE), initialList.get(PROBE),
                         timeList[PROBE], secondsTotal,
-                        totalMinerals, totalGas);
+                        totalMinerals, totalGas,
+                        mineralPatchList, totalNumberPatchWorking);
 
                 System.out.print(convertList[PROBE] + ": ");
                 probeSelection.printIndivadualSituation();
@@ -211,7 +218,12 @@ public class process {
 
                 //try to find out the amount of this action.
                 if (!actionInput.equals("d")) {
-                    System.out.println("How many probe will take this action?");
+                    System.out.println("How many probe(s) do you want to add to take this action?");
+
+                    if (actionInput.equals("b")) { //print out the minerals patch working situation.
+                        System.out.println("There are " + totalNumberPatchWorking + " probes gathering minerals.");
+                    }
+
                     String amount = reader.next();
                     probeSelection.processActionInput(actionInput, amount);
                 }
@@ -224,6 +236,11 @@ public class process {
 
                 //get new currentMinerals
                 totalMinerals = probeSelection.getTotalMinerals();
+
+                //get new minerals patch list
+                renewPatchList(probeSelection.getMineralPatchList());
+                MineralCalculator();
+
 
                 break;
             case("c"):
@@ -244,6 +261,16 @@ public class process {
         }
         //method to update the map in the following codes.
 
+    }
+
+    /**
+     * This method is to update the situation of the minerals patches.
+     * @param newMineralPatchList the situation of patch after the assignment.
+     */
+    public void renewPatchList(List<Integer> newMineralPatchList) {
+        mineralPatchList = new ArrayList<>();
+        mineralPatchList.addAll(newMineralPatchList);
+        System.out.println("This is the situation of patch: " + mineralPatchList);
     }
 
     /**
