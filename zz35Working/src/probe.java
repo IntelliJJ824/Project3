@@ -24,6 +24,7 @@ public class probe extends typeOfConstruction{
         switch (actionInput.toLowerCase()) {
             case("a"):
                 if (constructionJudgement()) {
+                    totalMinerals = totalMinerals - 50 * numberOfAction;
                     System.out.println("Constructing the number of new probe " + numberOfAction + "...");
                     setProbes();
                 } else {
@@ -49,14 +50,20 @@ public class probe extends typeOfConstruction{
         return (numberOfAction * 50 <= totalMinerals);
     }
 
+    /**
+     * This method is to add the new building probes to the hash map.
+     */
     public void setProbes() {
-
         for (int i = 0; i < numberOfAction; i++) {
             newId ++;
             totalMap.put(newId, currTime);
         }
     }
 
+    /**
+     * This method is to get the newest Id for probes.
+     * @return the current newest Id after the building order.
+     */
     public int getNewId() {
         return newId;
     }

@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
@@ -17,6 +15,11 @@ public class process {
     final int PERIOD = 1000;
     int totalMinerals;
     int totalGas;
+
+    //The speed of gathering minerals.
+    int numberMaxVelocity = 0;
+    int numberMinVelocity = 0;
+
     //This is buildings.
     static final int NEXUS = 0;
     static final int PROBE = 1;
@@ -35,6 +38,13 @@ public class process {
     static final int PHOENIX = 13;
     static final int VOID_RAY = 14;
 
+    //This is for Mineral patch.
+    static final int mineralPatch1 = 0;
+    static final int mineralPatch2 = 1;
+    static final int mineralPatch3 = 2;
+    static final int mineralPatch4 = 3;
+    static final int mineralpatch5 = 4;
+
     //this is to store the type of the unit, and its newest ID.
     private ArrayList<Integer> idList = new ArrayList<>();
     private ArrayList<Integer> initialList = new ArrayList<>();
@@ -52,6 +62,10 @@ public class process {
             38, 42, 37, 40, 55, 35, 60 //This is for units
     };
 
+    //This is the list of mineral patch, 0 presents there is no probe working for it.
+    private List<Integer> mineralPatchList = Arrays.asList(0, 0, 0, 0, 0);
+
+
     /**
      * This constructor is to start the game.
      */
@@ -67,7 +81,9 @@ public class process {
     public void start() {
         setIdList();
         buildBase();
+        assignMineralBeginning();
         totalTimer.schedule(totalTimeCalculation, new Date(), PERIOD);
+        totalTimer.schedule(addMinerals, 1000, PERIOD); //The mineral calculation begins after 1 second.
     }
 
     /**
@@ -99,7 +115,7 @@ public class process {
         totalmap.put(idList.get(NEXUS), secondsTotal);
 
         //This is to set the minerals and gas.
-        totalMinerals = 250;
+        totalMinerals = 50;
         totalGas = 0;
     }
 
@@ -130,12 +146,56 @@ public class process {
         System.out.println(situation);
     }
 
+    /**
+     * This is the method to assign probes working for minerals automatically.
+     * The first mineral patch is assigned 2.
+     * The rest of them are assigned 1 probe.
+     */
+    public void assignMineralBeginning() {
+        mineralPatchList.set(mineralPatch1, 1);
+
+        for (int i = 0; i < mineralPatchList.size(); i++) {
+            int numberWorking = mineralPatchList.get(i) + 1;
+            mineralPatchList.set(i, numberWorking);
+        }
+
+        MineralCalculator();
+    }
+
+    /**
+     * This is to calculate the number of maximum speed of gathering and also on the otherwise.
+     */
+    public void MineralCalculator() {
+        for (int i = 0; i < mineralPatchList.size(); i++) {
+            int numberOfProbes =  mineralPatchList.get(i);
+            if (numberOfProbes > 0 && numberOfProbes < 3) {     //first two probes to a mineral patch
+                numberMaxVelocity = numberMaxVelocity + numberOfProbes;
+            }
+            if (numberOfProbes == 3) {      //The third probe to one mineral patch.
+                numberMinVelocity++;
+            }
+        }
+    }
+
+    /**
+     * This method is to calculate total minerals need to be added every time.
+     */
+    TimerTask addMinerals = new TimerTask() {
+        @Override
+        public void run() {
+            double minerals = (41.0 / 60.0 * numberMaxVelocity) + (20.0 / 60.0 * numberMinVelocity);
+            int addMinerals = (int) minerals;
+            totalMinerals = totalMinerals + addMinerals;
+        }
+    };
+
     public void setUserInput(String input) {
         Scanner reader = new Scanner(new InputStreamReader(System.in)); //This is to scan user's action input.
         switch (input.toLowerCase()) {
             case("a"):
                 System.out.println("This is for " + convertList[NEXUS]);
                 break;
+
             case("b"):
                 System.out.println("This is for " + convertList[PROBE]);
                 probe probeSelection = new probe(totalmap, idList.get(PROBE), initialList.get(PROBE),
@@ -161,6 +221,9 @@ public class process {
 
                 //get new map
                 totalmap.putAll(probeSelection.getTotalMap());
+
+                //get new currentMinerals
+                totalMinerals = probeSelection.getTotalMinerals();
 
                 break;
             case("c"):

@@ -77,8 +77,20 @@ abstract class typeOfConstruction {
         }
     }
 
+    //The following code is for getter.
+
+    /**
+     * This method is to return the current hash map.
+     * @return total hash map.
+     */
     public HashMap<Integer, Integer> getTotalMap() {
         return totalMap;
     }
 
+    /**
+     * This method is to return the current minerals after controlling.
+     */
+    public int getTotalMinerals() {
+        return totalMinerals;
+    }
 }
