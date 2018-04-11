@@ -84,7 +84,7 @@ abstract class typeOfConstruction {
      * The selection whether build or exit.
      */
     public void printGeneralSelection() {
-        System.out.println("Select one of the options you want probe to do: \na.Build b.Nothing/Esc");
+        System.out.println("Select one of the options you want to do: \na.Build b.Nothing/Esc");
     }
 
     public void setBuilding() {

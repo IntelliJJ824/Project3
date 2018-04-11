@@ -162,6 +162,13 @@ public class process {
     }
 
     /**
+     * This is to print out the minerals and gas.
+     */
+    public void printCurrency() {
+        System.out.println("Minerals are: " + totalMinerals + " Vespene gas is: " + totalGas);
+    }
+
+    /**
      * This is to calculate the number of maximum speed of gathering and also on the otherwise.
      */
     public void MineralCalculator() {
@@ -197,6 +204,7 @@ public class process {
 
     public void setUserInput(String input) {
         Scanner reader = new Scanner(new InputStreamReader(System.in)); //This is to scan user's action input.
+        printCurrency();
         switch (input.toLowerCase()) {
             case("a"):
                 System.out.println("This is for " + convertList[NEXUS]);
@@ -239,11 +247,30 @@ public class process {
                 //get new minerals patch list
                 renewPatchList(probeSelection.getMineralPatchList());
                 MineralCalculator();
-
-
                 break;
+
             case("c"):
-                System.out.println("This is for " + convertList[PYLON]);
+                System.out.print(convertList[PYLON] + ": ");
+                assimilator pylonSelection = new assimilator(
+                        totalmap, idList.get(PYLON), initialList.get(PYLON),
+                        timeList[PYLON], secondsTotal,
+                        totalMinerals, totalGas,
+                        100);
+                pylonSelection.printIndivadualSituation();
+                pylonSelection.printGeneralSelection();
+                String actionInputPy = reader.next();
+
+                if(actionInputPy.toLowerCase().equals("a")) {
+                    System.out.println("How many pylon(s) do you want to construct?");
+                    String amount = reader.next();
+                    pylonSelection.processActionInput(amount);
+                    //update the hash map.
+                    totalmap.putAll(pylonSelection.getTotalMap());
+                    //get new id.
+                    idList.set(PYLON, pylonSelection.getNewId());
+                    //get current minerals.
+                    totalMinerals = pylonSelection.getTotalMinerals();
+                }
                 break;
 
             case("d"):
@@ -251,14 +278,14 @@ public class process {
                 assimilator assimilatorSelection = new assimilator(
                         totalmap, idList.get(ASSIMILATOR), initialList.get(ASSIMILATOR),
                         timeList[ASSIMILATOR], secondsTotal,
-                        totalMinerals, totalGas
-                        );
+                        totalMinerals, totalGas,
+                        75);
                 assimilatorSelection.printIndivadualSituation();
                 assimilatorSelection.printGeneralSelection();//print the option for it.
                 String actionInputAs = reader.next();
 
                 if (actionInputAs.toLowerCase().equals("a")) { //construct begins with here.
-                    System.out.println("How many assimilator(s) do you want to construct?");
+                    System.out.println("How many assimilator(s) do you want to be constructed?");
                     String amount = reader.next();
                     assimilatorSelection.processActionInput(amount);
 
