@@ -4,20 +4,40 @@ import java.util.HashMap;
 import java.util.List;
 
 public class probe extends typeOfConstruction{
-    private int numberOfPatchWorking;
+    private int numberOfPatchWorking, numberOfGasWorking;
     private final int PROBE = 1;
     private List<Integer> mineralPatchList = new ArrayList<>();
+    private List<Integer> gasList = new ArrayList<>();
 
+    /**
+     *
+     * @param totalmap the hash map for the total program.
+     * @param newId the newest Id for the probes.
+     * @param initialId the original id for probes catalog.
+     * @param constructTime the time need to be used to built.
+     * @param currTime current time.
+     * @param totalMinerals all the minerals.
+     * @param totalGas all the gas.
+     * @param mineralPatchList mineral patch situation.
+     * @param numberOfPatchWorking the number of patch working.
+     * @param gasList gas situation.
+     * @param numberOfGasWorking number of gas working.
+     */
     public probe (HashMap<Integer, Integer>  totalmap, int newId, int initialId,
                   int constructTime, int currTime,
                   int totalMinerals, int totalGas,
-                  List<Integer> mineralPatchList, int numberOfPatchWorking) {
+                  List<Integer> mineralPatchList, int numberOfPatchWorking,
+                  List<Integer> gasList, int numberOfGasWorking) {
 
         super(totalmap, newId, initialId, constructTime, currTime, totalMinerals, totalGas);
 
         //given the information for current mineral patch using situation.
         this.mineralPatchList.addAll(mineralPatchList);
         this.numberOfPatchWorking = numberOfPatchWorking;
+
+        //given the information for current gas assimilator using situation.
+        this.gasList.addAll(gasList);
+        this.numberOfGasWorking = numberOfGasWorking;
     }
 
     /**
@@ -37,7 +57,6 @@ public class probe extends typeOfConstruction{
      */
     public void processActionInput(String actionInput, String amount) {
         numberOfAction = Integer.parseInt(amount);
-
         switch (actionInput.toLowerCase()) {
             case("a"):
                 if (constructionJudgement()) {
@@ -51,10 +70,14 @@ public class probe extends typeOfConstruction{
 
             case("b")://assign to gather minerals
                 if (assignPatchJudgement()) { //not excess patches limitation.
-                    if (constructingUnitJudgement()) { //enough available probes go to this work.
+                    if (constructingUnitJudgement()) {  //enough available probes go to this work.
                         System.out.println("Assign to gather minerals...");
                         setGatherMinerals();
-                        //TO DO: remove the mineral to gas.
+
+                    } else if(switcherJudgement(numberOfGasWorking)) { //set part of the worker to patch from gas.
+                        setGatherMinerals();
+                        setPartProbesToPatch();
+
                     } else { //not enough available.
                         System.out.println("Not enough available probes for you to this assignment. "
                                 + "(building or waiting probes to be constructed firstly.)");
@@ -66,11 +89,85 @@ public class probe extends typeOfConstruction{
                 break;
 
             case("c"):
-                System.out.println("gather gas");
+                //check: 1. assimilator exist 2. enough probes available 3. excess the limitation.
+
+                if (checkFacility()) { //this is to check whether satisfy the requirement. yes!
+                    if (assignGasJudgement()) {  //probes did not excess the limitation.
+
+                        if (constructingUnitJudgement()) { //enough free probes go to this work.
+                            setGatherGas(numberOfAction);                //set all the free probes to gas as user require.
+                            System.out.println("Assign to gather gas...");
+
+                        } else if (switcherJudgement(numberOfPatchWorking)) { //assign from patch to minerals
+
+                            setGatherGas(numberOfAction);
+                            setPartProbesToGas();
+                            System.out.println("switching part or the whole of probe(s) working " +
+                                    "from minerals patch to gas...");
+                        } else {
+                            System.out.println("Invalid: not enough available probes.");
+                        }
+
+                    } else {
+                        System.out.println("Invalid: the amount of working for assimilator excesses the limitation.");
+                    }
+                } else {
+                    System.out.println("Invalid: firstly constructed the ASSIMILATOR.");
+                }
                 break;
             default:
                 break;
         }
+    }
+
+    /**
+     * This is the method to set part of the probes to patch.
+     */
+    public void setPartProbesToPatch() {
+        int freeProbes = available - numberOfGasWorking - numberOfPatchWorking;
+        int switchProbes = numberOfAction - freeProbes;
+        for (int i = 0; i < switchProbes; i++) {
+            if (gasList.get(0) > 0) {
+                int workForce = gasList.get(0) - 1;
+                gasList.set(0, workForce);
+            } else {
+                int workForce = gasList.get(1) + 1;
+                gasList.set(1, workForce);
+            }
+        }
+    }
+
+    /**
+     * This method is to set part of the probes to work from patch to gas.
+     */
+    public void setPartProbesToGas() {
+        int freeProbes = available - numberOfPatchWorking - numberOfGasWorking;
+        int switchProbes = numberOfAction - freeProbes;
+        for (int i = 0; i < switchProbes; i++) {
+            Object obj = Collections.max(mineralPatchList);
+            int maximum = (int) obj;
+            int position = mineralPatchList.indexOf(maximum);
+            maximum = maximum - 1; //set part of probes to gather gas
+            mineralPatchList.set(position, maximum);
+        }
+    }
+
+    /**
+     * This method is to switch a part of the other side probes, and use the whole free probes to finish the task.
+     * available - number of Gas working - number of Patch Working = the number of free probes.
+     * @param numberOfOtherSide the opposite palace of probes working.
+     * @return true presents it works.
+     */
+    public boolean switcherJudgement(int numberOfOtherSide) {
+            return (numberOfOtherSide + (available - numberOfGasWorking - numberOfPatchWorking) >= numberOfAction);
+    }
+
+    /**
+     * This method is to check whether there is assimilator to begin gathering gas.
+     * @return true present that there exists.
+     */
+    public boolean checkFacility() {
+        return (totalMap.containsKey(4001));
     }
 
     /**
@@ -90,12 +187,21 @@ public class probe extends typeOfConstruction{
     }
 
     /**
+     * This method is to make a judgement whether it is overload.
+     * @return true presents it works.
+     */
+    public boolean assignGasJudgement() {
+            return (numberOfAction + numberOfGasWorking <= gasList.size() * 3);
+    }
+
+    /**
      * This method is to judge whether there are enough available probes to be assigned to gather minerals.
      * @return true represent it is enough available.
      */
     public boolean constructingUnitJudgement() {
-        return (numberOfPatchWorking + numberOfAction <= available);
+        return ( numberOfGasWorking + numberOfPatchWorking + numberOfAction <= available);
     }
+
 
     /**
      * This method is to set the probes to gather the minerals.
@@ -113,6 +219,20 @@ public class probe extends typeOfConstruction{
     }
 
     /**
+     * This method is to set the probes to gather the gas.
+     */
+    public void setGatherGas(int numberAction) {
+        for (int i = 0; i < numberAction; i++) {
+            if (gasList.get(0) >= 3) { //if the first gas assimilator is full, go to the next one.
+                int workForce = gasList.get(1) + 1;
+                gasList.set(1, workForce);
+            } else {
+                int workForce = gasList.get(0) + 1;
+                gasList.set(0, workForce);
+            }
+        }
+    }
+    /**
      * This method is to add the new building probes to the hash map.
      */
     public void setProbes() {
@@ -122,11 +242,20 @@ public class probe extends typeOfConstruction{
         }
     }
 
+    //The following is getter method.
     /**
      * This method is to get the Mineral Patch list.
      * @return Mineral Patch List.
      */
     public List<Integer> getMineralPatchList() {
         return mineralPatchList;
+    }
+
+    /**
+     * This method is to get the newest gas working list.
+     * @return the gas list.
+     */
+    public List<Integer> getGasList() {
+        return gasList;
     }
 }

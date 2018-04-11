@@ -87,6 +87,9 @@ abstract class typeOfConstruction {
         System.out.println("Select one of the options you want to do: \na.Build b.Nothing/Esc");
     }
 
+    /**
+     * This method is to set the building and input to map.
+     */
     public void setBuilding() {
         for (int i = 0; i < numberOfAction; i++) {
             newId ++;

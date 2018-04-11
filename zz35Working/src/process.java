@@ -19,6 +19,12 @@ public class process {
     //The speed of gathering minerals.
     int numberMaxVelocity, numberMinVelocity, totalNumberPatchWorking;
 
+    //The speed of gathering gas.
+    int totalNumberGasWorking;
+
+    //Judgement to begin gather gas.
+    boolean switcherGas = false;
+
     //This is buildings.
     static final int NEXUS = 0;
     static final int PROBE = 1;
@@ -63,6 +69,8 @@ public class process {
 
     //This is the list of mineral patch, 0 presents there is no probe working for it.
     private List<Integer> mineralPatchList = Arrays.asList(0, 0, 0, 0, 0);
+    //This is the list of gas, 0 presents there is no probe working for it.
+    private List<Integer> gasList = Arrays.asList(0);
 
 
     /**
@@ -83,6 +91,7 @@ public class process {
         assignMineralBeginning();
         totalTimer.schedule(totalTimeCalculation, new Date(), PERIOD);
         totalTimer.schedule(addMinerals, 1000, PERIOD); //The mineral calculation begins after 1 second.
+        totalTimer.schedule(addGas, 1000, PERIOD);
     }
 
     /**
@@ -199,8 +208,49 @@ public class process {
             double minerals = (41.0 / 60.0 * numberMaxVelocity) + (20.0 / 60.0 * numberMinVelocity);
             int addMinerals = (int) minerals;
             totalMinerals = totalMinerals + addMinerals;
+
         }
     };
+
+    /**
+     * This method is to calculate the number of probes working for gathering gas.
+     */
+    public void gasCalculator() {
+        totalNumberGasWorking = 0;
+
+        for(int element : gasList) {
+            totalNumberGasWorking += element;
+        }
+    }
+
+    /**
+     * This method is to calculate total gas to be added every second.
+     */
+    TimerTask addGas = new TimerTask() {
+        @Override
+        public void run() {
+            double gas = (38.0 / 60.0 * totalNumberGasWorking);
+            int addGas = (int) Math.round(gas);
+            totalGas = totalGas + addGas;
+        }
+    };
+
+    /**
+     * This method is to find the free probes.
+     * @return the number of free probes.
+     */
+    public int findNothingTaskProbes() {
+        int id = initialList.get(PROBE) + 1;
+        int freeProbes = 6;
+        for (int i = initialList.get(PROBE) + 7; i <= idList.get(PROBE); i++) {//total times = total number of probes
+                int value = totalmap.get(id);
+                if (secondsTotal - value >= timeList[PROBE]) {
+                    freeProbes++;
+                }
+        }
+        freeProbes = freeProbes - totalNumberGasWorking - totalNumberPatchWorking;
+        return freeProbes;
+    }
 
     public void setUserInput(String input) {
         Scanner reader = new Scanner(new InputStreamReader(System.in)); //This is to scan user's action input.
@@ -214,10 +264,15 @@ public class process {
                 probe probeSelection = new probe(totalmap, idList.get(PROBE), initialList.get(PROBE),
                         timeList[PROBE], secondsTotal,
                         totalMinerals, totalGas,
-                        mineralPatchList, totalNumberPatchWorking);
-
+                        mineralPatchList, totalNumberPatchWorking,
+                        gasList, totalNumberGasWorking);
+                //print out the situation.
                 System.out.print(convertList[PROBE] + ": ");
                 probeSelection.printIndivadualSituation();
+                //print out the minerals patch and gas working situation.
+                System.out.println("There are " + totalNumberPatchWorking + " probes gathering minerals. "
+                        + "There are " + totalNumberGasWorking + " gathering gas."
+                        + "There are " + findNothingTaskProbes() + " nothing to do.");
 
                 //try to prompt user input the action for his selection.
                 probeSelection.printActionSelection();
@@ -226,12 +281,8 @@ public class process {
                 //try to find out the amount of this action.
                 if (!actionInput.equals("d")) {
                     System.out.println("How many probe(s) do you want to add to take this action?");
-
-                    if (actionInput.equals("b")) { //print out the minerals patch working situation.
-                        System.out.println("There are " + totalNumberPatchWorking + " probes gathering minerals.");
-                    }
-
                     String amount = reader.next();
+                    //process the user input.
                     probeSelection.processActionInput(actionInput, amount);
                 }
 
@@ -247,9 +298,13 @@ public class process {
                 //get new minerals patch list
                 renewPatchList(probeSelection.getMineralPatchList());
                 MineralCalculator();
+
+                //get new gas patch list
+                renewGasList(probeSelection.getGasList());
+                gasCalculator();
                 break;
 
-            case("c"):
+            case("c"):      //The following codes are for pylon.
                 System.out.print(convertList[PYLON] + ": ");
                 assimilator pylonSelection = new assimilator(
                         totalmap, idList.get(PYLON), initialList.get(PYLON),
@@ -273,7 +328,7 @@ public class process {
                 }
                 break;
 
-            case("d"):
+            case("d"):      //The following are for assimilator.
                 System.out.print(convertList[ASSIMILATOR] + ": ");
                 assimilator assimilatorSelection = new assimilator(
                         totalmap, idList.get(ASSIMILATOR), initialList.get(ASSIMILATOR),
@@ -292,7 +347,11 @@ public class process {
                     //update the hash map.
                     totalmap.putAll(assimilatorSelection.getTotalMap());
                     //get new id.
-                    idList.set(ASSIMILATOR, assimilatorSelection.getNewId());
+                    int newestId = assimilatorSelection.getNewId();
+                    if (newestId == 4002) { //if the second gas assimilator is created
+                        gasList.add(0);
+                    }
+                    idList.set(ASSIMILATOR, newestId);
                     //get current minerals.
                     totalMinerals = assimilatorSelection.getTotalMinerals();
                 }
@@ -319,6 +378,12 @@ public class process {
         mineralPatchList = new ArrayList<>();
         mineralPatchList.addAll(newMineralPatchList);
         System.out.println("This is the situation of patch: " + mineralPatchList);
+    }
+
+    public void renewGasList(List<Integer> newGasList) {
+        gasList = new ArrayList<>();
+        gasList.addAll(newGasList);
+        System.out.println("This is the situation of gas: " + gasList);
     }
 
     /**
