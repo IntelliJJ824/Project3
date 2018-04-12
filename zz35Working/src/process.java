@@ -356,8 +356,31 @@ public class process {
                     totalMinerals = assimilatorSelection.getTotalMinerals();
                 }
                 break;
+
             case("e"):
-                System.out.println("This is for " + convertList[GATEWAY]);
+                System.out.println(convertList[GATEWAY] + ": ");
+                gateWay gateWaySelection = new gateWay(
+                        totalmap, idList.get(GATEWAY), initialList.get(GATEWAY),
+                        timeList[GATEWAY], secondsTotal,
+                        totalMinerals, totalGas,
+                        150 //spending  cost is the minerals that need to be deduced for each.
+                );
+                gateWaySelection.printIndivadualSituation();
+                gateWaySelection.printGeneralSelection();
+                String actionInputGAT = reader.next();
+
+                if (actionInputGAT.toLowerCase().equals("a")) {
+                    //process user input.
+                    System.out.println("How many gateway(s) do you want to to be constructed?");
+                    String amount = reader.next();
+                    gateWaySelection.processActionInput(amount);
+
+                    //get the new id.
+                    totalmap.putAll(gateWaySelection.getTotalMap());
+                    // get the new map.
+                    int newestId = gateWaySelection.getNewId();
+                    idList.set(GATEWAY, newestId);
+                }
                 break;
             case("quit"):
                 System.out.println("Game Over!!!");

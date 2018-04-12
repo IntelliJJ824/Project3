@@ -14,20 +14,18 @@
     <window id="1">
       <content type="file-editors">
         <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="process.java" pinned="false" current-in-tab="true">
+          <leaf>
+            <file leaf-file-name="process.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/process.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="3247">
-                    <caret line="306" column="64" lean-forward="false" selection-start-line="306" selection-start-column="64" selection-end-line="306" selection-end-column="64" />
+                  <state relative-caret-position="1617">
+                    <caret line="175" column="32" lean-forward="false" selection-start-line="175" selection-start-column="32" selection-end-line="175" selection-end-column="32" />
                     <folding>
                       <element signature="imports" expanded="true" />
                       <element signature="method#process#0;class#process#0" expanded="false" />
                       <element signature="method#start#0;class#process#0" expanded="false" />
                       <element signature="method#setIdList#0;class#process#0" expanded="false" />
                       <element signature="method#buildBase#0;class#process#0" expanded="false" />
-                      <element signature="e#4448#4555#0" expanded="true" />
-                      <element signature="e#4554#4555#0" expanded="true" />
                       <element signature="method#printSituation#0;class#process#0" expanded="false" />
                       <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
                       <element signature="method#printCurrency#0;class#process#0" expanded="false" />
@@ -36,6 +34,37 @@
                       <element signature="method#findNothingTaskProbes#0;class#process#0" expanded="false" />
                       <element signature="method#end#0;class#process#0" expanded="false" />
                       <element signature="method#printTotalTime#0;class#process#0" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="assimilator.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/assimilator.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="396">
+                    <caret line="22" column="71" lean-forward="false" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="probe.java" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/probe.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="1779">
+                    <caret line="168" column="71" lean-forward="false" selection-start-line="168" selection-start-column="71" selection-end-line="168" selection-end-column="71" />
+                    <folding>
+                      <element signature="imports" expanded="true" />
+                      <element signature="method#probe#0;class#probe#0" expanded="false" />
+                      <element signature="method#setPartProbesToPatch#0;class#probe#0" expanded="false" />
+                      <element signature="method#setPartProbesToGas#0;class#probe#0" expanded="false" />
+                      <element signature="e#7432#7433#0" expanded="true" />
+                      <element signature="e#7524#7525#0" expanded="true" />
+                      <element signature="method#constructingUnitJudgement#0;class#probe#0" expanded="false" />
+                      <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
+                      <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
+                      <element signature="method#setProbes#0;class#probe#0" expanded="false" />
                     </folding>
                   </state>
                 </provider>
@@ -51,9 +80,11 @@
       <file leaf-file-name="mainTesting.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="72">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,8 +92,8 @@
       <file leaf-file-name="typeOfConstruction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="936">
-              <caret line="90" column="59" lean-forward="false" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
+            <state relative-caret-position="249">
+              <caret line="92" column="30" lean-forward="true" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#typeOfConstruction#0;class#typeOfConstruction#0" expanded="false" />
@@ -73,30 +104,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="probe.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/probe.java">
+      <file leaf-file-name="gateWay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gateWay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="65" lean-forward="false" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
+            <state relative-caret-position="609">
+              <caret line="43" column="34" lean-forward="false" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#probe#0;class#probe#0" expanded="false" />
-                <element signature="method#setPartProbesToPatch#0;class#probe#0" expanded="false" />
-                <element signature="method#setPartProbesToGas#0;class#probe#0" expanded="false" />
-                <element signature="method#constructingUnitJudgement#0;class#probe#0" expanded="false" />
-                <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
-                <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
-                <element signature="method#setProbes#0;class#probe#0" expanded="false" />
+                <element signature="e#1519#1520#0" expanded="true" />
+                <element signature="e#1590#1591#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="assimilator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/assimilator.java">
+      <file leaf-file-name="roboticsFac.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/roboticsFac.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="57" lean-forward="false" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
+            <state relative-caret-position="0">
+              <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -120,10 +145,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/mainTesting.java" />
-        <option value="$PROJECT_DIR$/src/assimilator.java" />
-        <option value="$PROJECT_DIR$/src/process.java" />
         <option value="$PROJECT_DIR$/src/typeOfConstruction.java" />
         <option value="$PROJECT_DIR$/src/probe.java" />
+        <option value="$PROJECT_DIR$/src/assimilator.java" />
+        <option value="$PROJECT_DIR$/src/process.java" />
+        <option value="$PROJECT_DIR$/src/gateWay.java" />
       </list>
     </option>
   </component>
@@ -134,9 +160,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="1920" />
-    <option name="width" value="1159" />
-    <option name="height" value="1080" />
+    <option name="x" value="960" />
+    <option name="y" value="27" />
+    <option name="width" value="960" />
+    <option name="height" value="1020" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -153,6 +180,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -169,10 +200,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -298,15 +325,17 @@
       <workItem from="1523350951491" duration="587000" />
       <workItem from="1523387999888" duration="16015000" />
       <workItem from="1523437723489" duration="3380000" />
-      <workItem from="1523445043337" duration="12097000" />
+      <workItem from="1523445043337" duration="13239000" />
+      <workItem from="1523524454317" duration="87000" />
+      <workItem from="1523560569092" duration="9470000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54474000" />
+    <option name="totallyTimeSpent" value="65173000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1159" height="1080" extended-state="4" />
+    <frame x="960" y="27" width="960" height="1020" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -316,19 +345,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19871382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29276314" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -354,9 +383,111 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="936">
+          <caret line="90" column="59" lean-forward="false" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#typeOfConstruction#0;class#typeOfConstruction#0" expanded="false" />
+            <element signature="method#printIndivadualSituation#0;class#typeOfConstruction#0" expanded="false" />
+            <element signature="method#printMap#0;class#typeOfConstruction#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assimilator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="57" lean-forward="false" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/probe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#probe#0;class#probe#0" expanded="false" />
+            <element signature="method#setPartProbesToPatch#0;class#probe#0" expanded="false" />
+            <element signature="method#setPartProbesToGas#0;class#probe#0" expanded="false" />
+            <element signature="e#7432#7433#0" expanded="true" />
+            <element signature="e#7524#7525#0" expanded="true" />
+            <element signature="method#constructingUnitJudgement#0;class#probe#0" expanded="false" />
+            <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
+            <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
+            <element signature="method#setProbes#0;class#probe#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="90" column="59" lean-forward="false" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#typeOfConstruction#0;class#typeOfConstruction#0" expanded="false" />
+            <element signature="method#printIndivadualSituation#0;class#typeOfConstruction#0" expanded="false" />
+            <element signature="method#printMap#0;class#typeOfConstruction#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assimilator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="57" lean-forward="false" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/probe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="29" column="65" lean-forward="false" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#probe#0;class#probe#0" expanded="false" />
+            <element signature="method#setPartProbesToPatch#0;class#probe#0" expanded="false" />
+            <element signature="method#setPartProbesToGas#0;class#probe#0" expanded="false" />
+            <element signature="e#7432#7433#0" expanded="true" />
+            <element signature="e#7524#7525#0" expanded="true" />
+            <element signature="method#constructingUnitJudgement#0;class#probe#0" expanded="false" />
+            <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
+            <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
+            <element signature="method#setProbes#0;class#probe#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -390,6 +521,8 @@
             <element signature="method#probe#0;class#probe#0" expanded="false" />
             <element signature="method#setPartProbesToPatch#0;class#probe#0" expanded="false" />
             <element signature="method#setPartProbesToGas#0;class#probe#0" expanded="false" />
+            <element signature="e#7432#7433#0" expanded="true" />
+            <element signature="e#7524#7525#0" expanded="true" />
             <element signature="method#constructingUnitJudgement#0;class#probe#0" expanded="false" />
             <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
             <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
@@ -408,8 +541,6 @@
             <element signature="method#start#0;class#process#0" expanded="false" />
             <element signature="method#setIdList#0;class#process#0" expanded="false" />
             <element signature="method#buildBase#0;class#process#0" expanded="false" />
-            <element signature="e#4448#4555#0" expanded="true" />
-            <element signature="e#4554#4555#0" expanded="true" />
             <element signature="method#printSituation#0;class#process#0" expanded="false" />
             <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
             <element signature="method#printCurrency#0;class#process#0" expanded="false" />
@@ -426,7 +557,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -448,8 +581,6 @@
             <element signature="method#start#0;class#process#0" expanded="false" />
             <element signature="method#setIdList#0;class#process#0" expanded="false" />
             <element signature="method#buildBase#0;class#process#0" expanded="false" />
-            <element signature="e#4448#4555#0" expanded="true" />
-            <element signature="e#4554#4555#0" expanded="true" />
             <element signature="method#printSituation#0;class#process#0" expanded="false" />
             <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
             <element signature="method#printCurrency#0;class#process#0" expanded="false" />
@@ -466,7 +597,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -480,8 +613,6 @@
             <element signature="method#start#0;class#process#0" expanded="false" />
             <element signature="method#setIdList#0;class#process#0" expanded="false" />
             <element signature="method#buildBase#0;class#process#0" expanded="false" />
-            <element signature="e#4448#4555#0" expanded="true" />
-            <element signature="e#4554#4555#0" expanded="true" />
             <element signature="method#printSituation#0;class#process#0" expanded="false" />
             <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
             <element signature="method#printCurrency#0;class#process#0" expanded="false" />
@@ -503,6 +634,8 @@
             <element signature="method#probe#0;class#probe#0" expanded="false" />
             <element signature="method#setPartProbesToPatch#0;class#probe#0" expanded="false" />
             <element signature="method#setPartProbesToGas#0;class#probe#0" expanded="false" />
+            <element signature="e#7432#7433#0" expanded="true" />
+            <element signature="e#7524#7525#0" expanded="true" />
             <element signature="method#constructingUnitJudgement#0;class#probe#0" expanded="false" />
             <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
             <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
@@ -515,7 +648,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -529,8 +664,6 @@
             <element signature="method#start#0;class#process#0" expanded="false" />
             <element signature="method#setIdList#0;class#process#0" expanded="false" />
             <element signature="method#buildBase#0;class#process#0" expanded="false" />
-            <element signature="e#4448#4555#0" expanded="true" />
-            <element signature="e#4554#4555#0" expanded="true" />
             <element signature="method#printSituation#0;class#process#0" expanded="false" />
             <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
             <element signature="method#printCurrency#0;class#process#0" expanded="false" />
@@ -547,7 +680,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -561,8 +696,6 @@
             <element signature="method#start#0;class#process#0" expanded="false" />
             <element signature="method#setIdList#0;class#process#0" expanded="false" />
             <element signature="method#buildBase#0;class#process#0" expanded="false" />
-            <element signature="e#4448#4555#0" expanded="true" />
-            <element signature="e#4554#4555#0" expanded="true" />
             <element signature="method#printSituation#0;class#process#0" expanded="false" />
             <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
             <element signature="method#printCurrency#0;class#process#0" expanded="false" />
@@ -579,7 +712,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -592,6 +727,8 @@
             <element signature="method#probe#0;class#probe#0" expanded="false" />
             <element signature="method#setPartProbesToPatch#0;class#probe#0" expanded="false" />
             <element signature="method#setPartProbesToGas#0;class#probe#0" expanded="false" />
+            <element signature="e#7432#7433#0" expanded="true" />
+            <element signature="e#7524#7525#0" expanded="true" />
             <element signature="method#constructingUnitJudgement#0;class#probe#0" expanded="false" />
             <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
             <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
@@ -617,7 +754,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -631,8 +770,6 @@
             <element signature="method#start#0;class#process#0" expanded="false" />
             <element signature="method#setIdList#0;class#process#0" expanded="false" />
             <element signature="method#buildBase#0;class#process#0" expanded="false" />
-            <element signature="e#4448#4555#0" expanded="true" />
-            <element signature="e#4554#4555#0" expanded="true" />
             <element signature="method#printSituation#0;class#process#0" expanded="false" />
             <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
             <element signature="method#printCurrency#0;class#process#0" expanded="false" />
@@ -645,26 +782,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
+    <entry file="file://$PROJECT_DIR$/src/probe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="1779">
+          <caret line="168" column="71" lean-forward="false" selection-start-line="168" selection-start-column="71" selection-end-line="168" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#probe#0;class#probe#0" expanded="false" />
+            <element signature="method#setPartProbesToPatch#0;class#probe#0" expanded="false" />
+            <element signature="method#setPartProbesToGas#0;class#probe#0" expanded="false" />
+            <element signature="e#7432#7433#0" expanded="true" />
+            <element signature="e#7524#7525#0" expanded="true" />
+            <element signature="method#constructingUnitJudgement#0;class#probe#0" expanded="false" />
+            <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
+            <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
+            <element signature="method#setProbes#0;class#probe#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/process.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3247">
-          <caret line="306" column="64" lean-forward="false" selection-start-line="306" selection-start-column="64" selection-end-line="306" selection-end-column="64" />
+        <state relative-caret-position="1617">
+          <caret line="175" column="32" lean-forward="false" selection-start-line="175" selection-start-column="32" selection-end-line="175" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#process#0;class#process#0" expanded="false" />
             <element signature="method#start#0;class#process#0" expanded="false" />
             <element signature="method#setIdList#0;class#process#0" expanded="false" />
             <element signature="method#buildBase#0;class#process#0" expanded="false" />
-            <element signature="e#4448#4555#0" expanded="true" />
-            <element signature="e#4554#4555#0" expanded="true" />
             <element signature="method#printSituation#0;class#process#0" expanded="false" />
             <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
             <element signature="method#printCurrency#0;class#process#0" expanded="false" />
@@ -679,8 +825,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="936">
-          <caret line="90" column="59" lean-forward="false" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
+        <state relative-caret-position="249">
+          <caret line="92" column="30" lean-forward="true" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#typeOfConstruction#0;class#typeOfConstruction#0" expanded="false" />
@@ -690,28 +836,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gateWay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="43" column="34" lean-forward="false" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+          <folding>
+            <element signature="e#1519#1520#0" expanded="true" />
+            <element signature="e#1590#1591#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/assimilator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="57" lean-forward="false" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
+        <state relative-caret-position="396">
+          <caret line="22" column="71" lean-forward="false" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/probe.java">
+    <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="65" lean-forward="false" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
+        <state relative-caret-position="72">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#probe#0;class#probe#0" expanded="false" />
-            <element signature="method#setPartProbesToPatch#0;class#probe#0" expanded="false" />
-            <element signature="method#setPartProbesToGas#0;class#probe#0" expanded="false" />
-            <element signature="method#constructingUnitJudgement#0;class#probe#0" expanded="false" />
-            <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
-            <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
-            <element signature="method#setProbes#0;class#probe#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/roboticsFac.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

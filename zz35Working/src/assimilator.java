@@ -13,14 +13,14 @@ public class assimilator extends typeOfConstruction {
 
     /**
      * This method is to set the assimilator for the program.
-     * @param amount
+     * @param amount the number of assimilator or pylon need to be added.
      */
     public void processActionInput(String amount) { // only selection for building.
         numberOfAction = Integer.parseInt(amount);
         if (assimilatorConstructionJudgement()) {
             totalMinerals = totalMinerals - spendingCost * numberOfAction;
             setBuilding();
-            System.out.println("Constructing the number of new assimilator " + numberOfAction + "...");
+            System.out.println("Constructing the number of new building " + numberOfAction + "...");
         } else {
             System.out.println("Invalid construction, Minerals are not enough!!!");
         }

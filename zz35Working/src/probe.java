@@ -10,7 +10,6 @@ public class probe extends typeOfConstruction{
     private List<Integer> gasList = new ArrayList<>();
 
     /**
-     *
      * @param totalmap the hash map for the total program.
      * @param newId the newest Id for the probes.
      * @param initialId the original id for probes catalog.
@@ -112,7 +111,7 @@ public class probe extends typeOfConstruction{
                         System.out.println("Invalid: the amount of working for assimilator excesses the limitation.");
                     }
                 } else {
-                    System.out.println("Invalid: firstly constructed the ASSIMILATOR.");
+                    System.out.println("Invalid: firstly constructed or waited the ASSIMILATOR.");
                 }
                 break;
             default:
@@ -164,10 +163,10 @@ public class probe extends typeOfConstruction{
 
     /**
      * This method is to check whether there is assimilator to begin gathering gas.
-     * @return true present that there exists.
+     * @return true present that there exists, and it is finished.
      */
     public boolean checkFacility() {
-        return (totalMap.containsKey(4001));
+        return (totalMap.containsKey(4001) && (currTime - totalMap.get(4001) >= 30));
     }
 
     /**
