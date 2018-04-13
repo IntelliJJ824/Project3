@@ -606,7 +606,7 @@ public class process {
     }
 
     /**
-     * This method is to renew the gateway hash map in order to get the situation of it.
+     * This method is to renew the gateway hash map in order to get the situation of it.(print)
      * @param newHashMap the gate way hash map after processing.
      */
     public void updateHashMapAfterUnit(HashMap<Integer, Boolean> newHashMap) {
@@ -694,8 +694,9 @@ public class process {
                     } else if (id < initialList.get(STALKER) + 1000
                             && (secondsTotal - totalmap.get(id) >= timeList[STALKER])) {
                         gateWayMap.put(id, true);
-                    } else if (id < initialList.get(SENTRY) + 1000) {
-
+                    } else if (id < initialList.get(SENTRY) + 1000
+                            && (secondsTotal - totalmap.get(id) >= timeList[SENTRY])) {
+                        gateWayMap.put(id, true);
                     } else {
                         System.out.println("NO Found!!!!!!");
                     }
