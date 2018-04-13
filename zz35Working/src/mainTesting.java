@@ -34,10 +34,10 @@ public class mainTesting {
     }
 
     static public void printSelection() {
-        System.out.println("a.NEXUS b.PROBE c.PYLON d.ASSIMILATOR e.GATEWAY f.CYBERNETICS CORE"
-                + " g.ROBOTICS");
-        System.out.println("h.ZEALOT" + " i.STALKER" + " j.OBSERVER" + " k.IMMORTAL" + " l.IMMORTAL"
-                + " m.PHOENIX" + " n.VOID RAY");
+        System.out.println("Buildings and Probes:\na.NEXUS b.PROBE c.PYLON d.ASSIMILATOR e.GATEWAY f.CYBERNETICS CORE"
+                + " g.ROBOTICS FACILITY" + " h.STARGATE");
+        System.out.println("Units:\ni.ZEALOT" + " j.STALKER" + " k.SENTRY" + " l.OBSERVER" + " m.IMMORTAL"
+                + " n.PHOENIX" + " o.VOID RAY");
 
     }
 }

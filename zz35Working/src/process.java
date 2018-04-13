@@ -10,20 +10,18 @@ import java.util.*;
  * The id list is the type list.
  */
 public class process {
-    Timer totalTimer;
-    int secondsTotal = 0;
-    final int PERIOD = 1000;
-    int totalMinerals;
-    int totalGas;
+    private Timer totalTimer;
+    private int secondsTotal = 0;
+    private final int PERIOD = 1000;
+    private int totalMinerals;
+    private int totalGas;
 
     //The speed of gathering minerals.
-    int numberMaxVelocity, numberMinVelocity, totalNumberPatchWorking;
+    private int numberMaxVelocity, numberMinVelocity, totalNumberPatchWorking;
 
     //The speed of gathering gas.
-    int totalNumberGasWorking;
+    private int totalNumberGasWorking;
 
-    //Judgement to begin gather gas.
-    boolean switcherGas = false;
 
     //This is buildings.
     static final int NEXUS = 0;
@@ -57,14 +55,22 @@ public class process {
     // this is to store all the units and building.
     private HashMap<Integer, Integer> totalmap = new HashMap<>();
 
+    //total gate way with the situation.
+    private HashMap<Integer, Boolean> gateWayMap = new HashMap<>();
+
     //This is the list to convert from number to specific name.
     private String[] convertList = {
             "NEXUS", "PROBE", "PYLON", "ASSIMILATOR", "GATEWAY", "CYBERNETICS CORE", "ROBOTICS FACILITY", "STARGATE",
             "ZEALOT", "STALKER", "SENTRY", "OBSERVER", "IMMORTAL", "PHOENIX", "VOID RAY"};
 
     private int[] timeList = {
-            100, 17, 25, 30, 65, 50, 65, 60, //This is for buildings and probe
+            100, 17, 25, 30, 65, 50, 65, 60, //This is for buildings and probe.
             38, 42, 37, 40, 55, 35, 60 //This is for units
+    };
+
+    private int[] gasCostList = {
+            0, 0, 0, 0, 0, 0, 100, 150, //This is for building and probe.
+            0, 50, 100, 75, 100, 100, 150
     };
 
     //This is the list of mineral patch, 0 presents there is no probe working for it.
@@ -304,7 +310,8 @@ public class process {
                 gasCalculator();
                 break;
 
-            case("c"):      //The following codes are for pylon.
+            //The following codes are for pylon.
+            case("c"):
                 System.out.print(convertList[PYLON] + ": ");
                 assimilator pylonSelection = new assimilator(
                         totalmap, idList.get(PYLON), initialList.get(PYLON),
@@ -328,7 +335,8 @@ public class process {
                 }
                 break;
 
-            case("d"):      //The following are for assimilator.
+            //The following are for assimilator.
+            case("d"):
                 System.out.print(convertList[ASSIMILATOR] + ": ");
                 assimilator assimilatorSelection = new assimilator(
                         totalmap, idList.get(ASSIMILATOR), initialList.get(ASSIMILATOR),
@@ -357,7 +365,10 @@ public class process {
                 }
                 break;
 
+            //This is began with GATEWAY type.
             case("e"):
+                updateGateWayMap(); //checking the available gateway.
+                System.out.println(gateWayMap);
                 System.out.println(convertList[GATEWAY] + ": ");
                 gateWay gateWaySelection = new gateWay(
                         totalmap, idList.get(GATEWAY), initialList.get(GATEWAY),
@@ -371,17 +382,218 @@ public class process {
 
                 if (actionInputGAT.toLowerCase().equals("a")) {
                     //process user input.
-                    System.out.println("How many gateway(s) do you want to to be constructed?");
+                    System.out.println("How many gateway(s) do you want to construct?");
                     String amount = reader.next();
                     gateWaySelection.processActionInput(amount);
 
-                    //get the new id.
+                    //get the new map.
                     totalmap.putAll(gateWaySelection.getTotalMap());
-                    // get the new map.
+                    // get the new id.
                     int newestId = gateWaySelection.getNewId();
+
+                    //the map of the gate way will be added, if the new gate way is add.
+                    int times = newestId - idList.get(GATEWAY);
+                    if (times > 0) {
+                        setGateWayUnavailable(times, idList.get(GATEWAY));
+                    }
+
+                    //set the newId for gate way.
                     idList.set(GATEWAY, newestId);
+
+                    //This is to get the minerals.
+                    totalMinerals = gateWaySelection.getTotalMinerals();
+
                 }
                 break;
+
+            case("f"):
+                System.out.println(convertList[CYBERNETIC] + ": ");
+                cybernetics cyberneticsSelection = new cybernetics(
+                  totalmap, idList.get(CYBERNETIC), initialList.get(CYBERNETIC),
+                  timeList[CYBERNETIC], secondsTotal,
+                  totalMinerals, totalGas,
+                  150);
+                cyberneticsSelection.printIndivadualSituation();
+                cyberneticsSelection.printGeneralSelection();
+                String actionInputCYB = reader.next();
+
+                //process the user's input
+                if (actionInputCYB.toLowerCase().equals("a")) {
+                    System.out.println("How many Cybernetics Core do you want to construct?");
+                    String amount = reader.next();
+                    cyberneticsSelection.processActionInput(amount);
+
+                    //get the new map.
+                    totalmap.putAll(cyberneticsSelection.getTotalMap());
+
+                    //get the new id.
+                    int newestId = cyberneticsSelection.getNewId();
+                    idList.set(CYBERNETIC, newestId);
+
+                    //This is to get the total minerals (after deducing).
+                    totalMinerals = cyberneticsSelection.getTotalMinerals();
+                /**
+                 * cyberneticsSelection.printMap(); before this part, testing is success,
+                 * because deduce minerals, time, and building condition.
+                 */
+                }
+                break;
+            /**
+             * The reason why ROBOTIC and STARGate share the same class.
+             * because they have the same conditional except the spending of minerals and gas.
+             */
+            case("g"):
+                System.out.println(convertList[ROBOTIC] + ": ");
+                roboticsFac roboticsSelection = new roboticsFac(
+                        totalmap, idList.get(ROBOTIC), initialList.get(ROBOTIC),
+                        timeList[ROBOTIC], secondsTotal,
+                        totalMinerals, totalGas,
+                        200, gasCostList[ROBOTIC]);
+                roboticsSelection.printIndivadualSituation();
+                roboticsSelection.printGeneralSelection();
+                String actionInputRob = reader.next();
+
+                //process the user's input.
+                if (actionInputRob.toLowerCase().equals("a")) {
+                    System.out.println("How many Robotics Facility do you want to construct?");
+                    String amount = reader.next();
+                    roboticsSelection.processActionInput(amount);
+
+                    //get the new map.
+                    totalmap.putAll(roboticsSelection.getTotalMap());
+
+                    //get the new id.
+                    int newestId = roboticsSelection.getNewId();
+                    idList.set(ROBOTIC, newestId);
+
+                    //deduce the minerals.
+                    totalMinerals = roboticsSelection.getTotalMinerals();
+                    //deduce the gas
+                    totalGas = roboticsSelection.getTotalGas();
+                }
+                break;
+
+            case("h"):
+                System.out.println(convertList[STARGATE] + ": ");
+                roboticsFac starGateSelection = new roboticsFac(
+                        totalmap, idList.get(STARGATE), initialList.get(STARGATE),
+                        timeList[STARGATE], secondsTotal,
+                        totalMinerals, totalGas,
+                        150, gasCostList[STARGATE]);
+                starGateSelection.printIndivadualSituation();
+                starGateSelection.printGeneralSelection();
+                String actionInputSTA = reader.next();
+
+                //process the user's input.
+                if (actionInputSTA.toLowerCase().equals("a")) {
+                    System.out.println("How many Stargate do you want to construct?");
+                    String amount = reader.next();
+                    starGateSelection.processActionInput(amount);
+
+                    //get map
+                    totalmap.putAll(starGateSelection.getTotalMap());
+                    //get id
+                    int newestId = starGateSelection.getNewId();
+                    idList.set(STARGATE, newestId);
+
+                    //deduce the minerals.
+                    totalMinerals = starGateSelection.getTotalMinerals();
+                    //deduce the gas.
+                    totalGas = starGateSelection.getTotalGas();
+                }
+                break;
+
+            case("i"):
+                updateGateWayMap();
+                System.out.println(convertList[ZEALOT] + ": ");
+                zealot zealotSelection = new zealot(
+                     totalmap, idList.get(ZEALOT), initialList.get(ZEALOT),
+                     timeList[ZEALOT], secondsTotal,
+                     totalMinerals, totalGas,
+                     100, gasCostList[ZEALOT],
+                        gateWayMap);
+
+                printIndividual(zealotSelection);
+                String actionInputZE = reader.next();
+
+                //process the user's input.
+                if (actionInputZE.toLowerCase().equals("a")) {
+                    System.out.println("How many Stargate do you want to construct?");
+                    String amount = reader.next();
+                    zealotSelection.processActionInput(amount);
+
+                    //get map.
+                    totalmap.putAll(zealotSelection.getTotalMap());
+
+                    //get gateWayMap.
+                    updateHashMapAfterUnit(zealotSelection.getGateMap());
+
+                    //get id, deduce the minerals and gas.
+                    updateTheList(ZEALOT, zealotSelection);
+                }
+                break;
+
+            case ("j"):
+                updateGateWayMap();
+                System.out.println(convertList[STALKER] + ": ");
+                stalker stalkerSelection = new stalker(
+                        totalmap, idList.get(STALKER), initialList.get(STALKER),
+                        timeList[STALKER], secondsTotal,
+                        totalMinerals, totalGas,
+                        125, gasCostList[STALKER],
+                        gateWayMap);
+
+                printIndividual(stalkerSelection);
+                String actionInputSTAL = reader.next();
+
+                //process the user's input.
+                if (actionInputSTAL.toLowerCase().equals("a")) {
+                    System.out.println("How many Stalker(s) do you want to construct?");
+                    String amount = reader.next();
+                    stalkerSelection.processActionInput(amount);
+
+                    //get map.
+                    totalmap.putAll(stalkerSelection.getTotalMap());
+
+                    //get gateWay Map.
+                    updateHashMapAfterUnit(stalkerSelection.getGateMap());
+
+                    //get id, deduce the minerals and gas.
+                    updateTheList(STALKER, stalkerSelection);
+                }
+                break;
+            case ("k"):
+                updateGateWayMap();
+                System.out.println(convertList[SENTRY] + ": ");
+                zealot sentrySelection = new zealot(
+                  totalmap, idList.get(SENTRY), initialList.get(SENTRY),
+                  timeList[SENTRY], secondsTotal,
+                  totalMinerals, totalGas,
+                  50, gasCostList[SENTRY],
+                  gateWayMap
+                );
+
+                printIndividual(sentrySelection);
+                String actionSEN = reader.next();
+
+                //process the user's input.
+                if (actionSEN.toLowerCase().equals("a")) {
+                    System.out.println("How many SENTRY do you want to construct?");
+                    String amount = reader.next();
+                    sentrySelection.processActionInput(amount);
+
+                    //get map.
+                    totalmap.putAll(sentrySelection.getTotalMap());
+                    //get gateWay map.
+                    updateHashMapAfterUnit(sentrySelection.getGateMap());
+                    //get id, deduce the minerals and gas.
+                    updateTheList(SENTRY, sentrySelection);
+                }
+                break;
+            /**
+             * zealot, stalker, and sentry can be regarded as a type of unit.
+             * because they are produced by the same building.
+             */
             case("quit"):
                 System.out.println("Game Over!!!");
                 break;
@@ -394,6 +606,50 @@ public class process {
     }
 
     /**
+     * This method is to renew the gateway hash map in order to get the situation of it.
+     * @param newHashMap the gate way hash map after processing.
+     */
+    public void updateHashMapAfterUnit(HashMap<Integer, Boolean> newHashMap) {
+        gateWayMap.clear();
+        gateWayMap.putAll(newHashMap);
+        System.out.println(gateWayMap);
+    }
+
+    /**
+     * This method is to set the gate way not work when at the beginning of the building unit.
+     * @param times the number of gate way need to be set.
+     * @param id the unit id.
+     */
+    public void setGateWayUnavailable(int times, int id) {
+        for (int i = 0; i < times; i++) {
+            id++;
+            gateWayMap.put(id, false);
+        }
+//        System.out.println(gateWayMap.toString());//print out the gateWay list.
+    }
+
+    /**
+     * This method is to print the individual situation and its selections can be chosen.
+     * @param individualType the characteristic object.
+     */
+    public void printIndividual(typeOfConstruction individualType) {
+        individualType.printIndivadualSituation();
+        individualType.printGeneralSelection();
+    }
+
+    /**
+     * This method is to update the list including minerals and gas.
+     * @param position the character need to be changed.
+     * @param individualType the characteristic object.
+     */
+    public void updateTheList(int position, typeOfConstruction individualType) {
+        int id = individualType.getNewId();
+        idList.set(position, id);
+        totalMinerals = individualType.getTotalMinerals();
+        totalGas = individualType.getTotalGas();
+    }
+
+    /**
      * This method is to update the situation of the minerals patches.
      * @param newMineralPatchList the situation of patch after the assignment.
      */
@@ -403,11 +659,51 @@ public class process {
         System.out.println("This is the situation of patch: " + mineralPatchList);
     }
 
+    /**
+     * This method is to renew the gas list.
+     * @param newGasList the new gas list show the probes working.
+     */
     public void renewGasList(List<Integer> newGasList) {
         gasList = new ArrayList<>();
         gasList.addAll(newGasList);
         System.out.println("This is the situation of gas: " + gasList);
     }
+
+    /**
+     * This method is to set the situation of the gate way. True presents available.
+     */
+    public void updateGateWayMap() {
+        if(!gateWayMap.isEmpty()) {// make sure there is value inside the hash map
+            Set set = gateWayMap.entrySet();
+            Iterator iterator = set.iterator();
+
+            while (iterator.hasNext()) { //go over all the gate way.
+                Map.Entry pair = (Map.Entry) iterator.next();
+                int id = (int) pair.getKey();
+                boolean available = (boolean) pair.getValue();
+
+                if (!available) {
+                    //if the gate way is not in constructing or building other unit,
+                    //the value will become true.
+                    if ((id < initialList.get(GATEWAY) + 1000)
+                            && (secondsTotal - totalmap.get(id) >= timeList[GATEWAY])) {
+                        gateWayMap.put(id, true);
+                    } else if ((id < initialList.get(ZEALOT) + 1000)
+                            && (secondsTotal - totalmap.get(id) >= timeList[ZEALOT])) {
+                        gateWayMap.put(id, true);
+                    } else if (id < initialList.get(STALKER) + 1000
+                            && (secondsTotal - totalmap.get(id) >= timeList[STALKER])) {
+                        gateWayMap.put(id, true);
+                    } else if (id < initialList.get(SENTRY) + 1000) {
+
+                    } else {
+                        System.out.println("NO Found!!!!!!");
+                    }
+                }
+            }
+        }
+    }
+
 
     /**
      * This method is to stop the whole game and print out the total time.

@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class gateWay extends typeOfConstruction {
-    int spendingCost;
+
     public gateWay(HashMap<Integer, Integer> totalmap, int newId, int initialId,
                    int constructTime, int currTime,
                    int totalMinerals, int totalGas,
@@ -21,12 +21,12 @@ public class gateWay extends typeOfConstruction {
             if (gateWayConstructionJudgement()) { //enough minerals for it.
                 totalMinerals = totalMinerals - spendingCost * numberOfAction;//deduce the minerals
                 setBuilding();
-                System.out.println("Constructing the number of new gateway " + numberOfAction + "...");
+                System.out.println("Constructing the number of new building(s) " + numberOfAction + "...");
             } else {
                 System.out.println("Invalid: Minerals are not enough!!!");
             }
         } else {
-            System.out.println("Invalid: firstly construct the PYLON.");
+            System.out.println("Invalid: firstly construct the DEPENDENT building.");
         }
     }
 
@@ -39,11 +39,5 @@ public class gateWay extends typeOfConstruction {
         return (numberOfAction * spendingCost <= totalMinerals);
     }
 
-    /**
-     * This method is to judge whether it exists pylon, and reach the building time.
-     * @return true presents exist
-     */
-    public boolean judgementPylonExist() {
-        return (totalMap.containsKey(3001) && (currTime - totalMap.get(3001) >= 25));
-    }
+
 }

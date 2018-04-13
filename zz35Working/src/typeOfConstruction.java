@@ -7,7 +7,7 @@ abstract class typeOfConstruction {
 
     protected HashMap<Integer, Integer> totalMap = new HashMap<>();
     protected int newId, initialId, constructTime, currTime, totalMinerals, totalGas, available, constructing,
-            numberOfAction;
+            numberOfAction, spendingCost, spendingGas;
 
     /**
      * This method is to pass the value from the situation.
@@ -92,9 +92,37 @@ abstract class typeOfConstruction {
      */
     public void setBuilding() {
         for (int i = 0; i < numberOfAction; i++) {
-            newId ++;
+            newId ++; //this is to update the id.
             totalMap.put(newId, currTime);
         }
+    }
+
+    /**
+     * This method is to judge whether it exists pylon, and reach the building time.
+     * @return true presents exist
+     */
+    public boolean judgementPylonExist() {
+        return (totalMap.containsKey(3001) && (currTime - totalMap.get(3001) >= 25));
+    }
+
+    public boolean judgeCoreExist() {
+        return (totalMap.containsKey(6001) && (currTime - totalMap.get(6001) >= 50));
+    }
+
+    /**
+     * This method is to make a judgement that whether total minerals and gas are enough to build.
+     * @return true presents it is enough.
+     */
+    public boolean constructionCurrencyJudgement() {
+        return ( (numberOfAction * spendingCost <= totalMinerals) && (numberOfAction * spendingGas <= totalGas));
+    }
+
+    /**
+     * This method is to deduce the spending in the currency of minerals and gas.
+     */
+    public void deduceCurrency() {
+        totalMinerals = totalMinerals - spendingCost * numberOfAction;
+        totalGas = totalGas - spendingGas * numberOfAction;
     }
 
     //The following code is for getter.
@@ -120,5 +148,13 @@ abstract class typeOfConstruction {
      */
     public int getNewId() {
         return newId;
+    }
+
+    /**
+     * This method is to get the total gas.
+     * @return the total gas.
+     */
+    public int getTotalGas() {
+        return totalGas;
     }
 }
