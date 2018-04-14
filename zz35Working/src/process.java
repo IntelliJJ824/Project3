@@ -58,6 +58,13 @@ public class process {
     //total gate way with the situation.
     private HashMap<Integer, Boolean> gateWayMap = new HashMap<>();
 
+    //total robotics facility with the situation.
+    private HashMap<Integer, Boolean> roboticsMap = new HashMap<>();
+
+    //total stargate facility with the situation.
+    private HashMap<Integer, Boolean> starGateMap = new HashMap<>();
+
+
     //This is the list to convert from number to specific name.
     private String[] convertList = {
             "NEXUS", "PROBE", "PYLON", "ASSIMILATOR", "GATEWAY", "CYBERNETICS CORE", "ROBOTICS FACILITY", "STARGATE",
@@ -368,7 +375,8 @@ public class process {
             //This is began with GATEWAY type.
             case("e"):
                 updateGateWayMap(); //checking the available gateway.
-                System.out.println(gateWayMap);
+                System.out.println(gateWayMap);     //printing method in here.
+
                 System.out.println(convertList[GATEWAY] + ": ");
                 gateWay gateWaySelection = new gateWay(
                         totalmap, idList.get(GATEWAY), initialList.get(GATEWAY),
@@ -394,19 +402,21 @@ public class process {
                     //the map of the gate way will be added, if the new gate way is add.
                     int times = newestId - idList.get(GATEWAY);
                     if (times > 0) {
-                        setGateWayUnavailable(times, idList.get(GATEWAY));
+                        //set the situation for the gate way.
+//                        setGateWayUnavailable(times, idList.get(GATEWAY));
+                        setTotalFacilityUnavailable(times, idList.get(GATEWAY), gateWayMap);
+
+                        //set the newId for gate way.
+                        idList.set(GATEWAY, newestId);
+
+                        //This is to get the minerals.
+                        totalMinerals = gateWaySelection.getTotalMinerals();
                     }
-
-                    //set the newId for gate way.
-                    idList.set(GATEWAY, newestId);
-
-                    //This is to get the minerals.
-                    totalMinerals = gateWaySelection.getTotalMinerals();
 
                 }
                 break;
 
-            case("f"):
+            case("f"):      //This is for cybernetics core.
                 System.out.println(convertList[CYBERNETIC] + ": ");
                 cybernetics cyberneticsSelection = new cybernetics(
                   totalmap, idList.get(CYBERNETIC), initialList.get(CYBERNETIC),
@@ -464,12 +474,17 @@ public class process {
 
                     //get the new id.
                     int newestId = roboticsSelection.getNewId();
-                    idList.set(ROBOTIC, newestId);
-
-                    //deduce the minerals.
-                    totalMinerals = roboticsSelection.getTotalMinerals();
-                    //deduce the gas
-                    totalGas = roboticsSelection.getTotalGas();
+                    if (newestId - idList.get(ROBOTIC) > 0) {
+                        int times = newestId - idList.get(ROBOTIC);
+                        //set the situation of the robotic facility.
+                        setTotalFacilityUnavailable(times, idList.get(ROBOTIC), roboticsMap);
+                        //set the new id.
+                        idList.set(ROBOTIC, newestId);
+                        //deduce the minerals.
+                        totalMinerals = roboticsSelection.getTotalMinerals();
+                        //deduce the gas.
+                        totalGas = roboticsSelection.getTotalGas();
+                    }
                 }
                 break;
 
@@ -494,12 +509,18 @@ public class process {
                     totalmap.putAll(starGateSelection.getTotalMap());
                     //get id
                     int newestId = starGateSelection.getNewId();
-                    idList.set(STARGATE, newestId);
-
-                    //deduce the minerals.
-                    totalMinerals = starGateSelection.getTotalMinerals();
-                    //deduce the gas.
-                    totalGas = starGateSelection.getTotalGas();
+                    if (newestId - idList.get(STARGATE) > 0) {
+                        int times = newestId - idList.get(STARGATE);
+                        //set the situation of the star gate.
+                        setTotalFacilityUnavailable(times, idList.get(STARGATE), starGateMap);
+                        System.out.print("");
+                        //set the new id.
+                        idList.set(STARGATE, newestId);
+                        //deduce the minerals.
+                        totalMinerals = starGateSelection.getTotalMinerals();
+                        //deduce the gas.
+                        totalGas = starGateSelection.getTotalGas();
+                    }
                 }
                 break;
 
@@ -526,7 +547,7 @@ public class process {
                     totalmap.putAll(zealotSelection.getTotalMap());
 
                     //get gateWayMap.
-                    updateHashMapAfterUnit(zealotSelection.getGateMap());
+                    updateHashMapTotalAfterUnit(zealotSelection.getGateMap(), gateWayMap);
 
                     //get id, deduce the minerals and gas.
                     updateTheList(ZEALOT, zealotSelection);
@@ -556,12 +577,13 @@ public class process {
                     totalmap.putAll(stalkerSelection.getTotalMap());
 
                     //get gateWay Map.
-                    updateHashMapAfterUnit(stalkerSelection.getGateMap());
+                    updateHashMapTotalAfterUnit(stalkerSelection.getGateMap(), gateWayMap);
 
                     //get id, deduce the minerals and gas.
                     updateTheList(STALKER, stalkerSelection);
                 }
                 break;
+
             case ("k"):
                 updateGateWayMap();
                 System.out.println(convertList[SENTRY] + ": ");
@@ -585,7 +607,7 @@ public class process {
                     //get map.
                     totalmap.putAll(sentrySelection.getTotalMap());
                     //get gateWay map.
-                    updateHashMapAfterUnit(sentrySelection.getGateMap());
+                    updateHashMapTotalAfterUnit(sentrySelection.getGateMap(), gateWayMap);
                     //get id, deduce the minerals and gas.
                     updateTheList(SENTRY, sentrySelection);
                 }
@@ -594,6 +616,118 @@ public class process {
              * zealot, stalker, and sentry can be regarded as a type of unit.
              * because they are produced by the same building.
              */
+
+            case ("l"):
+                updateRoboticsMap();
+                System.out.println(convertList[OBSERVER] + ": ");
+                observe observeSelection = new observe(
+                       totalmap, idList.get(OBSERVER), initialList.get(OBSERVER),
+                       timeList[OBSERVER], secondsTotal,
+                       totalMinerals, totalGas,
+                       25, gasCostList[OBSERVER],
+                        roboticsMap);
+
+                printIndividual(observeSelection);
+                String actionOBS = reader.next();
+
+                //process the user's input.
+                if (actionOBS.toLowerCase().equals("a")) {
+                    System.out.println("How many Observer(s) do you want to construct?");
+                    String amount = reader.next();
+                    observeSelection.processActionInput(amount);
+
+                    //get map.
+                    totalmap.putAll(observeSelection.getTotalMap());
+                    //get robotics map.
+                    updateHashMapTotalAfterUnit(observeSelection.getRoboticsMap(), roboticsMap);
+                    //get id, deduce the minerals and gas.
+                    updateTheList(OBSERVER, observeSelection);
+                }
+                break;
+            case ("m"):
+                updateRoboticsMap();
+                System.out.println(convertList[IMMORTAL] + ": ");
+                observe immortalSelection = new observe(
+                        totalmap, idList.get(IMMORTAL), initialList.get(IMMORTAL),
+                        timeList[IMMORTAL], secondsTotal,
+                        totalMinerals, totalGas,
+                        250, gasCostList[IMMORTAL],
+                        roboticsMap);
+
+                printIndividual(immortalSelection);
+                String actionIMM = reader.next();
+
+                //process the user's input.
+                if (actionIMM.toLowerCase().equals("a")) {
+                    System.out.println("How many Immortal(s) do you want to construct?");
+                    String amount = reader.next();
+                    immortalSelection.processActionInput(amount);
+
+                    //get map.
+                    totalmap.putAll(immortalSelection.getTotalMap());
+                    //get robotics map.
+                    updateHashMapTotalAfterUnit(immortalSelection.getRoboticsMap(), roboticsMap);
+                    //get id, deduce the minerals and gas.
+                    updateTheList(IMMORTAL, immortalSelection);
+                }
+                break;
+            /**
+             * Immortal and Observer share similar situation, because they are built from the same building.
+             */
+            case ("n"):
+                updateStarGateMap();
+                System.out.println(convertList[PHOENIX] + ": ");
+                phoenix phoenixSelection = new phoenix(
+                        totalmap, idList.get(PHOENIX), initialList.get(PHOENIX),
+                        timeList[PHOENIX], secondsTotal,
+                        totalMinerals, totalGas,
+                        150, gasCostList[PHOENIX],
+                        starGateMap
+                );
+
+                printIndividual(phoenixSelection);
+                String actionPho = reader.next();
+
+                if (actionPho.toLowerCase().equals("a")) {
+                    System.out.println("How many PHOENIX do you want to construct?");
+                    String amount = reader.next();
+                    phoenixSelection.processActionIput(amount);
+
+                    //get map.
+                    totalmap.putAll(phoenixSelection.getTotalMap());
+                    //get stargate map.
+                    updateHashMapTotalAfterUnit(phoenixSelection.getStarGateMap(), starGateMap);
+                    //get id, deduce the minerals and gas.
+                    updateTheList(PHOENIX, phoenixSelection);
+                }
+                break;
+            case ("o"):
+                updateStarGateMap();
+                System.out.println(convertList[VOID_RAY] + ": ");
+                phoenix raySelection = new phoenix(
+                        totalmap, idList.get(VOID_RAY), initialList.get(VOID_RAY),
+                        timeList[VOID_RAY], secondsTotal,
+                        totalMinerals, totalGas,
+                        250, gasCostList[VOID_RAY],
+                        starGateMap
+                );
+
+                printIndividual(raySelection);
+                String actionRAY = reader.next();
+
+                if (actionRAY.toLowerCase().equals("a")) {
+                    System.out.println("How many VOID RAY do you want to construct?");
+                    String amount = reader.next();
+                    raySelection.processActionIput(amount);
+
+                    //get map.
+                    totalmap.putAll(raySelection.getTotalMap());
+                    //get stargate map.
+                    updateHashMapTotalAfterUnit(raySelection.getStarGateMap(), starGateMap);
+                    //get id, deduce the minerals and gas.
+                    updateTheList(VOID_RAY, raySelection);
+                }
+                break;
             case("quit"):
                 System.out.println("Game Over!!!");
                 break;
@@ -601,32 +735,35 @@ public class process {
                 System.out.println("Invalid Selection!");
                 break;
         }
-        //method to update the map in the following codes.
-
     }
 
+    //general method begins with here.
     /**
-     * This method is to renew the gateway hash map in order to get the situation of it.(print)
-     * @param newHashMap the gate way hash map after processing.
+     * This method is to renew the facility hash map in order to get the situation of it.(print)
+     * @param newHashMap the facility hash map after processing.
+     * @param oldHashMap the facility hash map need to be updated.
      */
-    public void updateHashMapAfterUnit(HashMap<Integer, Boolean> newHashMap) {
-        gateWayMap.clear();
-        gateWayMap.putAll(newHashMap);
-        System.out.println(gateWayMap);
+    public void updateHashMapTotalAfterUnit(HashMap<Integer, Boolean> newHashMap,
+                                            HashMap<Integer, Boolean> oldHashMap) {
+       oldHashMap.clear();
+       oldHashMap.putAll(newHashMap);
+       System.out.println(oldHashMap);
     }
 
     /**
-     * This method is to set the gate way not work when at the beginning of the building unit.
+     * This method is to set the facility not work at the beginning of being built.
      * @param times the number of gate way need to be set.
-     * @param id the unit id.
+     * @param id the unit id.(print)
      */
-    public void setGateWayUnavailable(int times, int id) {
+    public void setTotalFacilityUnavailable(int times, int id, HashMap<Integer, Boolean> facilityMap) {
         for (int i = 0; i < times; i++) {
             id++;
-            gateWayMap.put(id, false);
+            facilityMap.put(id, false);
         }
-//        System.out.println(gateWayMap.toString());//print out the gateWay list.
+        System.out.println(facilityMap);
     }
+
+
 
     /**
      * This method is to print the individual situation and its selections can be chosen.
@@ -649,6 +786,9 @@ public class process {
         totalGas = individualType.getTotalGas();
     }
 
+
+    //Personal method begins with here.
+
     /**
      * This method is to update the situation of the minerals patches.
      * @param newMineralPatchList the situation of patch after the assignment.
@@ -670,7 +810,8 @@ public class process {
     }
 
     /**
-     * This method is to set the situation of the gate way. True presents available.
+     * This method is to set the situation of the gate way.
+     * True presents available.
      */
     public void updateGateWayMap() {
         if(!gateWayMap.isEmpty()) {// make sure there is value inside the hash map
@@ -697,8 +838,65 @@ public class process {
                     } else if (id < initialList.get(SENTRY) + 1000
                             && (secondsTotal - totalmap.get(id) >= timeList[SENTRY])) {
                         gateWayMap.put(id, true);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * This method is to set the situation of the robotics facility.
+     * True presents available.
+     */
+    public void updateRoboticsMap() {
+        if(!roboticsMap.isEmpty()) {
+            Set set = roboticsMap.entrySet();
+            Iterator iterator = set.iterator();
+
+            while (iterator.hasNext()) {
+                Map.Entry pair = (Map.Entry) iterator.next();
+                int id = (int) pair.getKey();
+                boolean available = (boolean) pair.getValue();
+
+                if (!available) {
+                    if ((id < initialList.get(ROBOTIC) + 1000)          //last used was robotics.
+                            && (secondsTotal - totalmap.get(id) >= timeList[ROBOTIC])) {
+                        roboticsMap.put(id, true);
+                    } else if ((id < initialList.get(OBSERVER) + 1000)  //last used was observe.
+                            && (secondsTotal - totalmap.get(id) >= timeList[OBSERVER])) {
+                        roboticsMap.put(id, true);
+                    } else if ((id < initialList.get(IMMORTAL) + 1000)  //last used was Immortal.
+                            && (secondsTotal - totalmap.get(id) >= timeList[IMMORTAL])) {
+                        roboticsMap.put(id, true);
+                    }
+                }
+            }
+            System.out.println(roboticsMap);
+        }
+    }
+
+    public void updateStarGateMap() {
+        if(!starGateMap.isEmpty()) {
+            Set set = starGateMap.entrySet();
+            Iterator iterator = set.iterator();
+
+            while (iterator.hasNext()) {
+                Map.Entry pair = (Map.Entry) iterator.next();
+                int id = (int) pair.getKey();
+                boolean available = (boolean) pair.getValue();
+
+                if (!available) {
+                    if ((id < initialList.get(STARGATE) + 1000)
+                            && (secondsTotal - totalmap.get(id) >= timeList[STARGATE])) {
+                        starGateMap.put(id, true);
+                    } else if ((id < initialList.get(PHOENIX) + 1000)
+                            && (secondsTotal - totalmap.get(id) >= timeList[PHOENIX])) {
+                        starGateMap.put(id, true);
+                    } else if ((id < initialList.get(VOID_RAY) + 1000)
+                            && (secondsTotal - totalmap.get(id) >= timeList[VOID_RAY])) {
+                        starGateMap.put(id, true);
                     } else {
-                        System.out.println("NO Found!!!!!!");
+                        System.out.println("revise");
                     }
                 }
             }

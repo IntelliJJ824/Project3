@@ -1,10 +1,7 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 abstract class typeOfConstruction {
-
+    protected List<Integer> changeList = new ArrayList<>();
     protected HashMap<Integer, Integer> totalMap = new HashMap<>();
     protected int newId, initialId, constructTime, currTime, totalMinerals, totalGas, available, constructing,
             numberOfAction, spendingCost, spendingGas;
@@ -124,6 +121,53 @@ abstract class typeOfConstruction {
         totalMinerals = totalMinerals - spendingCost * numberOfAction;
         totalGas = totalGas - spendingGas * numberOfAction;
     }
+
+    /**
+     * This method is to check whether there is enough requirement facility to build the unit.
+     * @return true present enough.
+     */
+    public boolean checkFacilityAvailable(HashMap<Integer, Boolean> facilityMap) {
+        int theNumberOfTrue = 0;
+        Set set = facilityMap.entrySet();
+        Iterator iterator = set.iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry pair = (Map.Entry) iterator.next();
+            boolean available = (boolean) pair.getValue();
+            if (available) {
+                theNumberOfTrue++;
+                changeList.add((int) pair.getKey()); //store the id to the available list.
+            }
+        }
+
+        //Make a Judgement whether there is available gate Way.
+        if (theNumberOfTrue < numberOfAction) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    /**
+     * This method is to build the unit.
+     * At the same time, set the gate way situation.
+     * complex building is the building that can build units, and there is situation for it.
+     */
+    public void setComplexBuilding(HashMap<Integer, Boolean> facilityMap) {
+        for (int i = 0; i < numberOfAction; i++) {
+            newId ++; //this is to update the id.
+            totalMap.put(newId, currTime);
+
+            //remove the value and insert the new one.
+            System.out.println(changeList.get(i));
+            int position = changeList.get(i);
+            facilityMap.remove(position);
+            facilityMap.put(newId, false);
+        }
+    }
+
+
 
     //The following code is for getter.
 

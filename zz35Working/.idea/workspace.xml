@@ -11,18 +11,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DockManager">
-    <window id="1">
+    <window id="2">
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="stalker.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/stalker.java">
+            <file leaf-file-name="zealot.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/zealot.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="252">
-                    <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+                  <state relative-caret-position="792">
+                    <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
                     <folding>
-                      <element signature="e#727#728#0" expanded="true" />
-                      <element signature="e#806#807#0" expanded="true" />
+                      <element signature="method#judgementDependentBuilding#0;class#zealot#0" expanded="false" />
+                      <element signature="e#2155#2156#0" expanded="true" />
+                      <element signature="e#2185#2186#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -32,21 +33,18 @@
         </state>
       </content>
     </window>
-    <window id="2">
+    <window id="3">
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="zealot.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/zealot.java">
+            <file leaf-file-name="observe.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/observe.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="183">
-                    <caret line="29" column="86" lean-forward="false" selection-start-line="29" selection-start-column="86" selection-end-line="29" selection-end-column="86" />
+                  <state relative-caret-position="54">
+                    <caret line="3" column="48" lean-forward="true" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
                     <folding>
-                      <element signature="method#setBuilding#0;class#zealot#0" expanded="false" />
-                      <element signature="method#judgementDependentBuilding#0;class#zealot#0" expanded="false" />
-                      <element signature="method#checkGateWayAvailable#0;class#zealot#0" expanded="false" />
-                      <element signature="e#3485#3486#0" expanded="true" />
-                      <element signature="e#3515#3516#0" expanded="true" />
+                      <element signature="e#2092#2093#0" expanded="true" />
+                      <element signature="e#2126#2127#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -59,32 +57,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mainTesting.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="38" column="89" lean-forward="false" selection-start-line="38" selection-start-column="89" selection-end-line="38" selection-end-column="89" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="assimilator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/assimilator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="roboticsFac.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="roboticsFac.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/roboticsFac.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
+            <state relative-caret-position="468">
               <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
@@ -101,49 +77,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="probe.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/probe.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-773">
-              <caret line="168" column="71" lean-forward="false" selection-start-line="168" selection-start-column="71" selection-end-line="168" selection-end-column="71" />
-              <folding>
-                <element signature="e#7432#7433#0" expanded="true" />
-                <element signature="e#7524#7525#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cybernetics.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cybernetics.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="typeOfConstruction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-89">
-              <caret line="108" column="42" lean-forward="false" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
+            <state relative-caret-position="613">
+              <caret line="154" column="92" lean-forward="false" selection-start-line="154" selection-start-column="92" selection-end-line="154" selection-end-column="92" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#printIndivadualSituation#0;class#typeOfConstruction#0" expanded="false" />
-                <element signature="e#3901#3902#0" expanded="true" />
-                <element signature="e#3993#3994#0" expanded="true" />
+                <element signature="e#3883#3884#0" expanded="true" />
+                <element signature="e#3975#3976#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="process.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="process.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/process.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="674" column="35" lean-forward="false" selection-start-line="674" selection-start-column="35" selection-end-line="674" selection-end-column="35" />
+            <state relative-caret-position="1351">
+              <caret line="877" column="36" lean-forward="false" selection-start-line="877" selection-start-column="36" selection-end-line="877" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#process#0;class#process#0" expanded="false" />
@@ -156,15 +108,30 @@
                 <element signature="method#MineralCalculator#0;class#process#0" expanded="false" />
                 <element signature="method#gasCalculator#0;class#process#0" expanded="false" />
                 <element signature="method#findNothingTaskProbes#0;class#process#0" expanded="false" />
-                <element signature="method#updateHashMapAfterUnit#0;class#process#0" expanded="false" />
-                <element signature="method#setGateWayUnavailable#0;class#process#0" expanded="false" />
+                <element signature="method#updateHashMapTotalAfterUnit#0;class#process#0" expanded="false" />
+                <element signature="method#setTotalFacilityUnavailable#0;class#process#0" expanded="false" />
                 <element signature="method#printIndividual#0;class#process#0" expanded="false" />
                 <element signature="method#updateTheList#0;class#process#0" expanded="false" />
                 <element signature="method#renewPatchList#0;class#process#0" expanded="false" />
                 <element signature="method#renewGasList#0;class#process#0" expanded="false" />
                 <element signature="method#updateGateWayMap#0;class#process#0" expanded="false" />
+                <element signature="method#updateRoboticsMap#0;class#process#0" expanded="false" />
+                <element signature="method#updateStarGateMap#0;class#process#0" expanded="false" />
                 <element signature="method#end#0;class#process#0" expanded="false" />
                 <element signature="method#printTotalTime#0;class#process#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="phoenix.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/phoenix.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="735">
+              <caret line="41" column="3" lean-forward="false" selection-start-line="41" selection-start-column="3" selection-end-line="43" selection-end-column="5" />
+              <folding>
+                <element signature="e#1766#1767#0" expanded="true" />
+                <element signature="e#1800#1801#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -193,9 +160,11 @@
         <option value="$PROJECT_DIR$/src/cybernetics.java" />
         <option value="$PROJECT_DIR$/src/roboticsFac.java" />
         <option value="$PROJECT_DIR$/src/mainTesting.java" />
-        <option value="$PROJECT_DIR$/src/typeOfConstruction.java" />
         <option value="$PROJECT_DIR$/src/stalker.java" />
         <option value="$PROJECT_DIR$/src/zealot.java" />
+        <option value="$PROJECT_DIR$/src/typeOfConstruction.java" />
+        <option value="$PROJECT_DIR$/src/observe.java" />
+        <option value="$PROJECT_DIR$/src/phoenix.java" />
         <option value="$PROJECT_DIR$/src/process.java" />
       </list>
     </option>
@@ -374,12 +343,12 @@
       <workItem from="1523560569092" duration="9470000" />
       <workItem from="1523618539677" duration="3113000" />
       <workItem from="1523622617404" duration="3139000" />
-      <workItem from="1523642950361" duration="13310000" />
+      <workItem from="1523642950361" duration="30891000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94593000" />
+    <option name="totallyTimeSpent" value="112174000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="764" y="27" width="1156" height="1020" extended-state="4" />
@@ -397,7 +366,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2463899" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2463899" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -424,20 +393,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/assimilator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/probe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="839">
-          <caret line="168" column="71" lean-forward="false" selection-start-line="168" selection-start-column="71" selection-end-line="168" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cybernetics.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -743,38 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stalker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-          <folding>
-            <element signature="e#727#728#0" expanded="true" />
-            <element signature="e#806#807#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-89">
-          <caret line="108" column="42" lean-forward="false" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#printIndivadualSituation#0;class#typeOfConstruction#0" expanded="false" />
-            <element signature="e#3901#3902#0" expanded="true" />
-            <element signature="e#3993#3994#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cybernetics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -793,14 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gateWay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="105" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="105" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/probe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-773">
@@ -812,10 +727,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/cybernetics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stalker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding>
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#806#807#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/roboticsFac.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gateWay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="105" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="154" column="92" lean-forward="false" selection-start-line="154" selection-start-column="92" selection-end-line="154" selection-end-column="92" />
+          <folding>
+            <element signature="method#printIndivadualSituation#0;class#typeOfConstruction#0" expanded="false" />
+            <element signature="e#3883#3884#0" expanded="true" />
+            <element signature="e#3975#3976#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zealot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="method#judgementDependentBuilding#0;class#zealot#0" expanded="false" />
+            <element signature="e#2155#2156#0" expanded="true" />
+            <element signature="e#2185#2186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/phoenix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="41" column="3" lean-forward="false" selection-start-line="41" selection-start-column="3" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <element signature="e#1766#1767#0" expanded="true" />
+            <element signature="e#1800#1801#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/observe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="48" lean-forward="true" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+          <folding>
+            <element signature="e#2092#2093#0" expanded="true" />
+            <element signature="e#2126#2127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/process.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="674" column="35" lean-forward="false" selection-start-line="674" selection-start-column="35" selection-end-line="674" selection-end-column="35" />
+        <state relative-caret-position="1351">
+          <caret line="877" column="36" lean-forward="false" selection-start-line="877" selection-start-column="36" selection-end-line="877" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#process#0;class#process#0" expanded="false" />
@@ -828,37 +824,17 @@
             <element signature="method#MineralCalculator#0;class#process#0" expanded="false" />
             <element signature="method#gasCalculator#0;class#process#0" expanded="false" />
             <element signature="method#findNothingTaskProbes#0;class#process#0" expanded="false" />
-            <element signature="method#updateHashMapAfterUnit#0;class#process#0" expanded="false" />
-            <element signature="method#setGateWayUnavailable#0;class#process#0" expanded="false" />
+            <element signature="method#updateHashMapTotalAfterUnit#0;class#process#0" expanded="false" />
+            <element signature="method#setTotalFacilityUnavailable#0;class#process#0" expanded="false" />
             <element signature="method#printIndividual#0;class#process#0" expanded="false" />
             <element signature="method#updateTheList#0;class#process#0" expanded="false" />
             <element signature="method#renewPatchList#0;class#process#0" expanded="false" />
             <element signature="method#renewGasList#0;class#process#0" expanded="false" />
             <element signature="method#updateGateWayMap#0;class#process#0" expanded="false" />
+            <element signature="method#updateRoboticsMap#0;class#process#0" expanded="false" />
+            <element signature="method#updateStarGateMap#0;class#process#0" expanded="false" />
             <element signature="method#end#0;class#process#0" expanded="false" />
             <element signature="method#printTotalTime#0;class#process#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/roboticsFac.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zealot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="29" column="86" lean-forward="false" selection-start-line="29" selection-start-column="86" selection-end-line="29" selection-end-column="86" />
-          <folding>
-            <element signature="method#setBuilding#0;class#zealot#0" expanded="false" />
-            <element signature="method#judgementDependentBuilding#0;class#zealot#0" expanded="false" />
-            <element signature="method#checkGateWayAvailable#0;class#zealot#0" expanded="false" />
-            <element signature="e#3485#3486#0" expanded="true" />
-            <element signature="e#3515#3516#0" expanded="true" />
           </folding>
         </state>
       </provider>
