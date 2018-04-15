@@ -15,6 +15,10 @@ public class phoenix  extends typeOfConstruction {
         this.starGateMap.putAll(starGateMap);
     }
 
+    /**
+     * This method is to process the user's input.
+     * @param amount the number of units need to be constructed.
+     */
     public void processActionIput(String amount) {
         numberOfAction = Integer.parseInt(amount);
         if (judgementDependentBuilding()) {
@@ -35,10 +39,18 @@ public class phoenix  extends typeOfConstruction {
         }
     }
 
+    /**
+     * make a judgement whether there exist star gate.
+     * @return yes presents exist.
+     */
     public boolean judgementDependentBuilding() {
         return (totalMap.containsKey(8001) && (currTime - totalMap.get(8001) >= 60));
     }
 
+    /**
+     * Process the situation of the star gate
+     * @return the sta gate situation.
+     */
     public HashMap<Integer, Boolean> getStarGateMap() {
         return starGateMap;
     }
