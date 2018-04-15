@@ -27,15 +27,15 @@ public class phoenix  extends typeOfConstruction {
                     deduceCurrency();
                     setComplexBuilding(starGateMap);
                     System.out.println("");
-                    System.out.println("Constructing the number of new unit(s)" + numberOfAction + "...");
+                    System.out.println("+++ Constructing the number of new unit(s)" + numberOfAction + "...");
                 } else {
-                    System.out.println("Invalid: The minerals or gas is not enough.");
+                    System.out.println("--Invalid: The minerals or gas is not enough.");
                 }
             } else {
-                System.out.println("Invalid: The Stargate has been used or not enough to build other unit.");
+                System.out.println("--Invalid: The Stargate has been used or not enough to build other unit.");
             }
         } else {
-            System.out.println("Invalid: firstly construct the DEPENDENT building.");
+            System.out.println("--Invalid: firstly construct the DEPENDENT building.");
         }
     }
 

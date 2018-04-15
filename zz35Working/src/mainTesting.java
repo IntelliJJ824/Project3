@@ -10,6 +10,7 @@ public class mainTesting {
             String userInput;
             process runner = new process();
             do {
+                 System.out.println("--------------------Summary--------------------------");
                  runner.printTotalTime();
                  runner.printSituation();
                  System.out.println();
@@ -34,9 +35,9 @@ public class mainTesting {
     }
 
     static public void printSelection() {
-        System.out.println("Buildings and Probes:\na.NEXUS b.PROBE c.PYLON d.ASSIMILATOR e.GATEWAY f.CYBERNETICS CORE"
+        System.out.println("--Buildings and Probes:\na.NEXUS b.PROBE c.PYLON d.ASSIMILATOR e.GATEWAY f.CYBERNETICS CORE"
                 + " g.ROBOTICS FACILITY" + " h.STARGATE");
-        System.out.println("Units:\ni.ZEALOT" + " j.STALKER" + " k.SENTRY" + " l.OBSERVER" + " m.IMMORTAL"
+        System.out.println("--Units:\ni.ZEALOT" + " j.STALKER" + " k.SENTRY" + " l.OBSERVER" + " m.IMMORTAL"
                 + " n.PHOENIX" + " o.VOID RAY");
 
     }

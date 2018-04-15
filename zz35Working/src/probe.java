@@ -8,6 +8,7 @@ public class probe extends typeOfConstruction{
     private final int PROBE = 1;
     private List<Integer> mineralPatchList = new ArrayList<>();
     private List<Integer> gasList = new ArrayList<>();
+    private HashMap<Integer, Boolean> nexusMap = new HashMap<>();
 
     /**
      * @param totalmap the hash map for the total program.
@@ -26,7 +27,8 @@ public class probe extends typeOfConstruction{
                   int constructTime, int currTime,
                   int totalMinerals, int totalGas,
                   List<Integer> mineralPatchList, int numberOfPatchWorking,
-                  List<Integer> gasList, int numberOfGasWorking) {
+                  List<Integer> gasList, int numberOfGasWorking,
+                  HashMap<Integer, Boolean> nexusMap) {
 
         super(totalmap, newId, initialId, constructTime, currTime, totalMinerals, totalGas);
 
@@ -37,6 +39,9 @@ public class probe extends typeOfConstruction{
         //given the information for current gas assimilator using situation.
         this.gasList.addAll(gasList);
         this.numberOfGasWorking = numberOfGasWorking;
+
+        //update the nexus map.
+        this.nexusMap.putAll(nexusMap);
     }
 
     /**
@@ -44,7 +49,7 @@ public class probe extends typeOfConstruction{
      */
     public void printActionSelection() {
         System.out.println(
-                "Select one of the options you want probe to do: \n"
+                "> Select one of the options you want probe to do: \n"
                 + "a. Build new probe, "
                 + "b.Assign to gather minerals c. Assign to gather gas. d. Nothing/Esc");
     }
@@ -59,30 +64,38 @@ public class probe extends typeOfConstruction{
         switch (actionInput.toLowerCase()) {
             case("a"):
                 if (constructionJudgement()) {
-                    totalMinerals = totalMinerals - 50 * numberOfAction;
-                    System.out.println("Constructing the number of new probe " + numberOfAction + "...");
-                    setProbes();
+                    if (checkFacilityAvailable(nexusMap)) {     //one nexus can build one probe each time.
+                        totalMinerals = totalMinerals - 50 * numberOfAction;
+                        setComplexBuilding(nexusMap);
+                        System.out.println("+++ Constructing the number of new probe " + numberOfAction + "...");
+                    } else {
+                        System.out.println("--Invalid: Nexus has been already used to build other probe.");
+                    }
                 } else {
-                    System.out.println("Invalid construction, Minerals are not enough!!!");
+                    System.out.println("--Invalid: Minerals are not enough!!!");
                 }
                 break;
 
             case("b")://assign to gather minerals
                 if (assignPatchJudgement()) { //not excess patches limitation.
-                    if (constructingUnitJudgement()) {  //enough available probes go to this work.
-                        System.out.println("Assign to gather minerals...");
+
+                    // 1. if the number of free probes go to work 2. else if switching part of the probes 3. Invalid
+                    if (constructingUnitJudgement()) {
                         setGatherMinerals();
+                        System.out.println("-> Assign to gather minerals...");
 
                     } else if(switcherJudgement(numberOfGasWorking)) { //set part of the worker to patch from gas.
                         setGatherMinerals();
                         setPartProbesToPatch();
+                        System.out.println("->> switching part of or the whole of probe(s) working "
+                                + "from gas to minerals patch...");
 
                     } else { //not enough available.
-                        System.out.println("Not enough available probes for you to this assignment. "
+                        System.out.println("--Invalid: Not enough available probes for you to this assignment. "
                                 + "(building or waiting probes to be constructed firstly.)");
                     }
                 } else {    //excess
-                    System.out.println("Invalid: Adding too much probes to gather minerals "
+                    System.out.println("--Invalid: Adding too much probes to gather minerals "
                             + "(excess limitation for all the patches).");
                 }
                 break;
@@ -93,25 +106,25 @@ public class probe extends typeOfConstruction{
                 if (checkFacility()) { //this is to check whether satisfy the requirement. yes!
                     if (assignGasJudgement()) {  //probes did not excess the limitation.
 
-                        if (constructingUnitJudgement()) { //enough free probes go to this work.
+                        // 1. if the number of free probes go to work 2. else if switching part of the probes 3. Invalid
+                        if (constructingUnitJudgement()) {
                             setGatherGas(numberOfAction);                //set all the free probes to gas as user require.
-                            System.out.println("Assign to gather gas...");
+                            System.out.println("-> Assign to gather gas...");
 
                         } else if (switcherJudgement(numberOfPatchWorking)) { //assign from patch to minerals
-
                             setGatherGas(numberOfAction);
                             setPartProbesToGas();
-                            System.out.println("switching part or the whole of probe(s) working " +
-                                    "from minerals patch to gas...");
+                            System.out.println("->> switching part or the whole of probe(s) working "
+                                    + "from minerals patch to gas...");
                         } else {
-                            System.out.println("Invalid: not enough available probes.");
+                            System.out.println("--Invalid: not enough available probes.");
                         }
 
                     } else {
-                        System.out.println("Invalid: the amount of working for assimilator excesses the limitation.");
+                        System.out.println("--Invalid: the amount of working for assimilator excesses the limitation.");
                     }
                 } else {
-                    System.out.println("Invalid: firstly constructed or waited the ASSIMILATOR.");
+                    System.out.println("--Invalid: firstly constructed or waited the ASSIMILATOR.");
                 }
                 break;
             default:
@@ -231,15 +244,15 @@ public class probe extends typeOfConstruction{
             }
         }
     }
-    /**
-     * This method is to add the new building probes to the hash map.
-     */
-    public void setProbes() {
-        for (int i = 0; i < numberOfAction; i++) {
-            newId ++;
-            totalMap.put(newId, currTime);
-        }
-    }
+//    /**
+//     * This method is to add the new building probes to the hash map.
+//     */
+//    public void setProbes() {
+//        for (int i = 0; i < numberOfAction; i++) {
+//            newId ++;
+//            totalMap.put(newId, currTime);
+//        }
+//    }
 
     //The following is getter method.
     /**
@@ -256,5 +269,9 @@ public class probe extends typeOfConstruction{
      */
     public List<Integer> getGasList() {
         return gasList;
+    }
+
+    public HashMap<Integer, Boolean> getNexusMap() {
+        return nexusMap;
     }
 }

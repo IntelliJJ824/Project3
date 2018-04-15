@@ -25,15 +25,15 @@ public class zealot extends typeOfConstruction {
                 if (constructionCurrencyJudgement()) {  //if currency is enough.
                     deduceCurrency();
                     setComplexBuilding(gateMap);
-                    System.out.println("Constructing the number of new unit(s) " + numberOfAction + "...");
+                    System.out.println("+++ Constructing the number of new unit(s) " + numberOfAction + "...");
                 } else {
-                    System.out.println("Invalid: The minerals or gas is not enough.");
+                    System.out.println("--Invalid: The minerals or gas is not enough.");
                 }
             } else {
-                System.out.println("Invalid: The gate way has been used or not enough to build other unit.");
+                System.out.println("--Invalid: The gate way has been used or not enough to build other unit.");
             }
         } else {
-            System.out.println("Invalid: firstly construct the DEPENDENT building.");
+            System.out.println("--Invalid: firstly construct the DEPENDENT building.");
         }
     }
 

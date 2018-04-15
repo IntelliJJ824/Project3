@@ -23,13 +23,13 @@ public class roboticsFac extends typeOfConstruction {
                 totalMinerals = totalMinerals - spendingCost * numberOfAction;
                 totalGas = totalGas - spendingGas * numberOfAction;
                 setBuilding();
-                System.out.println("Constructing the number of new building(s) " + numberOfAction + "...");
+                System.out.println("+++ Constructing the number of new building(s) " + numberOfAction + "...");
 
             } else {
-                System.out.println("Invalid: not enough minerals or gas!!!");
+                System.out.println("--Invalid: not enough minerals or gas!!!");
             }
         } else {
-            System.out.println("Invalid: firstly construct the DEPENDENT building.");
+            System.out.println("--Invalid: firstly construct the DEPENDENT building.");
         }
     }
 

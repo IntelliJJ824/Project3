@@ -20,9 +20,9 @@ public class assimilator extends typeOfConstruction {
         if (assimilatorConstructionJudgement()) {
             totalMinerals = totalMinerals - spendingCost * numberOfAction;
             setBuilding();
-            System.out.println("Constructing the number of new building " + numberOfAction + "...");
+            System.out.println("+++ Constructing the number of new building " + numberOfAction + "...");
         } else {
-            System.out.println("Invalid construction, Minerals are not enough!!!");
+            System.out.println("--Invalid construction, Minerals are not enough!!!");
         }
     }
 

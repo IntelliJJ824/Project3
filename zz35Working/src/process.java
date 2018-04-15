@@ -64,6 +64,9 @@ public class process {
     //total stargate facility with the situation.
     private HashMap<Integer, Boolean> starGateMap = new HashMap<>();
 
+    //total nexus facility with the situation.
+    private HashMap<Integer, Boolean> nexusMap = new HashMap<>();
+
 
     //This is the list to convert from number to specific name.
     private String[] convertList = {
@@ -133,6 +136,7 @@ public class process {
         //This is to set the nexus.
         int nexusNo = idList.get(NEXUS) + 1;
         idList.set(NEXUS, nexusNo);
+        nexusMap.put(nexusNo, true); //set the nexus list at the beginning.
         totalmap.put(idList.get(NEXUS), secondsTotal);
 
         //This is to set the minerals and gas.
@@ -187,7 +191,7 @@ public class process {
      * This is to print out the minerals and gas.
      */
     public void printCurrency() {
-        System.out.println("Minerals are: " + totalMinerals + " Vespene gas is: " + totalGas);
+        System.out.println("**** Minerals are: " + totalMinerals + " Vespene gas is: " + totalGas +" ****");
     }
 
     /**
@@ -270,22 +274,53 @@ public class process {
         printCurrency();
         switch (input.toLowerCase()) {
             case("a"):
-                System.out.println("This is for " + convertList[NEXUS]);
+                updateNexusMap();
+                System.out.println(nexusMap);
+                System.out.println(convertList[NEXUS] + ": ");
+                assimilator nexusSelection = new assimilator(
+                  totalmap, idList.get(NEXUS), initialList.get(NEXUS),
+                  timeList[NEXUS], secondsTotal,
+                        totalMinerals, totalGas,
+                        400);
+                nexusSelection.printIndivadualSituation();
+                nexusSelection.printGeneralSelection();
+                String actionNex = reader.next();
+
+                if (actionNex.toLowerCase().equals("a")) {
+                    System.out.println("How many Nexus do you want to add?");
+                    String amount = reader.next();
+                    nexusSelection.processActionInput(amount);
+                    int times = nexusSelection.getNewId() - idList.get(NEXUS);
+
+                    if (times > 0) { //get update if the new Nexus is added.
+                        //update nexus map.
+                        setTotalFacilityUnavailable(times, idList.get(NEXUS), nexusMap);
+                        //update the hash map.
+                        totalmap.putAll(nexusSelection.getTotalMap());
+                        //get new id.
+                        idList.set(NEXUS, nexusSelection.getNewId());
+                        //get current minerals.
+                        totalMinerals = nexusSelection.getTotalMinerals();
+                    }
+
+                }
                 break;
 
             case("b"):
+                updateNexusMap();
                 probe probeSelection = new probe(totalmap, idList.get(PROBE), initialList.get(PROBE),
                         timeList[PROBE], secondsTotal,
                         totalMinerals, totalGas,
                         mineralPatchList, totalNumberPatchWorking,
-                        gasList, totalNumberGasWorking);
+                        gasList, totalNumberGasWorking,
+                        nexusMap);
                 //print out the situation.
                 System.out.print(convertList[PROBE] + ": ");
                 probeSelection.printIndivadualSituation();
                 //print out the minerals patch and gas working situation.
-                System.out.println("There are " + totalNumberPatchWorking + " probes gathering minerals. "
-                        + "There are " + totalNumberGasWorking + " gathering gas."
-                        + "There are " + findNothingTaskProbes() + " nothing to do.");
+                System.out.println("--There are " + totalNumberPatchWorking + " probes gathering minerals, "
+                        + totalNumberGasWorking + " gathering gas. "
+                        + findNothingTaskProbes() + " nothing to do.");
 
                 //try to prompt user input the action for his selection.
                 probeSelection.printActionSelection();
@@ -299,22 +334,24 @@ public class process {
                     probeSelection.processActionInput(actionInput, amount);
                 }
 
-                //get new Id
-                idList.set(PROBE, probeSelection.getNewId());
+                int timesPro = probeSelection.getNewId() - idList.get(PROBE);
+                if (timesPro > 0) {
+                    updateHashMapTotalAfterUnit(probeSelection.getNexusMap(), nexusMap);
+                    //get new Id
+                    idList.set(PROBE, probeSelection.getNewId());
+                    //get new map
+                    totalmap.putAll(probeSelection.getTotalMap());
+                    //get new currentMinerals
+                    totalMinerals = probeSelection.getTotalMinerals();
+                }
 
-                //get new map
-                totalmap.putAll(probeSelection.getTotalMap());
+                    //get new minerals patch list
+                    renewPatchList(probeSelection.getMineralPatchList());
+                    MineralCalculator();
+                    //get new gas patch list
+                    renewGasList(probeSelection.getGasList());
+                    gasCalculator();
 
-                //get new currentMinerals
-                totalMinerals = probeSelection.getTotalMinerals();
-
-                //get new minerals patch list
-                renewPatchList(probeSelection.getMineralPatchList());
-                MineralCalculator();
-
-                //get new gas patch list
-                renewGasList(probeSelection.getGasList());
-                gasCalculator();
                 break;
 
             //The following codes are for pylon.
@@ -403,7 +440,6 @@ public class process {
                     int times = newestId - idList.get(GATEWAY);
                     if (times > 0) {
                         //set the situation for the gate way.
-//                        setGateWayUnavailable(times, idList.get(GATEWAY));
                         setTotalFacilityUnavailable(times, idList.get(GATEWAY), gateWayMap);
 
                         //set the newId for gate way.
@@ -539,7 +575,7 @@ public class process {
 
                 //process the user's input.
                 if (actionInputZE.toLowerCase().equals("a")) {
-                    System.out.println("How many Stargate do you want to construct?");
+                    System.out.println("How many Zealot(s) do you want to construct?");
                     String amount = reader.next();
                     zealotSelection.processActionInput(amount);
 
@@ -810,7 +846,32 @@ public class process {
     }
 
     /**
-     * This method is to set the situation of the gate way.
+     * This method is to set the situation of the nexus.
+     */
+    public void updateNexusMap() {
+        Set set = nexusMap.entrySet();
+        Iterator iterator = set.iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry pair = (Map.Entry) iterator.next();
+            int id = (int) pair.getKey();
+            boolean available = (boolean) pair.getValue();
+
+            if (!available) {
+                if ((id < initialList.get(NEXUS) + 1000)
+                        && (secondsTotal - totalmap.get(id) >= timeList[NEXUS])) {
+                    nexusMap.put(id, true);
+                } else if ((id < initialList.get(PROBE) + 1000)
+                        && (secondsTotal - totalmap.get(id) >= timeList[PROBE])) {
+                    nexusMap.put(id, true);
+                }
+            }
+
+        }
+    }
+
+    /**
+     * This method is to set the situation of the gate way, which is used for probes.
      * True presents available.
      */
     public void updateGateWayMap() {
@@ -875,6 +936,9 @@ public class process {
         }
     }
 
+    /**
+     * This method is to update the star gate map.
+     */
     public void updateStarGateMap() {
         if(!starGateMap.isEmpty()) {
             Set set = starGateMap.entrySet();

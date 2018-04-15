@@ -24,7 +24,7 @@ public class observe extends typeOfConstruction {
                 if (constructionCurrencyJudgement()) {      //currency is enough.
                     deduceCurrency();
                     setComplexBuilding(roboticsMap);
-                    System.out.println("Constructing the number of new unit(s)" + numberOfAction + "...");
+                    System.out.println("++Constructing the number of new unit(s)" + numberOfAction + "...");
                 } else {
                     System.out.println("Invalid: The minerals or gas is not enough.");
                 }
