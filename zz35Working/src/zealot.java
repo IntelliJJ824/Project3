@@ -2,16 +2,18 @@ import java.util.*;
 
 public class zealot extends typeOfConstruction {
     HashMap<Integer, Boolean> gateMap = new HashMap<>();
-
+    int type;
     public zealot(HashMap<Integer, Integer> totalmap, int newId, int initialId, int constructTime,
                   int currTime,
                   int totalMinerals, int totalGas,
                   int spendingCost, int spendingGas,
-                  HashMap<Integer, Boolean> gateWayMap) {
+                  HashMap<Integer, Boolean> gateWayMap,
+                  int type) {
         super(totalmap, newId, initialId, constructTime, currTime, totalMinerals, totalGas);
         this.spendingCost = spendingCost;
         this.spendingGas = spendingGas;
         gateMap.putAll(gateWayMap);
+        this.type = type;
     }
 
     /**
@@ -38,11 +40,22 @@ public class zealot extends typeOfConstruction {
     }
 
     /**
-     * test whether there exist gate Way.
+     * test whether there exist gate Way and other facility.
      * @return true presents exist.
      */
     public boolean judgementDependentBuilding() {
-        return (totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65));
+        if (type == 1) { //for zealot and sentry.
+            return (totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65));//find gate way
+        } else if (type == 2) { //for stalker.
+            return (totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65)
+                    && judgeCoreExist());
+        } else if (type == 3) { //for high templar.
+            return (totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65)
+                    && totalMap.containsKey(17001) && (currTime - totalMap.get(17001) >= 50));
+        } else { //for dark templar.
+            return (totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65)
+            && totalMap.containsKey(18001) && (currTime - totalMap.get(18001)) >= 100);
+        }
     }
 
     //getter method.

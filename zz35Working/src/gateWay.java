@@ -21,12 +21,12 @@ public class gateWay extends typeOfConstruction {
             if (gateWayConstructionJudgement()) { //enough minerals for it.
                 totalMinerals = totalMinerals - spendingCost * numberOfAction;//deduce the minerals
                 setBuilding();
-                System.out.println("--Constructing the number of new building(s) " + numberOfAction + "...");
+                System.out.println("+++Constructing the number of new building(s) " + numberOfAction + "...");
             } else {
-                System.out.println("Invalid: Minerals are not enough!!!");
+                System.out.println("--Invalid: Minerals are not enough!!!");
             }
         } else {
-            System.out.println("Invalid: firstly construct the DEPENDENT building.");
+            System.out.println("--Invalid: firstly construct the DEPENDENT building.");
         }
     }
 

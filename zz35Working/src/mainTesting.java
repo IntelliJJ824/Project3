@@ -36,9 +36,9 @@ public class mainTesting {
 
     static public void printSelection() {
         System.out.println("--Buildings and Probes:\na.NEXUS b.PROBE c.PYLON d.ASSIMILATOR e.GATEWAY f.CYBERNETICS CORE"
-                + " g.ROBOTICS FACILITY" + " h.STARGATE");
+                + " g.ROBOTICS FACILITY" + " h.STARGATE"
+                + "\np.TWILIGHT COUNCIL q.TEMPLAR ARCHIVES r.DARK SHRINE s.ROBOTICS BAY t.FLEET BEACON");
         System.out.println("--Units:\ni.ZEALOT" + " j.STALKER" + " k.SENTRY" + " l.OBSERVER" + " m.IMMORTAL"
-                + " n.PHOENIX" + " o.VOID RAY");
-
+                + " n.PHOENIX" + " o.VOID RAY" + "\nu.COLOSSI v.HIGH TEMPLAR w.DARK TEMPLAR x.CARRIER");
     }
 }

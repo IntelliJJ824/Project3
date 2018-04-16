@@ -5,9 +5,10 @@ public class stalker extends zealot {
                    int currTime,
                    int totalMinerals, int totalGas,
                    int spendingCost, int spendingGas,
-                   HashMap<Integer, Boolean> gateWayMap) {
+                   HashMap<Integer, Boolean> gateWayMap,
+                   int type) {
         super(totalmap, newId, initialId, constructTime, currTime, totalMinerals, totalGas,
-                spendingCost, spendingGas, gateWayMap);
+                spendingCost, spendingGas, gateWayMap, type);
     }
 
     /**

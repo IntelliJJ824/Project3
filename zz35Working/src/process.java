@@ -41,6 +41,19 @@ public class process {
     static final int PHOENIX = 13;
     static final int VOID_RAY = 14;
 
+    //extend specification buildings.
+    static final int COUNCIL = 15;
+    static final int TEMPLAR_ARCHIVES = 16;
+    static final int DARK_SHRINE = 17;
+    static final int ROBOTICS_BAY = 18;
+    static final int FLEET_BEACON = 19;
+    //extend specification units.
+    static final int COLOSSI = 20;
+    static final int HIGH_TEMPLAR = 21;
+    static final int DARK_TEMPLAR = 22;
+    static final int CARRIER = 23;
+
+
     //This is for Mineral patch.
     static final int mineralPatch1 = 0;
     static final int mineralPatch2 = 1;
@@ -71,20 +84,27 @@ public class process {
     //This is the list to convert from number to specific name.
     private String[] convertList = {
             "NEXUS", "PROBE", "PYLON", "ASSIMILATOR", "GATEWAY", "CYBERNETICS CORE", "ROBOTICS FACILITY", "STARGATE",
-            "ZEALOT", "STALKER", "SENTRY", "OBSERVER", "IMMORTAL", "PHOENIX", "VOID RAY"};
+            "ZEALOT", "STALKER", "SENTRY", "OBSERVER", "IMMORTAL", "PHOENIX", "VOID RAY",
+            "TWILIGHT COUNCIL", "TEMPLAR ARCHIVES", "DARK SHRINE", "ROBOTICS BAY", "FLEET BEACON",
+            "COLOSSI", "HIGH TEMPLAR", "DARK TEMPLAR", "CARRIER"};
 
     private int[] timeList = {
             100, 17, 25, 30, 65, 50, 65, 60, //This is for buildings and probe.
-            38, 42, 37, 40, 55, 35, 60 //This is for units
+            38, 42, 37, 40, 55, 35, 60, //This is for units
+            50, 50, 100, 65, 60, //buildings after extending the spec
+            75, 55, 55, 120 //units.
+
     };
 
     private int[] gasCostList = {
             0, 0, 0, 0, 0, 0, 100, 150, //This is for building and probe.
-            0, 50, 100, 75, 100, 100, 150
+            0, 50, 100, 75, 100, 100, 150,
+            100, 200, 250, 200, 200,//buildings after extending spec.
+            200, 150, 125, 250
     };
 
     //This is the list of mineral patch, 0 presents there is no probe working for it.
-    private List<Integer> mineralPatchList = Arrays.asList(0, 0, 0, 0, 0);
+    private List<Integer> mineralPatchList = Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0);
     //This is the list of gas, 0 presents there is no probe working for it.
     private List<Integer> gasList = Arrays.asList(0);
 
@@ -115,7 +135,7 @@ public class process {
      */
     public void setIdList() {
         int id = 1000;
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 24; i++) {
             idList.add(id);
             initialList.add(id);
             id += 1000;
@@ -179,7 +199,7 @@ public class process {
     public void assignMineralBeginning() {
         mineralPatchList.set(mineralPatch1, 1);
 
-        for (int i = 0; i < mineralPatchList.size(); i++) {
+        for (int i = 0; i < 5; i++) {       //set the probes to the current minerals patch.
             int numberWorking = mineralPatchList.get(i) + 1;
             mineralPatchList.set(i, numberWorking);
         }
@@ -269,6 +289,10 @@ public class process {
         return freeProbes;
     }
 
+    /**
+     * This method is the main method for this program.
+     * @param input The selection from user about what type of unit or building he want to control.
+     */
     public void setUserInput(String input) {
         Scanner reader = new Scanner(new InputStreamReader(System.in)); //This is to scan user's action input.
         printCurrency();
@@ -563,90 +587,19 @@ public class process {
             case("i"):
                 updateGateWayMap();
                 System.out.println(convertList[ZEALOT] + ": ");
-                zealot zealotSelection = new zealot(
-                     totalmap, idList.get(ZEALOT), initialList.get(ZEALOT),
-                     timeList[ZEALOT], secondsTotal,
-                     totalMinerals, totalGas,
-                     100, gasCostList[ZEALOT],
-                        gateWayMap);
-
-                printIndividual(zealotSelection);
-                String actionInputZE = reader.next();
-
-                //process the user's input.
-                if (actionInputZE.toLowerCase().equals("a")) {
-                    System.out.println("How many Zealot(s) do you want to construct?");
-                    String amount = reader.next();
-                    zealotSelection.processActionInput(amount);
-
-                    //get map.
-                    totalmap.putAll(zealotSelection.getTotalMap());
-
-                    //get gateWayMap.
-                    updateHashMapTotalAfterUnit(zealotSelection.getGateMap(), gateWayMap);
-
-                    //get id, deduce the minerals and gas.
-                    updateTheList(ZEALOT, zealotSelection);
-                }
+                zealotOfUnit(ZEALOT, 100, 1);
                 break;
 
             case ("j"):
                 updateGateWayMap();
                 System.out.println(convertList[STALKER] + ": ");
-                stalker stalkerSelection = new stalker(
-                        totalmap, idList.get(STALKER), initialList.get(STALKER),
-                        timeList[STALKER], secondsTotal,
-                        totalMinerals, totalGas,
-                        125, gasCostList[STALKER],
-                        gateWayMap);
-
-                printIndividual(stalkerSelection);
-                String actionInputSTAL = reader.next();
-
-                //process the user's input.
-                if (actionInputSTAL.toLowerCase().equals("a")) {
-                    System.out.println("How many Stalker(s) do you want to construct?");
-                    String amount = reader.next();
-                    stalkerSelection.processActionInput(amount);
-
-                    //get map.
-                    totalmap.putAll(stalkerSelection.getTotalMap());
-
-                    //get gateWay Map.
-                    updateHashMapTotalAfterUnit(stalkerSelection.getGateMap(), gateWayMap);
-
-                    //get id, deduce the minerals and gas.
-                    updateTheList(STALKER, stalkerSelection);
-                }
+                zealotOfUnit(STALKER, 120, 2);
                 break;
 
             case ("k"):
                 updateGateWayMap();
                 System.out.println(convertList[SENTRY] + ": ");
-                zealot sentrySelection = new zealot(
-                  totalmap, idList.get(SENTRY), initialList.get(SENTRY),
-                  timeList[SENTRY], secondsTotal,
-                  totalMinerals, totalGas,
-                  50, gasCostList[SENTRY],
-                  gateWayMap
-                );
-
-                printIndividual(sentrySelection);
-                String actionSEN = reader.next();
-
-                //process the user's input.
-                if (actionSEN.toLowerCase().equals("a")) {
-                    System.out.println("How many SENTRY do you want to construct?");
-                    String amount = reader.next();
-                    sentrySelection.processActionInput(amount);
-
-                    //get map.
-                    totalmap.putAll(sentrySelection.getTotalMap());
-                    //get gateWay map.
-                    updateHashMapTotalAfterUnit(sentrySelection.getGateMap(), gateWayMap);
-                    //get id, deduce the minerals and gas.
-                    updateTheList(SENTRY, sentrySelection);
-                }
+                zealotOfUnit(SENTRY, 50, 1);
                 break;
             /**
              * zealot, stalker, and sentry can be regarded as a type of unit.
@@ -656,56 +609,12 @@ public class process {
             case ("l"):
                 updateRoboticsMap();
                 System.out.println(convertList[OBSERVER] + ": ");
-                observe observeSelection = new observe(
-                       totalmap, idList.get(OBSERVER), initialList.get(OBSERVER),
-                       timeList[OBSERVER], secondsTotal,
-                       totalMinerals, totalGas,
-                       25, gasCostList[OBSERVER],
-                        roboticsMap);
-
-                printIndividual(observeSelection);
-                String actionOBS = reader.next();
-
-                //process the user's input.
-                if (actionOBS.toLowerCase().equals("a")) {
-                    System.out.println("How many Observer(s) do you want to construct?");
-                    String amount = reader.next();
-                    observeSelection.processActionInput(amount);
-
-                    //get map.
-                    totalmap.putAll(observeSelection.getTotalMap());
-                    //get robotics map.
-                    updateHashMapTotalAfterUnit(observeSelection.getRoboticsMap(), roboticsMap);
-                    //get id, deduce the minerals and gas.
-                    updateTheList(OBSERVER, observeSelection);
-                }
+                observeOfUnit(OBSERVER, 25, 1);
                 break;
             case ("m"):
                 updateRoboticsMap();
                 System.out.println(convertList[IMMORTAL] + ": ");
-                observe immortalSelection = new observe(
-                        totalmap, idList.get(IMMORTAL), initialList.get(IMMORTAL),
-                        timeList[IMMORTAL], secondsTotal,
-                        totalMinerals, totalGas,
-                        250, gasCostList[IMMORTAL],
-                        roboticsMap);
-
-                printIndividual(immortalSelection);
-                String actionIMM = reader.next();
-
-                //process the user's input.
-                if (actionIMM.toLowerCase().equals("a")) {
-                    System.out.println("How many Immortal(s) do you want to construct?");
-                    String amount = reader.next();
-                    immortalSelection.processActionInput(amount);
-
-                    //get map.
-                    totalmap.putAll(immortalSelection.getTotalMap());
-                    //get robotics map.
-                    updateHashMapTotalAfterUnit(immortalSelection.getRoboticsMap(), roboticsMap);
-                    //get id, deduce the minerals and gas.
-                    updateTheList(IMMORTAL, immortalSelection);
-                }
+                observeOfUnit(IMMORTAL, 250, 1);
                 break;
             /**
              * Immortal and Observer share similar situation, because they are built from the same building.
@@ -713,56 +622,84 @@ public class process {
             case ("n"):
                 updateStarGateMap();
                 System.out.println(convertList[PHOENIX] + ": ");
-                phoenix phoenixSelection = new phoenix(
-                        totalmap, idList.get(PHOENIX), initialList.get(PHOENIX),
-                        timeList[PHOENIX], secondsTotal,
-                        totalMinerals, totalGas,
-                        150, gasCostList[PHOENIX],
-                        starGateMap
-                );
-
-                printIndividual(phoenixSelection);
-                String actionPho = reader.next();
-
-                if (actionPho.toLowerCase().equals("a")) {
-                    System.out.println("How many PHOENIX do you want to construct?");
-                    String amount = reader.next();
-                    phoenixSelection.processActionIput(amount);
-
-                    //get map.
-                    totalmap.putAll(phoenixSelection.getTotalMap());
-                    //get stargate map.
-                    updateHashMapTotalAfterUnit(phoenixSelection.getStarGateMap(), starGateMap);
-                    //get id, deduce the minerals and gas.
-                    updateTheList(PHOENIX, phoenixSelection);
-                }
+                phoenixOfUnit(PHOENIX, 150, 1);
                 break;
             case ("o"):
                 updateStarGateMap();
                 System.out.println(convertList[VOID_RAY] + ": ");
-                phoenix raySelection = new phoenix(
-                        totalmap, idList.get(VOID_RAY), initialList.get(VOID_RAY),
-                        timeList[VOID_RAY], secondsTotal,
+                phoenixOfUnit(VOID_RAY, 250, 1);
+                break;
+
+            case ("p"): //This is for twilight council.
+                System.out.println(convertList[COUNCIL] + ": ");
+//                System.out.println(idList + " " + timeList[COUNCIL] + " " + gasCostList[COUNCIL]);
+                roboticsFac councilSelection = new roboticsFac(
+                        totalmap, idList.get(COUNCIL), initialList.get(COUNCIL),
+                        timeList[COUNCIL], secondsTotal,
                         totalMinerals, totalGas,
-                        250, gasCostList[VOID_RAY],
-                        starGateMap
-                );
+                        150, gasCostList[COUNCIL]);
+                councilSelection.printIndivadualSituation();
+                councilSelection.printGeneralSelection();
+                String actionInputCOUN = reader.next();
 
-                printIndividual(raySelection);
-                String actionRAY = reader.next();
-
-                if (actionRAY.toLowerCase().equals("a")) {
-                    System.out.println("How many VOID RAY do you want to construct?");
+                //process the input.
+                if (actionInputCOUN.toLowerCase().equals("a")) {
+                    System.out.println("How many Twilight council do you want to construct?");
                     String amount = reader.next();
-                    raySelection.processActionIput(amount);
+                    councilSelection.processActionInput(amount);
 
-                    //get map.
-                    totalmap.putAll(raySelection.getTotalMap());
-                    //get stargate map.
-                    updateHashMapTotalAfterUnit(raySelection.getStarGateMap(), starGateMap);
-                    //get id, deduce the minerals and gas.
-                    updateTheList(VOID_RAY, raySelection);
+                    //get the new id.
+                    int newestId = councilSelection.getNewId();
+                    if (newestId - idList.get(COUNCIL) > 0) {
+                        //get the new map.
+                        totalmap.putAll(councilSelection.getTotalMap());
+                        //get the new id.
+                        idList.set(COUNCIL, newestId);
+                        //update the currency.
+                        totalMinerals = councilSelection.getTotalMinerals();
+                        totalGas = councilSelection.getTotalGas();
+                        System.out.println();
+                    }
                 }
+                break;
+
+            case ("q"):
+                System.out.println(convertList[TEMPLAR_ARCHIVES] + ": ");
+//                System.out.println(idList + " " + timeList[DARK_SHRINE] + " " + gasCostList[DARK_SHRINE]);
+                TemplarOfBuilding(TEMPLAR_ARCHIVES, 150, 1);
+                break;
+            case ("r"):
+                System.out.println(convertList[DARK_SHRINE] + ": ");
+                TemplarOfBuilding(DARK_SHRINE, 100, 1);
+                break;
+            case ("s"):
+                System.out.println(convertList[ROBOTICS_BAY] + ": ");
+                TemplarOfBuilding(ROBOTICS_BAY, 200,2 );
+                break;
+            case ("t"):
+                System.out.println(convertList[FLEET_BEACON] + ": ");
+                TemplarOfBuilding(FLEET_BEACON, 300, 3);
+                break;
+            case ("u"):
+                updateRoboticsMap();
+                System.out.println(convertList[COLOSSI] + ": ");
+                observeOfUnit(COLOSSI, 300, 2);
+                break;
+            case ("v"):
+                updateGateWayMap();
+                System.out.println(convertList[HIGH_TEMPLAR] + ": ");
+                zealotOfUnit(HIGH_TEMPLAR, 50, 3);
+                break;
+            case ("w"):
+                updateGateWayMap();
+                System.out.println(convertList[DARK_TEMPLAR] + ": ");
+                zealotOfUnit(DARK_TEMPLAR, 125, 4);
+                break;
+            case ("x"):
+                updateStarGateMap();
+                System.out.println(convertList[CARRIER] + ": ");
+                phoenixOfUnit(CARRIER, 350, 2);
+
                 break;
             case("quit"):
                 System.out.println("Game Over!!!");
@@ -773,7 +710,130 @@ public class process {
         }
     }
 
+    /**
+     * This method is to set phoenix, void ray, and carrier(2).
+     * @param type the units type.
+     * @param mineralsSpending the cost of the units.
+     * @param code type of this units.
+     */
+    public void phoenixOfUnit(int type, int mineralsSpending, int code) {
+        Scanner reader = new Scanner(new InputStreamReader(System.in));
+        phoenix selection = new phoenix(
+                totalmap, idList.get(type), initialList.get(type),
+                timeList[type], secondsTotal,
+                totalMinerals, totalGas,
+                mineralsSpending, gasCostList[type],
+                starGateMap,
+                code);
+        printIndividual(selection);
+        String actionInput = reader.next();
+        if (actionInput.toLowerCase().equals("a")) {
+            System.out.println("How many " + convertList[type] + " do you want to construct?");
+            String amount = reader.next();
+            selection.processActionInput(amount);
+
+            //get map.
+            totalmap.putAll(selection.getTotalMap());
+            //get stargate map.
+            updateHashMapTotalAfterUnit(selection.getStarGateMap(), starGateMap);
+            //get id, deduce the currency.
+            updateTheList(type, selection);
+        }
+    }
+
+    /**
+     * This method is to build the type of observe.
+     * @param type observe or immortal.
+     * @param mineralsSpending the cost of the minerals building them.
+     */
+    public void observeOfUnit(int type, int mineralsSpending, int code) {
+        Scanner reader = new Scanner(new InputStreamReader(System.in));
+        observe selection = new observe(
+                totalmap, idList.get(type), initialList.get(type),
+                timeList[type], secondsTotal,
+                totalMinerals, totalGas,
+                mineralsSpending, gasCostList[type],
+                roboticsMap, code);
+
+        printIndividual(selection);
+        String actionInput = reader.next();
+        if (actionInput.toLowerCase().equals("a")) {
+            System.out.println("How many " + convertList[type] + " do you want to construct?");
+            String amount = reader.next();
+            selection.processActionInput(amount);
+
+            //get map.
+            totalmap.putAll(selection.getTotalMap());
+            //get robotics map.
+            updateHashMapTotalAfterUnit(selection.getRoboticsMap(), roboticsMap);
+            //get id, deduce the minerals and gas.
+            updateTheList(type, selection);
+        }
+
+    }
+
+
+    /**
+     * This method is to set the type of units like zealot.
+     * @param type the units type.
+     * @param mineralsSpending the cost of building such a units.
+     */
+    public void zealotOfUnit(int type, int mineralsSpending, int code) {
+        Scanner reader = new Scanner(new InputStreamReader(System.in));
+        zealot selection = new zealot(
+                totalmap, idList.get(type), initialList.get(type),
+                timeList[type], secondsTotal,
+                totalMinerals, totalGas,
+                mineralsSpending, gasCostList[type],
+                gateWayMap, code);
+        printIndividual(selection);
+        String actionInput = reader.next();
+
+        //process the user's input
+        if (actionInput.toLowerCase().equals("a")) {
+            System.out.println("How many " + convertList[type] + " do you want to construct?");
+            String amount = reader.next();
+            selection.processActionInput(amount);
+
+            //get map.
+            totalmap.putAll(selection.getTotalMap());
+            //update the gate way hash map.
+            updateHashMapTotalAfterUnit(selection.getGateMap(), gateWayMap);
+            //update the minerals and gas list.
+            updateTheList(type, selection);
+        }
+    }
+
+
     //general method begins with here.
+    public void TemplarOfBuilding(int type, int mineralsSpending, int code) {
+        Scanner reader = new Scanner(new InputStreamReader(System.in));
+        templarArch selection = new templarArch(
+                totalmap, idList.get(type), initialList.get(type),
+                timeList[type], secondsTotal,
+                totalMinerals, totalGas,
+                mineralsSpending, gasCostList[type],
+                code
+        );
+
+        selection.printIndivadualSituation();
+        selection.printGeneralSelection();
+        String actionInput = reader.next();
+        if (actionInput.toLowerCase().equals("a")) {
+            System.out.println("How many " + convertList[type] + " do you want to construct?");
+            String amount = reader.next();
+            selection.processActionInput(amount);
+
+            int newestId = selection.getNewId();
+            if (newestId - idList.get(type) > 0) {
+                //get the new map
+                totalmap.putAll(selection.getTotalMap());
+                idList.set(type, newestId);
+                totalMinerals = selection.getTotalMinerals();
+                totalGas = selection.getTotalGas();
+            }
+        }
+    }
     /**
      * This method is to renew the facility hash map in order to get the situation of it.(print)
      * @param newHashMap the facility hash map after processing.
@@ -899,6 +959,12 @@ public class process {
                     } else if (id < initialList.get(SENTRY) + 1000
                             && (secondsTotal - totalmap.get(id) >= timeList[SENTRY])) {
                         gateWayMap.put(id, true);
+                    } else if (id < initialList.get(HIGH_TEMPLAR) + 1000
+                            && (secondsTotal - totalmap.get(id) >= timeList[HIGH_TEMPLAR])) {
+                        gateWayMap.put(id, true);
+                    } else if (id < initialList.get(DARK_TEMPLAR) + 1000
+                            && (secondsTotal - totalmap.get(id) >= timeList[DARK_TEMPLAR])) {
+                        gateWayMap.put(id, true);
                     }
                 }
             }
@@ -928,6 +994,9 @@ public class process {
                         roboticsMap.put(id, true);
                     } else if ((id < initialList.get(IMMORTAL) + 1000)  //last used was Immortal.
                             && (secondsTotal - totalmap.get(id) >= timeList[IMMORTAL])) {
+                        roboticsMap.put(id, true);
+                    } else if ((id < initialList.get(COLOSSI) + 1000) //last used was COLOSSUS.
+                            && (secondsTotal - totalmap.get(id) >= timeList[COLOSSI])) {
                         roboticsMap.put(id, true);
                     }
                 }
@@ -959,8 +1028,10 @@ public class process {
                     } else if ((id < initialList.get(VOID_RAY) + 1000)
                             && (secondsTotal - totalmap.get(id) >= timeList[VOID_RAY])) {
                         starGateMap.put(id, true);
-                    } else {
-                        System.out.println("revise");
+                    } else if ((id < initialList.get(CARRIER) + 1000)
+                            && (secondsTotal - totalmap.get(id) >= timeList[CARRIER])) {
+                        starGateMap.put(id, true);
+                        System.out.print("");
                     }
                 }
             }

@@ -2,15 +2,17 @@ import java.util.*;
 
 public class observe extends typeOfConstruction {
     private HashMap<Integer, Boolean> roboticsMap = new HashMap<>();
+    int type;
     public observe(HashMap<Integer, Integer> totalmap, int newId, int initialId, int constructTime,
                    int currTime,
                    int totalMinerals, int totalGas,
                    int spendingCost, int spendingGas,
-                   HashMap<Integer, Boolean> roboticsMap) {
+                   HashMap<Integer, Boolean> roboticsMap, int type) {
         super(totalmap, newId, initialId, constructTime, currTime, totalMinerals, totalGas);
         this.spendingCost = spendingCost;
         this.spendingGas = spendingGas;
         this.roboticsMap.putAll(roboticsMap);
+        this.type = type;
     }
 
     /**
@@ -41,7 +43,21 @@ public class observe extends typeOfConstruction {
      * @return true presents exist.
      */
     public boolean judgementDependentBuilding() {
-        return (totalMap.containsKey(7001) && (currTime - totalMap.get(7001) >= 65));
+        if (totalMap.containsKey(7001) && (currTime - totalMap.get(7001) >= 65)) {
+            if (type == 2) {//judge whether it is colossi.
+
+                if (totalMap.containsKey(19001) && (currTime - totalMap.get(19001) >= 65)) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } else { //observe and immortal will be pass
+                return true;
+            }
+        } else { //do not have robotics facility.
+            return false;
+        }
     }
 
     //getter method.

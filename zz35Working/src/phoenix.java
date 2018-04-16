@@ -2,24 +2,26 @@ import java.util.HashMap;
 
 public class phoenix  extends typeOfConstruction {
 
-
+    int type;
     private HashMap<Integer, Boolean> starGateMap = new HashMap<>();
     public phoenix(HashMap<Integer, Integer> totalmap, int newId, int initialId,
                    int constructTime, int currTime,
                    int totalMinerals, int totalGas,
                    int spendingCost, int spendingGas,
-                   HashMap<Integer, Boolean> starGateMap) {
+                   HashMap<Integer, Boolean> starGateMap,
+                   int type) {
         super(totalmap, newId, initialId, constructTime, currTime, totalMinerals, totalGas);
         this.spendingCost = spendingCost;
         this.spendingGas = spendingGas;
         this.starGateMap.putAll(starGateMap);
+        this.type = type;
     }
 
     /**
      * This method is to process the user's input.
      * @param amount the number of units need to be constructed.
      */
-    public void processActionIput(String amount) {
+    public void processActionInput(String amount) {
         numberOfAction = Integer.parseInt(amount);
         if (judgementDependentBuilding()) {
             if (checkFacilityAvailable(starGateMap)) {
@@ -40,11 +42,21 @@ public class phoenix  extends typeOfConstruction {
     }
 
     /**
-     * make a judgement whether there exist star gate.
+     * make a judgement whether there exist star gate and other facility.
      * @return yes presents exist.
      */
     public boolean judgementDependentBuilding() {
-        return (totalMap.containsKey(8001) && (currTime - totalMap.get(8001) >= 60));
+        if (totalMap.containsKey(8001) && (currTime - totalMap.get(8001) >= 60)) {
+            if (type == 2) { //if it is Carrier.
+
+                if (totalMap.containsKey(20001) && (currTime - totalMap.get(20001) >= 60)) {
+                    return true;//if the robotics bay exist.
+                } else { return false; }
+
+            } else { return true; } //pass for phoenix and void ray.
+        } else { //if there is not stargate.
+            return false;
+        }
     }
 
     /**
