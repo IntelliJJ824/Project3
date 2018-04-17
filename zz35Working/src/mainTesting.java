@@ -5,8 +5,15 @@ import java.io.InputStreamReader;
 public class mainTesting {
 
     public static void main(String[] args) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        optimiser model = new optimiser();
+
+        //The following codes are for the gaming model
+        BufferedReader reader = reader = new BufferedReader(new InputStreamReader(System.in));
+
         try {
+            model.printGoalSelection();
+            String goal = reader.readLine();
+            model.processGoal(goal);
             String userInput;
             process runner = new process();
             do {
