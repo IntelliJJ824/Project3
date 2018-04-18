@@ -1,6 +1,6 @@
 import java.util.*;
 
-abstract class typeOfConstruction {
+public class typeOfConstruction {
     protected List<Integer> changeList = new ArrayList<>();
     protected HashMap<Integer, Integer> totalMap = new HashMap<>();
     protected int newId, initialId, constructTime, currTime, totalMinerals, totalGas, available, constructing,
@@ -26,6 +26,10 @@ abstract class typeOfConstruction {
         this.currTime = currTime;
         this.totalMinerals = totalMinerals;
         this.totalGas = totalGas;
+    }
+
+    public typeOfConstruction() {
+        System.out.println("Welcome to StarCraftII model and optimizer!");
     }
 
     /**

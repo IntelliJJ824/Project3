@@ -11,16 +11,16 @@ import java.util.*;
  */
 public class process {
     private Timer totalTimer;
-    private int secondsTotal = 0;
+    protected int secondsTotal = 0;
     private final int PERIOD = 1000;
-    private int totalMinerals;
-    private int totalGas;
+    protected int totalMinerals;
+    protected int totalGas;
 
     //The speed of gathering minerals.
-    private int numberMaxVelocity, numberMinVelocity, totalNumberPatchWorking;
+    protected int numberMaxVelocity, numberMinVelocity, totalNumberPatchWorking;
 
     //The speed of gathering gas.
-    private int totalNumberGasWorking;
+    protected int totalNumberGasWorking;
 
 
     //This is buildings.
@@ -62,33 +62,33 @@ public class process {
     static final int mineralpatch5 = 4;
 
     //this is to store the type of the unit, and its newest ID.
-    private ArrayList<Integer> idList = new ArrayList<>();
-    private ArrayList<Integer> initialList = new ArrayList<>();
+    protected ArrayList<Integer> idList = new ArrayList<>();
+    protected ArrayList<Integer> initialList = new ArrayList<>();
 
     // this is to store all the units and building.
-    private HashMap<Integer, Integer> totalmap = new HashMap<>();
+    protected HashMap<Integer, Integer> totalmap = new HashMap<>();
 
     //total gate way with the situation.
-    private HashMap<Integer, Boolean> gateWayMap = new HashMap<>();
+    protected HashMap<Integer, Boolean> gateWayMap = new HashMap<>();
 
     //total robotics facility with the situation.
-    private HashMap<Integer, Boolean> roboticsMap = new HashMap<>();
+    protected HashMap<Integer, Boolean> roboticsMap = new HashMap<>();
 
     //total stargate facility with the situation.
-    private HashMap<Integer, Boolean> starGateMap = new HashMap<>();
+    protected HashMap<Integer, Boolean> starGateMap = new HashMap<>();
 
     //total nexus facility with the situation.
-    private HashMap<Integer, Boolean> nexusMap = new HashMap<>();
+    protected HashMap<Integer, Boolean> nexusMap = new HashMap<>();
 
 
     //This is the list to convert from number to specific name.
-    private String[] convertList = {
+    protected String[] convertList = {
             "NEXUS", "PROBE", "PYLON", "ASSIMILATOR", "GATEWAY", "CYBERNETICS CORE", "ROBOTICS FACILITY", "STARGATE",
             "ZEALOT", "STALKER", "SENTRY", "OBSERVER", "IMMORTAL", "PHOENIX", "VOID RAY",
             "TWILIGHT COUNCIL", "TEMPLAR ARCHIVES", "DARK SHRINE", "ROBOTICS BAY", "FLEET BEACON",
             "COLOSSI", "HIGH TEMPLAR", "DARK TEMPLAR", "CARRIER"};
 
-    private int[] timeList = {
+    protected int[] timeList = {
             100, 17, 25, 30, 65, 50, 65, 60, //This is for buildings and probe.
             38, 42, 37, 40, 55, 35, 60, //This is for units
             50, 50, 100, 65, 60, //buildings after extending the spec
@@ -96,11 +96,18 @@ public class process {
 
     };
 
-    private int[] gasCostList = {
+    protected int[] gasCostList = {
             0, 0, 0, 0, 0, 0, 100, 150, //This is for building and probe.
             0, 50, 100, 75, 100, 100, 150,
             100, 200, 250, 200, 200,//buildings after extending spec.
             200, 150, 125, 250
+    };
+
+    protected int[] mineralsCostList = {
+            400, 50, 100, 75, 150, 150, 200, 150,//This is for building and probes.
+            100, 125, 50, 25, 250, 150, 250,    //This is for units.
+            150, 150, 100, 200, 300,
+            300, 50, 125, 350 //units for extension.
     };
 
     //This is the list of mineral patch, 0 presents there is no probe working for it.
@@ -112,7 +119,12 @@ public class process {
     /**
      * This constructor is to start the game.
      */
-    public process() {
+//    public process() {
+//        totalTimer = new Timer();
+//        start();
+//    }
+
+    public void runTheGame() {
         totalTimer = new Timer();
         start();
     }
@@ -125,9 +137,9 @@ public class process {
         setIdList();
         buildBase();
         assignMineralBeginning();
-        totalTimer.schedule(totalTimeCalculation, new Date(), PERIOD);
-        totalTimer.schedule(addMinerals, 1000, PERIOD); //The mineral calculation begins after 1 second.
-        totalTimer.schedule(addGas, 1000, PERIOD);
+        totalTimer.schedule(totalTimeCalculation, 1000, PERIOD);
+        totalTimer.schedule(addMinerals, 2000, PERIOD); //The mineral calculation begins after 1 second.
+        totalTimer.schedule(addGas, 2000, PERIOD);
     }
 
     /**

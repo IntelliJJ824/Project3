@@ -14,8 +14,10 @@ public class mainTesting {
             model.printGoalSelection();
             String goal = reader.readLine();
             model.processGoal(goal);
+
             String userInput;
             process runner = new process();
+            runner.runTheGame();
             do {
                  System.out.println("--------------------Summary--------------------------");
                  runner.printTotalTime();
