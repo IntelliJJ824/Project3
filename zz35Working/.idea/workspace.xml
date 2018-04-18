@@ -17,14 +17,21 @@
     <window id="2">
       <content type="file-editors">
         <state>
-          <leaf>
+          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
             <file leaf-file-name="optimiser.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/optimiser.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="702">
-                    <caret line="114" column="38" lean-forward="false" selection-start-line="114" selection-start-column="38" selection-end-line="114" selection-end-column="38" />
+                  <state relative-caret-position="609">
+                    <caret line="186" column="24" lean-forward="true" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
                     <folding>
+                      <element signature="imports" expanded="true" />
+                      <element signature="method#printGoalSelection#0;class#optimiser#0" expanded="false" />
+                      <element signature="method#generateThePossibility#0;class#optimiser#0" expanded="false" />
+                      <element signature="method#probesJudgeAvailable#0;class#optimiser#0" expanded="false" />
                       <element signature="method#setBuilding#0;class#optimiser#0" expanded="false" />
+                      <element signature="method#probesConditionJudge#0;class#optimiser#0" expanded="false" />
+                      <element signature="e#14321#14322#0" expanded="true" />
+                      <element signature="e#14372#14373#0" expanded="true" />
                       <element signature="method#deduceCurrency#0;class#optimiser#0" expanded="false" />
                       <element signature="method#currencyJudgement#0;class#optimiser#0" expanded="false" />
                     </folding>
@@ -42,7 +49,7 @@
       <file leaf-file-name="mainTesting.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
+            <state relative-caret-position="72">
               <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -54,8 +61,8 @@
       <file leaf-file-name="typeOfConstruction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-990">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="1944">
+              <caret line="142" column="37" lean-forward="false" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
               <folding>
                 <element signature="method#printMap#0;class#typeOfConstruction#0" expanded="false" />
                 <element signature="method#judgementPylonExist#0;class#typeOfConstruction#0" expanded="false" />
@@ -67,12 +74,18 @@
       <file leaf-file-name="process.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/process.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1962">
-              <caret line="280" column="61" lean-forward="true" selection-start-line="280" selection-start-column="26" selection-end-line="280" selection-end-column="61" />
+            <state relative-caret-position="784">
+              <caret line="1016" column="9" lean-forward="true" selection-start-line="1016" selection-start-column="9" selection-end-line="1016" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#6354#6461#0" expanded="true" />
+                <element signature="e#6460#6461#0" expanded="true" />
                 <element signature="method#printSituation#0;class#process#0" expanded="false" />
                 <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
+                <element signature="e#8857#9141#0" expanded="true" />
+                <element signature="e#9140#9141#0" expanded="true" />
+                <element signature="e#9523#9756#0" expanded="true" />
+                <element signature="e#9755#9756#0" expanded="true" />
                 <element signature="method#findNothingTaskProbes#0;class#process#0" expanded="false" />
               </folding>
             </state>
@@ -88,6 +101,16 @@
                 <element signature="e#762#763#0" expanded="true" />
                 <element signature="e#841#842#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zealot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zealot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="792">
+              <caret line="44" column="7" lean-forward="false" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,10 +185,41 @@
     <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="zz35Working" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zz35Working" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zz35Working" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zz35Working" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -302,12 +356,14 @@
       <workItem from="1523916485666" duration="1128000" />
       <workItem from="1523918403362" duration="2425000" />
       <workItem from="1523991141179" duration="8995000" />
-      <workItem from="1524001753143" duration="7819000" />
+      <workItem from="1524001753143" duration="7934000" />
+      <workItem from="1524046579177" duration="18475000" />
+      <workItem from="1524074874787" duration="17948000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163670000" />
+    <option name="totallyTimeSpent" value="200208000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2880" y="0" width="960" height="1080" extended-state="4" />
@@ -320,8 +376,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -331,8 +387,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -620,19 +676,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/roboticsBay.java" />
     <entry file="file://$PROJECT_DIR$/src/templarArch.java" />
     <entry file="file://$PROJECT_DIR$/src/observe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="882">
           <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zealot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="44" column="7" lean-forward="false" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -643,20 +691,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/optimiser.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cybernetics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -665,6 +710,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/roboticsBay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zealot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="44" column="7" lean-forward="false" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -680,18 +741,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cybernetics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-990">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="1944">
+          <caret line="142" column="37" lean-forward="false" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
           <folding>
             <element signature="method#printMap#0;class#typeOfConstruction#0" expanded="false" />
             <element signature="method#judgementPylonExist#0;class#typeOfConstruction#0" expanded="false" />
@@ -699,14 +752,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/process.java">
+    <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1962">
-          <caret line="280" column="61" lean-forward="true" selection-start-line="280" selection-start-column="26" selection-end-line="280" selection-end-column="61" />
+        <state relative-caret-position="72">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/process.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="1016" column="9" lean-forward="true" selection-start-line="1016" selection-start-column="9" selection-end-line="1016" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6354#6461#0" expanded="true" />
+            <element signature="e#6460#6461#0" expanded="true" />
             <element signature="method#printSituation#0;class#process#0" expanded="false" />
             <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
+            <element signature="e#8857#9141#0" expanded="true" />
+            <element signature="e#9140#9141#0" expanded="true" />
+            <element signature="e#9523#9756#0" expanded="true" />
+            <element signature="e#9755#9756#0" expanded="true" />
             <element signature="method#findNothingTaskProbes#0;class#process#0" expanded="false" />
           </folding>
         </state>
@@ -714,10 +783,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/optimiser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="114" column="38" lean-forward="false" selection-start-line="114" selection-start-column="38" selection-end-line="114" selection-end-column="38" />
+        <state relative-caret-position="609">
+          <caret line="186" column="24" lean-forward="true" selection-start-line="186" selection-start-column="24" selection-end-line="186" selection-end-column="24" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#printGoalSelection#0;class#optimiser#0" expanded="false" />
+            <element signature="method#generateThePossibility#0;class#optimiser#0" expanded="false" />
+            <element signature="method#probesJudgeAvailable#0;class#optimiser#0" expanded="false" />
             <element signature="method#setBuilding#0;class#optimiser#0" expanded="false" />
+            <element signature="method#probesConditionJudge#0;class#optimiser#0" expanded="false" />
+            <element signature="e#14321#14322#0" expanded="true" />
+            <element signature="e#14372#14373#0" expanded="true" />
             <element signature="method#deduceCurrency#0;class#optimiser#0" expanded="false" />
             <element signature="method#currencyJudgement#0;class#optimiser#0" expanded="false" />
           </folding>

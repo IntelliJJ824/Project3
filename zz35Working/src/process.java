@@ -855,7 +855,7 @@ public class process {
                                             HashMap<Integer, Boolean> oldHashMap) {
        oldHashMap.clear();
        oldHashMap.putAll(newHashMap);
-       System.out.println(oldHashMap);
+//       System.out.println(oldHashMap);
     }
 
     /**
@@ -868,7 +868,7 @@ public class process {
             id++;
             facilityMap.put(id, false);
         }
-        System.out.println(facilityMap);
+//        System.out.println(facilityMap);
     }
 
 
@@ -1013,7 +1013,7 @@ public class process {
                     }
                 }
             }
-            System.out.println(roboticsMap);
+//            System.out.println(roboticsMap);
         }
     }
 
