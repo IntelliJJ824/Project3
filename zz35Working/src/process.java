@@ -7,7 +7,7 @@ import java.util.*;
  * The id is increased with every 1000 values.
  * The initial list is to compare with the idList in order to find out the number of units and buildings.
  * hash map is to store the key for id, and value for time, which is individual list.
- * The id list is the type list.
+ * The id0 list is the type list.
  */
 public class process {
     private Timer totalTimer;
