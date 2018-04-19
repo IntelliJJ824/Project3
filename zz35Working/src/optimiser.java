@@ -47,15 +47,18 @@ public class optimiser extends process {
                 //This is int the early stage.
                 System.out.println("first goal.");
                 generateThePossibility();
-                System.out.println("Mineral is: " + totalMinerals + ", Gas is: " + totalGas);
+//                System.out.println("Mineral is: " + totalMinerals + ", Gas is: " + totalGas);
 //                System.out.println(totalmap);
                 //set the goat for the late stage.
                 STALKER_FIN = 4;
                 IMMORTAL_FIN = 2;
                 COLOSSUS_FIN = 2;
-                GATEWAY_FIN = 2;
-                PROBE_FIN = 22;
                 ZEALOT_FIN = 1;
+                //set the goal for building.
+                BAY_FIN = 1;
+                ROBOTICS_FIN = 2;
+                highStageGoalOne();
+
                 //late stage begins.
 
                 break;
@@ -105,10 +108,64 @@ public class optimiser extends process {
         }
     }
 
+    public void highStageGoalOne() {
+        while(!achieveFinalGoalOne()) {//secondsTotal <= 500)
+            secondsTotal++;
+            updateGateWayMap();
+            updateRoboticsMap();
+            balanceTheGas();
+            if (probesConditionJudge(ROBOTIC, ROBOTICS_FIN, roboticsFacility)) {
+                setTotalFacilityUnavailable(1, idList.get(ROBOTIC), roboticsMap);
+                roboticsFacility++;
+                setBuildings(ROBOTIC);
+                printTotalTime();
+            } else if (probesConditionJudge(ROBOTICS_BAY, BAY_FIN, bay)
+                    && roboticsFacilityExist()) {
+                bay++;
+                setBuildings(ROBOTICS_BAY);
+                printTotalTime();
+            } else if (probesConditionJudge(COLOSSI, COLOSSUS_FIN, colossus)
+                    && bayExist()
+                    && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
+                colossus++;
+                buildUnits(COLOSSI, roboticsMap);
+                printTotalTime();
+            } else if (probesConditionJudge(IMMORTAL, IMMORTAL_FIN, immortal)
+                    && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
+                immortal++;
+                buildUnits(IMMORTAL, roboticsMap);
+                printTotalTime();
+
+            } else if (probesConditionJudge(STALKER, STALKER_FIN, stalker)
+                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                stalker ++;
+                buildUnits(STALKER, gateWayMap);
+                printTotalTime();
+            } else if (probesConditionJudge(ZEALOT, ZEALOT_FIN, zealot)
+                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                zealot++;
+                buildUnits(ZEALOT, gateWayMap);
+                printTotalTime();
+            }
+
+            totalMinerals += mineralCalculatorGoal();
+            totalGas += gasCalculatorGoal();
+            printTotalTime();
+            System.out.println(totalMinerals + " " + totalGas);
+        }
+    }
+
+    /**
+     * Test whether the goal two is finished.
+     * @return true presents goal is achieved.
+     */
     public boolean achieveFinalGoalTwo() {
         return ((zealot == ZEALOT_FIN) && (stalker == STALKER_FIN) && (sentry == SENTRY_FIN) && (rayVoid == VOID_RAY_FIN));
     }
 
+    /**
+     * This is method is to process the later goal in goal two.
+     */
     public void highStageGoalTwo() {
         while (!achieveFinalGoalTwo()) {
            secondsTotal++;
@@ -295,7 +352,13 @@ public class optimiser extends process {
      * @return false present not achieved.
      */
     public boolean achieveFinalGoalOne() {
-        return ((stalkers == STALKER_FIN) && (immortal == IMMORTAL_FIN) && (colossus == COLOSSUS_FIN));
+
+//        System.out.println(stalker + " " + STALKER_FIN + " " + immortal + " " + IMMORTAL_FIN
+//        + " " + colossus + " " + COLOSSUS_FIN + " " + zealot + " " + ZEALOT_FIN );
+        return ((stalker == STALKER_FIN)
+                && (immortal == IMMORTAL_FIN) && (colossus == COLOSSUS_FIN)
+                && (zealot == ZEALOT_FIN));
+
     }
 
 
