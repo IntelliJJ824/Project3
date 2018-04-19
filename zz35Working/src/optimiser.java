@@ -5,12 +5,12 @@ import java.util.Set;
 
 public class optimiser extends process {
     //This is the goal at the early stage.
-    static final int PROBES_GOAL = 19;
-    static final int PYLON_GOAL = 1;
-    static int GATEWAY_GOAL = 1;
-    static int ASSIMILATOR_GOAL = 2;
-    static final int CORE_GOAL = 1;
-    static final int SENTRY_GOAL = 1;
+    int PROBES_GOAL = 20;
+    int PYLON_GOAL = 1;
+    int GATEWAY_GOAL = 1;
+    int ASSIMILATOR_GOAL = 2;
+    int CORE_GOAL = 1;
+    int SENTRY_GOAL;
     //This is the goal in the late stage.
     int IMMORTAL_FIN, COLOSSUS_FIN, STALKER_FIN, GATEWAY_FIN, PROBE_FIN, ZEALOT_FIN, SENTRY_FIN,
     PHOENIX_FIN;
@@ -72,11 +72,13 @@ public class optimiser extends process {
                 SENTRY_FIN = 1;
                 COLOSSUS_FIN = 2;
                 PHOENIX_FIN = 5;
+                SENTRY_GOAL = 1;
                 //buildings goal
                 STARGATE_FIN = 1;
                 ROBOTICS_FIN = 1;
                 BAY_FIN = 1;
-                highStageGoal();
+                PROBE_FIN = 1;
+                highStageGoalThree();
                 break;
 
             case ("4"):
@@ -94,18 +96,18 @@ public class optimiser extends process {
         }
     }
 
-    public void highStageGoal() {
+
+    /**
+     * This method is designed for goal 3.
+     */
+    public void highStageGoalThree() {
 
         while (!achieveFinalGoalThree()) { //secondsTotal < 600
             secondsTotal++;
             updateGateWayMap();
             updateStarGateMap();
             updateRoboticsMap();
-//            if (secondsTotal <= 251) {
-                probesJudgeAvailable();
-//            } else {
-//                balanceTheGas();
-//            }
+            probesJudgeAvailable();
             if (probesConditionJudge(ROBOTIC, ROBOTICS_FIN, roboticsFacility)
                     && totalmap.containsKey(8001)) {
                 //update the robotics facility.
@@ -127,7 +129,7 @@ public class optimiser extends process {
                     ) {
                     phoenix++;
                     buildUnits(PHOENIX, starGateMap);
-                    if (phoenix == 1) {
+                    if (phoenix == 1 || phoenix == 2) {
                         phoenPro = false;
                     }
                 printTotalTime();
@@ -142,6 +144,7 @@ public class optimiser extends process {
                     && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
                     colossus++;
                     buildUnits(COLOSSI, roboticsMap);
+                    phoenPro = true;
                 printTotalTime();
             } else if (probesConditionJudge(STALKER, STALKER_FIN, stalker)
                     && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
@@ -153,26 +156,32 @@ public class optimiser extends process {
                 zealot++;
                 buildUnits(ZEALOT, gateWayMap);
                 printTotalTime();
+            } else if (probesConditionJudge(SENTRY, SENTRY_GOAL, sentry)
+                    && judgeCoreBuild()
+                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                sentry++;
+                buildUnits(SENTRY,gateWayMap);
+                printTotalTime();
             }
-//            printTotalTime();
-//            System.out.println(totalMinerals + " " + totalGas);
             totalMinerals += mineralCalculatorGoal();
             totalGas += gasCalculatorGoal();
-//            System.out.println(starGateMap);
-//            System.out.println(roboticsMap);
-//            System.out.println(totalmap);
-//            System.out.println(stalker);
         }
-
+        System.out.println("Minerals are: " + totalMinerals + " Gas is: " + totalGas);
     }
 
+    /**
+     * Whether the goal three has achieved.
+     * @return true presents achieving.
+     */
     public boolean achieveFinalGoalThree() {
-//        System.out.println(zealot + " " + stalker + " " + sentry + " " + colossus + " " + phoenix);
-//        System.out.println(ZEALOT_FIN + " " + STALKER_FIN + " " + SENTRY_FIN + " " + COLOSSUS_FIN + " " + PHOENIX_FIN);
         return ((zealot == ZEALOT_FIN) && (stalker == STALKER_FIN) && (sentry == SENTRY_FIN)
-                && (colossus == COLOSSUS_FIN) && (phoenix == PHOENIX_FIN));
+                && (colossus == COLOSSUS_FIN) && (phoenix == PHOENIX_FIN) && sentry == SENTRY_GOAL);
     }
 
+    /**
+     * Check whether robotics bay exist.
+     * @return true presents exist.
+     */
     public boolean bayExist() {
         return (totalmap.containsKey(19001) && secondsTotal - totalmap.get(19001) >= timeList[ROBOTICS_BAY]);
     }
@@ -186,6 +195,7 @@ public class optimiser extends process {
         deduceCurrency(mineralsCostList[type], gasCostList[type]);
         System.out.print("--- Build 1 " + convertList[type] + " --- ");
     }
+
     public void balanceTheGas () {
         if (totalMinerals + 280 <= totalGas) {
             if (numberMaxVelocity != 19) {
@@ -204,6 +214,7 @@ public class optimiser extends process {
         }
 
     }
+
     /**
      * This method is to judge whether it has achieved the goal.
      * @return false present not achieved.
@@ -229,11 +240,20 @@ public class optimiser extends process {
     }
 
     /**
+     * early stage to build the basic facility.
+     * @return true present early goal is finished.
+     */
+    public boolean earlyStageGoal() {
+        return (probes == PROBES_GOAL && pylon == PYLON_GOAL && gateWay == GATEWAY_GOAL
+                && core == CORE_GOAL && assimilator == ASSIMILATOR_GOAL);
+    }
+
+    /**
      * The order of building: probes, pylon, gateway, cybernetic core, assimilator, sentry.
      */
     public void generateThePossibility() {
 
-        while (secondsTotal < 235) {    //if the goal is achieved, while loop stops.
+        while (!earlyStageGoal()) {    //if the goal is achieved, while loop stops.
             secondsTotal++;//time increase.
             probesJudgeAvailable();
             updateGateWayMap();
@@ -246,7 +266,7 @@ public class optimiser extends process {
                 totalmap.put(1001, secondsTotal);   //set the situation of Nexus.
                 deduceCurrency(mineralsCostList[PROBE], gasCostList[PROBE]);
 
-                System.out.print("Build 1 PROBE ---- ");
+                System.out.print("--- Build 1 PROBE ---- ");
                 printTotalTime();
 
             } else if (probesConditionJudge(PYLON, PYLON_GOAL, pylon)) {
@@ -254,7 +274,7 @@ public class optimiser extends process {
                 setBuilding(PYLON, secondsTotal);
                 deduceCurrency(mineralsCostList[PYLON], gasCostList[PYLON]);
 
-                System.out.print("Build 1 Pylon ---- ");
+                System.out.print("--- Build 1 Pylon ---- ");
                 printTotalTime();
             } else if (probesConditionJudge(GATEWAY, GATEWAY_GOAL, gateWay)) {
                 //update the gate way map(avoid the id is plus twice).
@@ -264,46 +284,42 @@ public class optimiser extends process {
                 setBuilding(GATEWAY, secondsTotal);
                 deduceCurrency(mineralsCostList[GATEWAY], gasCostList[GATEWAY]);
 
-                System.out.print("+++++++++++++++++ Build 1 Gateway --- ");
+                System.out.print("--- Build 1 Gateway --- ");
                 printTotalTime();
 
             } else if (probesConditionJudge(CYBERNETIC, CORE_GOAL, core)) {
                 core++;
                 setBuilding(CYBERNETIC, secondsTotal);
                 deduceCurrency(mineralsCostList[CYBERNETIC], gasCostList[CYBERNETIC]);
-                System.out.print("+++++++++++++++++ Build 1 Cybernetics Core ---");
+                System.out.print("--- Build 1 Cybernetics Core --- ");
                 printTotalTime();
 
             } else if (probesConditionJudge(ASSIMILATOR, ASSIMILATOR_GOAL, assimilator)) {
                 assimilator++;
                 setBuilding(ASSIMILATOR, secondsTotal);
                 deduceCurrency(mineralsCostList[ASSIMILATOR], gasCostList[ASSIMILATOR]);
-                System.out.print("Build 1 Assimilator --- ");
+                System.out.print("--- Build 1 Assimilator --- ");
                 printTotalTime();
 
-            } else if (probesConditionJudge(SENTRY, SENTRY_GOAL, sentry)
-                    && judgeCoreBuild()
-                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
-                  sentry++;
-                  buildUnits(SENTRY,gateWayMap);
-                printTotalTime();
             }
             //This is to print out the time.
             totalMinerals += mineralCalculatorGoal();
             totalGas += gasCalculatorGoal();
-//            printTotalTime();
-//            System.out.println(totalMinerals);
-//            System.out.println(gateWayMap);
         }
         System.out.println("Your suggestion is in the early stage.");
     }
 
+    /**
+     * This is the unit generator method.
+     * @param type the unit type.
+     * @param facilityMap the corresponding map for the unit to build.
+     */
     public void buildUnits(int type, HashMap<Integer, Boolean> facilityMap) {
         setBuilding(type, secondsTotal);
         deduceCurrency(mineralsCostList[type], gasCostList[type]);
         //update the gateway map.
         facilityMap.put(idList.get(type), false);
-        System.out.print("+++++++++++++++++ Build 1 " + convertList[type] + " +++");
+        System.out.print("--- Build 1 " + convertList[type] + " --- ");
     }
     /**
      * assign probe to work for minerals or gas. (full push for gathering gas.)
@@ -313,12 +329,12 @@ public class optimiser extends process {
             if (totalmap.containsKey(4001) && (secondsTotal <= 235)
                     && secondsTotal - totalmap.get(4001) >= timeList[ASSIMILATOR] //assimilator has finished.
                     && totalNumberGasWorking + 1 <= assimilator * 3) { //to get the limit of the assimilator.
-                System.out.print(">>> Assign three to gas working, two of them are from minerals patches.");
+                System.out.print(">>> Assign three to gas working, two of them are from minerals patches");
                 numberMaxVelocity -= 2;
                 totalNumberGasWorking = totalNumberGasWorking + 3;
 //                System.out.println("gas working " + totalNumberGasWorking + "and " + numberMaxVelocity);
             } else {
-                System.out.print("*** Assign one probe to minerals patch working *** " );
+                System.out.print("*** Assign one probe to minerals patch working " );
                 numberMaxVelocity++;
             }
         }
@@ -357,6 +373,12 @@ public class optimiser extends process {
         return (totalmap.containsKey(6001));
     }
 
+    /**
+     * Judge whether the depending building is available to build such a units
+     * @param type unit type
+     * @param facilityMap the map of building the unit.
+     * @return true presents available.
+     */
     public boolean dependingBuildingAvailable(int type, HashMap<Integer, Boolean> facilityMap) {
         int id = initialList.get(type) + 1;
         if (totalmap.containsKey(id)) {   //there exist gate way.
