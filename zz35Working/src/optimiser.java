@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class optimiser extends process {
     //This is the goal at the early stage.
@@ -16,9 +13,11 @@ public class optimiser extends process {
     int IMMORTAL_FIN, COLOSSUS_FIN, STALKER_FIN, GATEWAY_FIN, PROBE_FIN, ZEALOT_FIN, SENTRY_FIN,
     PHOENIX_FIN, VOID_RAY_FIN;
     //building goal.
-    int STARGATE_FIN, ROBOTICS_FIN, BAY_FIN;
+    int STARGATE_FIN, ROBOTICS_FIN, BAY_FIN, HIGH_TEMPLAR_FIN, TWILIGHT_FIN, TEMPLAR_FIN;
+    int OBSERVER_FIN, CARRIER_FIN, DARK_TEMPLAR_FIN, BEA_FIN, DARKSHRINE_FIN;
     boolean prior = true;
     boolean phoenPro = true;
+    boolean carrierPrior = false;
 
     //number of buildings currently.
     private int probes = 6;
@@ -27,8 +26,9 @@ public class optimiser extends process {
     typeOfConstruction judgement;
 
     //late stage.
-    private int stalkers = 0, immortal = 0, colossus = 0, bay = 0;
-
+    private int immortal = 0, colossus = 0, bay = 0;
+    private int highTemplar = 0, twilight = 0, templar = 0;
+    private int darkTemplar = 0, carrier = 0, observe = 0, bea = 0, darkshrine = 0;
     /**
      * provide the basic facility.
      */
@@ -40,6 +40,10 @@ public class optimiser extends process {
         totalNumberGasWorking = 0;
     }
 
+    /**
+     * This method is to set the gaol from the user's input.
+     * @param userInput the user select the goal.
+     */
     public void processGoal(String userInput) {
         optimizerPrepare();
         switch(userInput) {
@@ -58,7 +62,7 @@ public class optimiser extends process {
                 BAY_FIN = 1;
                 ROBOTICS_FIN = 2;
                 highStageGoalOne();
-
+//                orderList();
                 //late stage begins.
 
                 break;
@@ -96,11 +100,36 @@ public class optimiser extends process {
             case ("4"):
                 System.out.println("forth goal.");
                 generateThePossibility();
+                ZEALOT_FIN = 10;
+                STALKER_FIN = 7;
+                SENTRY_FIN = 2;
+                HIGH_TEMPLAR_FIN = 3;
+                //building goal
+                GATEWAY_FIN = 4;
+                TWILIGHT_FIN = 1;
+                TEMPLAR_FIN = 1;
+                highStageGoalFour();
                 break;
 
             case ("5"):
                 System.out.println("fifth goal.");
                 generateThePossibility();
+                //units goal
+                ZEALOT_FIN = 8;
+                STALKER_FIN = 10;
+                SENTRY_FIN = 2;
+                IMMORTAL_FIN = 1;
+                OBSERVER_FIN = 1;
+                CARRIER_FIN = 3;
+                DARK_TEMPLAR_FIN = 2;
+                //buildings goal
+                GATEWAY_FIN = 3;
+                TWILIGHT_FIN = 1;
+                DARKSHRINE_FIN = 1;
+                ROBOTICS_FIN = 1;
+                STARGATE_FIN = 2;
+                BEA_FIN = 1;
+                highStageProcessFive();
                 break;
 
                 default:
@@ -108,45 +137,302 @@ public class optimiser extends process {
         }
     }
 
+    public void highStageProcessFive() {
+        while (!achieveGoalFive()) {
+            secondsTotal++;
+            updateGateWayMap();
+            updateStarGateMap();
+            updateRoboticsMap();
+            if (numberMaxVelocity != 14) {
+                numberMaxVelocity = 14;
+                totalNumberGasWorking = 6;
+            }
+
+            if (prior && probesConditionJudge(STARGATE, STARGATE_FIN, stargate)) {
+                setTotalFacilityUnavailable(1, idList.get(STARGATE), starGateMap);
+                stargate++;
+                setBuildings(STARGATE);
+                printTotalTime();
+                if (stargate == 1) {
+                    prior = false;
+                }
+
+            } else if (probesConditionJudge(CARRIER, CARRIER_FIN, carrier)
+                    && beaExist()
+                    && dependingBuildingAvailable(STARGATE, starGateMap)) {
+                carrier++;
+                buildUnits(CARRIER, starGateMap);
+                printTotalTime();
+                if (carrier == 1) {
+                    carrierPrior = true;
+                }
+
+            } else if (probesConditionJudge(ROBOTIC, ROBOTICS_FIN, roboticsFacility)) {
+                setTotalFacilityUnavailable(1, idList.get(ROBOTIC), roboticsMap);
+                roboticsFacility++;
+                setBuildings(ROBOTIC);
+                printTotalTime();
+
+            } else if (probesConditionJudge(COUNCIL, TWILIGHT_FIN, twilight)) {
+                twilight++;
+                setBuildings(COUNCIL);
+                printTotalTime();
+
+            } else if (probesConditionJudge(DARK_SHRINE, DARKSHRINE_FIN, darkshrine)
+                    && twilightCouncilExist()) {
+                darkshrine++;
+                setBuildings(DARK_SHRINE);
+                printTotalTime();
+
+            } else if (probesConditionJudge(FLEET_BEACON, BEA_FIN, bea)
+                    && starGateExist()) {
+                bea++;
+                setBuildings(FLEET_BEACON);
+                printTotalTime();
+                prior = true;
+            }  else if (probesConditionJudge(SENTRY, SENTRY_FIN, sentry)
+                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                sentry++;
+                buildUnits(SENTRY, gateWayMap);
+                printTotalTime();
+
+            } else if (carrierPrior && probesConditionJudge(STALKER, STALKER_FIN, stalker)
+                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                stalker++;
+                buildUnits(STALKER, gateWayMap);
+                printTotalTime();
+            } else if (probesConditionJudge(DARK_TEMPLAR, DARK_TEMPLAR_FIN, darkTemplar)
+                    && darkShineExist()
+                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                darkTemplar++;
+                buildUnits(DARK_TEMPLAR, gateWayMap);
+                printTotalTime();
+
+            } else if (probesConditionJudge(ZEALOT, ZEALOT_FIN, zealot)
+                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                zealot++;
+                buildUnits(ZEALOT, gateWayMap);
+                printTotalTime();
+
+            } else if (carrierPrior && probesConditionJudge(IMMORTAL, IMMORTAL_FIN, immortal)
+                    && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
+                immortal++;
+                buildUnits(IMMORTAL, roboticsMap);
+                printTotalTime();
+
+            } else if (probesConditionJudge(OBSERVER, OBSERVER_FIN, observe)
+                    && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
+                observe++;
+                buildUnits(OBSERVER, roboticsMap);
+                printTotalTime();
+            } else if (probesConditionJudge(GATEWAY, GATEWAY_FIN, gateWay)) {
+                setTotalFacilityUnavailable(1, idList.get(GATEWAY), gateWayMap);
+                gateWay++;
+                setBuildings(GATEWAY);
+                printTotalTime();
+            }
+
+        totalMinerals += mineralCalculatorGoal();
+            totalGas += gasCalculatorGoal();
+
+        }
+        System.out.println(totalMinerals + " " + totalGas);
+    }
+
+    public boolean darkShineExist() {
+        return (totalmap.containsKey(18001) && (secondsTotal- totalmap.get(18001) >= timeList[DARK_SHRINE]));
+    }
+    public boolean beaExist() {
+        return (totalmap.containsKey(20001) && (secondsTotal - totalmap.get(20001) >= timeList[FLEET_BEACON]));
+    }
+
+    public boolean starGateExist() {
+        return (totalmap.containsKey(8001) && (secondsTotal - totalmap.get(8001) >= timeList[STARGATE]));
+    }
+
+    public boolean achieveGoalFive() {
+        return ((zealot == ZEALOT_FIN) && (stalker == STALKER_FIN) && (sentry == SENTRY_FIN)
+                && (darkTemplar == DARK_TEMPLAR_FIN) && (carrier == CARRIER_FIN) && (observe == OBSERVER_FIN)
+                && (immortal == IMMORTAL_FIN));
+    }
+
+    /**
+     * This method is to process gaol 4.
+     */
+    public void highStageGoalFour() {
+        while (!achieveGoalFour()) {
+            secondsTotal++;
+            updateGateWayMap();
+            if (secondsTotal <= 474) {
+                balanceTheGas();
+            } else {
+                if (numberMaxVelocity != 20) {
+                    System.out.print("*** Assign all the probes to minerals patches");
+                }
+                numberMaxVelocity = 20;
+                totalNumberGasWorking = 0;
+            }
+
+            if (probesConditionJudge(COUNCIL, TWILIGHT_FIN, twilight)) {
+                twilight++;
+                setBuildings(COUNCIL);
+                printTotalTime();
+            } else if (probesConditionJudge(TEMPLAR_ARCHIVES, TEMPLAR_FIN, templar)
+                    && twilightCouncilExist()) {
+                templar ++;
+                setBuildings(TEMPLAR_ARCHIVES);
+                printTotalTime();
+
+            } else if (probesConditionJudge(SENTRY, SENTRY_FIN, sentry)
+                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                sentry++;
+                buildUnits(SENTRY, gateWayMap);
+                printTotalTime();
+
+            } else if (
+                        prior && probesConditionJudge(HIGH_TEMPLAR, HIGH_TEMPLAR_FIN, highTemplar)
+                                && templarArchExist()
+                                && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                    highTemplar++;
+                    buildUnits(HIGH_TEMPLAR, gateWayMap);
+                    if (highTemplar == 2) {
+                        prior = false;
+                    }
+                    printTotalTime();
+
+            } else if (probesConditionJudge(ZEALOT, ZEALOT_FIN, zealot)
+                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                zealot++;
+                buildUnits(ZEALOT, gateWayMap);
+                printTotalTime();
+
+            } else if (probesConditionJudge(STALKER, STALKER_FIN, stalker)
+                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                stalker++;
+                buildUnits(STALKER, gateWayMap);
+                if (stalker == 7) {
+                    prior = true;
+                }
+                printTotalTime();
+            } else if (probesConditionJudge(GATEWAY, GATEWAY_FIN, gateWay)) {
+                setTotalFacilityUnavailable(1, idList.get(GATEWAY), gateWayMap);
+                gateWay++;
+                setBuildings(GATEWAY);
+                printTotalTime();
+            }
+            totalMinerals += mineralCalculatorGoal();
+            totalGas += gasCalculatorGoal();
+//            printTotalTime();
+        }
+        System.out.println(totalMinerals + " " + totalGas);
+    }
+
+    public boolean templarArchExist() {
+        return (totalmap.containsKey(17001) && (secondsTotal - totalmap.get(17001) >= timeList[TEMPLAR_ARCHIVES]));
+    }
+    public boolean twilightCouncilExist() {
+        return (totalmap.containsKey(16001) && (secondsTotal - totalmap.get(16001) >= timeList[COUNCIL]));
+    }
+
+   //judge whether gaol 4 is finished
+    public boolean achieveGoalFour() {
+        return ((stalker == STALKER_FIN) && (zealot == ZEALOT_FIN)
+                && (sentry == SENTRY_FIN) && (highTemplar == HIGH_TEMPLAR_FIN));
+    }
+//
+//    public void orderList() {
+////        boolean robotics_Jud = false, bay_Jud = false, stalker_Jud = false,
+////                immortal_jud = false, colossus_jud = false, zealot_jud = false;
+////        boolean[] orderList = {robotics_Jud, bay_Jud, stalker_Jud, immortal_jud, colossus_jud, zealot_jud};
+//        ArrayList<Boolean[]> outer = new ArrayList<>();
+//        Boolean[] inner = new Boolean[11];
+//
+//            inner[0] = true;
+//            for (int j = 1; j < 10; j++) {
+//                inner[j] = false;
+//                System.out.println("yes");
+////              numberOfTrue++;
+//            }
+//            outer.add(inner);
+//
+//
+//        for (int i = 0; i < inner.length; i++) {
+//            System.out.print( zz);
+//        }
+////        for (int i = 0; i < outer.size(); i++) {
+////            for (int j = 0; j < inner.length; j++) {
+////                System.out.print(outer.get(i)[i] + " ");
+////            }
+////            System.out.println();
+////        }
+//    }
+
+    /**
+     * This method is to process gaol one.
+     */
     public void highStageGoalOne() {
         while(!achieveFinalGoalOne()) {//secondsTotal <= 500)
             secondsTotal++;
             updateGateWayMap();
             updateRoboticsMap();
             balanceTheGas();
-            if (probesConditionJudge(ROBOTIC, ROBOTICS_FIN, roboticsFacility)) {
-                setTotalFacilityUnavailable(1, idList.get(ROBOTIC), roboticsMap);
-                roboticsFacility++;
-                setBuildings(ROBOTIC);
-                printTotalTime();
-            } else if (probesConditionJudge(ROBOTICS_BAY, BAY_FIN, bay)
-                    && roboticsFacilityExist()) {
-                bay++;
-                setBuildings(ROBOTICS_BAY);
-                printTotalTime();
-            } else if (probesConditionJudge(COLOSSI, COLOSSUS_FIN, colossus)
-                    && bayExist()
-                    && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
-                colossus++;
-                buildUnits(COLOSSI, roboticsMap);
-                printTotalTime();
-            } else if (probesConditionJudge(IMMORTAL, IMMORTAL_FIN, immortal)
-                    && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
-                immortal++;
-                buildUnits(IMMORTAL, roboticsMap);
-                printTotalTime();
+//            if (robotics_Jud) {
+                if (probesConditionJudge(ROBOTIC, ROBOTICS_FIN, roboticsFacility)) {
+                    setTotalFacilityUnavailable(1, idList.get(ROBOTIC), roboticsMap);
+                    roboticsFacility++;
+                    setBuildings(ROBOTIC);
+                    printTotalTime();
+                }
+//            }
 
-            } else if (probesConditionJudge(STALKER, STALKER_FIN, stalker)
-                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
-                stalker ++;
-                buildUnits(STALKER, gateWayMap);
-                printTotalTime();
-            } else if (probesConditionJudge(ZEALOT, ZEALOT_FIN, zealot)
-                    && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
-                zealot++;
-                buildUnits(ZEALOT, gateWayMap);
-                printTotalTime();
-            }
+//            if (bay_Jud) {
+                if (probesConditionJudge(ROBOTICS_BAY, BAY_FIN, bay)
+                        && roboticsFacilityExist()) {
+                    bay++;
+                    setBuildings(ROBOTICS_BAY);
+                    printTotalTime();
+                }
+//            }
+
+//            if (colossus_jud) {
+                if (probesConditionJudge(COLOSSI, COLOSSUS_FIN, colossus)
+                        && bayExist()
+                        && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
+                    colossus++;
+                    buildUnits(COLOSSI, roboticsMap);
+                    printTotalTime();
+                }
+//            }
+
+//            if (immortal_jud) {
+                if (probesConditionJudge(IMMORTAL, IMMORTAL_FIN, immortal)
+                        && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
+                    immortal++;
+                    buildUnits(IMMORTAL, roboticsMap);
+                    printTotalTime();
+
+                }
+//            }
+
+//            if (stalker_Jud) {
+                if (probesConditionJudge(STALKER, STALKER_FIN, stalker)
+                        && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                    stalker++;
+                    buildUnits(STALKER, gateWayMap);
+                    printTotalTime();
+//                    System.out.println();
+                }
+//            }
+
+//            if(zealot_jud) {
+                if (probesConditionJudge(ZEALOT, ZEALOT_FIN, zealot)
+                        && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
+                    zealot++;
+                    buildUnits(ZEALOT, gateWayMap);
+                    printTotalTime();
+//                    System.out.println("");
+                }
+//            }
 
             totalMinerals += mineralCalculatorGoal();
             totalGas += gasCalculatorGoal();
