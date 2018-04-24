@@ -475,7 +475,9 @@ public class process {
                 int numebrOfWrapGate = idList.get(WARP_GATE) - initialList.get(WARP_GATE);
                 System.out.println("There are: " + numebrOfWrapGate + " Wrap Gate(s).");
                 gateWaySelection.printGeneralSelection();
-                if (gateWayUpdate) { //print out the option for updating the gateway.
+
+                if (gateWayUpdate && totalmap.containsKey(6001)
+                        && (secondsTotal-totalmap.get(6001) >= timeList[CYBERNETIC])) { //print out the option for updating the gateway.
                     System.out.println("c.Update Gateway to Warp Gate.");
                 }
 
@@ -514,7 +516,7 @@ public class process {
 //                            System.out.println(idList);
 //                            System.out.println(initialList);
                         } else {//did not reach the researching time.
-                            System.out.println("--Invalid: Upgrades to Warp Gate is still in researching.");
+                            System.out.println("--Invalid: Upgrades to Warp Gate haven't or is still in researching.");
                         }
                 }
                 break;
@@ -1081,6 +1083,7 @@ public class process {
                             && (secondsTotal - totalmap.get(id) >= timeList[DARK_TEMPLAR])) {
                         gateWayMap.put(id, true);
                     } else if (id < initialList.get(WARP_GATE) + 1000
+                            && id >= initialList.get(WARP_GATE)
                             && (secondsTotal - totalmap.get(id) >= timeList[WARP_GATE])) {
                         gateWayMap.put(id, true);
                     }

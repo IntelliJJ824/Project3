@@ -204,68 +204,45 @@ public class optimiser extends process {
             updateGateWayMap();
             updateRoboticsMap();
             balanceTheGas();
-//            if (robotics_Jud) {
                 if (probesConditionJudge(ROBOTIC, ROBOTICS_FIN, roboticsFacility)) {
                     setTotalFacilityUnavailable(1, idList.get(ROBOTIC), roboticsMap);
                     roboticsFacility++;
                     setBuildings(ROBOTIC);
                     printTotalTime();
-                }
-//            }
-
-//            if (bay_Jud) {
-                if (probesConditionJudge(ROBOTICS_BAY, BAY_FIN, bay)
+                } else if (probesConditionJudge(ROBOTICS_BAY, BAY_FIN, bay)
                         && roboticsFacilityExist()) {
                     bay++;
                     setBuildings(ROBOTICS_BAY);
                     printTotalTime();
-                }
-//            }
-
-//            if (colossus_jud) {
-                if (probesConditionJudge(COLOSSI, COLOSSUS_FIN, colossus)
+                }else if (probesConditionJudge(COLOSSI, COLOSSUS_FIN, colossus)
                         && bayExist()
                         && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
                     colossus++;
                     buildUnits(COLOSSI, roboticsMap);
                     printTotalTime();
-                }
-//            }
-
-//            if (immortal_jud) {
-                if (probesConditionJudge(IMMORTAL, IMMORTAL_FIN, immortal)
+                } else if (probesConditionJudge(IMMORTAL, IMMORTAL_FIN, immortal)
                         && dependingBuildingAvailable(ROBOTIC, roboticsMap)) {
                     immortal++;
                     buildUnits(IMMORTAL, roboticsMap);
                     printTotalTime();
 
-                }
-//            }
-
-//            if (stalker_Jud) {
-                if (probesConditionJudge(STALKER, STALKER_FIN, stalker)
+                } else if (probesConditionJudge(STALKER, STALKER_FIN, stalker)
                         && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
                     stalker++;
                     buildUnits(STALKER, gateWayMap);
                     printTotalTime();
-//                    System.out.println();
-                }
-//            }
-
-//            if(zealot_jud) {
-                if (probesConditionJudge(ZEALOT, ZEALOT_FIN, zealot)
+                } else if (probesConditionJudge(ZEALOT, ZEALOT_FIN, zealot)
                         && dependingBuildingAvailable(GATEWAY, gateWayMap)) {
                     zealot++;
                     buildUnits(ZEALOT, gateWayMap);
                     printTotalTime();
-//                    System.out.println("");
                 }
-//            }
 
             totalMinerals += mineralCalculatorGoal();
             totalGas += gasCalculatorGoal();
-            printTotalTime();
-            System.out.println(totalMinerals + " " + totalGas);
+//            printTotalTime();
+//            System.out.println(totalMinerals + " " + totalGas);
+//            System.out.println(gateWayMap);
         }
     }
 
@@ -791,9 +768,11 @@ public class optimiser extends process {
             Iterator iterator = set.iterator();
             for (int i = 0; i < times; i++) {
                 Map.Entry pair = (Map.Entry) iterator.next(); //go over all the gateway map.
-
-                if ((boolean)pair.getValue()) { //check whether it is available.
+                boolean status = (boolean)pair.getValue();
+//                System.out.println(status);
+                if (status) { //check whether it is available.
                     facilityMap.remove(pair.getKey());
+//                    System.out.println("This is true.");
                     return true;
                 }
 
