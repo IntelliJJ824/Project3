@@ -133,8 +133,8 @@
       <file leaf-file-name="process.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/process.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="518" column="95" lean-forward="false" selection-start-line="518" selection-start-column="95" selection-end-line="518" selection-end-column="95" />
+            <state relative-caret-position="-1854">
+              <caret line="293" column="39" lean-forward="true" selection-start-line="293" selection-start-column="39" selection-end-line="293" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#printSituation#0;class#process#0" expanded="false" />
@@ -142,7 +142,6 @@
                 <element signature="method#printCurrency#0;class#process#0" expanded="false" />
                 <element signature="method#MineralCalculator#0;class#process#0" expanded="false" />
                 <element signature="method#gasCalculator#0;class#process#0" expanded="false" />
-                <element signature="method#findNothingTaskProbes#0;class#process#0" expanded="false" />
                 <element signature="method#phoenixOfUnit#0;class#process#0" expanded="false" />
                 <element signature="method#observeOfUnit#0;class#process#0" expanded="false" />
                 <element signature="method#zealotOfUnit#0;class#process#0" expanded="false" />
@@ -220,9 +219,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="1920" />
-    <option name="width" value="1215" />
-    <option name="height" value="1080" />
+    <option name="x" value="960" />
+    <option name="y" value="27" />
+    <option name="width" value="960" />
+    <option name="height" value="1020" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -405,15 +405,15 @@
       <workItem from="1524215651771" duration="22811000" />
       <workItem from="1524494291784" duration="5617000" />
       <workItem from="1524500209293" duration="23730000" />
-      <workItem from="1524579828076" duration="3789000" />
+      <workItem from="1524579828076" duration="5487000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273198000" />
+    <option name="totallyTimeSpent" value="274896000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1215" height="1080" extended-state="4" />
+    <frame x="960" y="27" width="960" height="1020" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -907,8 +907,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/process.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="518" column="95" lean-forward="false" selection-start-line="518" selection-start-column="95" selection-end-line="518" selection-end-column="95" />
+        <state relative-caret-position="-1854">
+          <caret line="293" column="39" lean-forward="true" selection-start-line="293" selection-start-column="39" selection-end-line="293" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#printSituation#0;class#process#0" expanded="false" />
@@ -916,7 +916,6 @@
             <element signature="method#printCurrency#0;class#process#0" expanded="false" />
             <element signature="method#MineralCalculator#0;class#process#0" expanded="false" />
             <element signature="method#gasCalculator#0;class#process#0" expanded="false" />
-            <element signature="method#findNothingTaskProbes#0;class#process#0" expanded="false" />
             <element signature="method#phoenixOfUnit#0;class#process#0" expanded="false" />
             <element signature="method#observeOfUnit#0;class#process#0" expanded="false" />
             <element signature="method#zealotOfUnit#0;class#process#0" expanded="false" />
