@@ -17,23 +17,27 @@
     <window id="1">
       <content type="file-editors">
         <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <leaf>
             <file leaf-file-name="process.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/process.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-18">
-                    <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+                  <state relative-caret-position="775">
+                    <caret line="176" column="26" lean-forward="true" selection-start-line="176" selection-start-column="26" selection-end-line="176" selection-end-column="26" />
                     <folding>
                       <element signature="imports" expanded="true" />
-                      <element signature="e#6355#6462#0" expanded="true" />
-                      <element signature="e#6461#6462#0" expanded="true" />
                       <element signature="method#printSituation#0;class#process#0" expanded="false" />
                       <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
-                      <element signature="e#8858#9142#0" expanded="true" />
-                      <element signature="e#9141#9142#0" expanded="true" />
-                      <element signature="e#9524#9757#0" expanded="true" />
-                      <element signature="e#9756#9757#0" expanded="true" />
+                      <element signature="method#printCurrency#0;class#process#0" expanded="false" />
+                      <element signature="method#MineralCalculator#0;class#process#0" expanded="false" />
+                      <element signature="method#gasCalculator#0;class#process#0" expanded="false" />
                       <element signature="method#findNothingTaskProbes#0;class#process#0" expanded="false" />
+                      <element signature="method#phoenixOfUnit#0;class#process#0" expanded="false" />
+                      <element signature="method#observeOfUnit#0;class#process#0" expanded="false" />
+                      <element signature="method#zealotOfUnit#0;class#process#0" expanded="false" />
+                      <element signature="method#TemplarOfBuilding#0;class#process#0" expanded="false" />
+                      <element signature="method#updateHashMapTotalAfterUnit#0;class#process#0" expanded="false" />
+                      <element signature="method#setTotalFacilityUnavailable#0;class#process#0" expanded="false" />
+                      <element signature="method#updateNexusMap#0;class#process#0" expanded="false" />
                     </folding>
                   </state>
                 </provider>
@@ -46,45 +50,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="optimiser.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/optimiser.java">
+      <file leaf-file-name="roboticsBay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/roboticsBay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="599">
-              <caret line="870" column="39" lean-forward="false" selection-start-line="870" selection-start-column="39" selection-end-line="870" selection-end-column="39" />
-              <folding>
-                <element signature="method#templarArchExist#0;class#optimiser#0" expanded="false" />
-                <element signature="method#twilightCouncilExist#0;class#optimiser#0" expanded="false" />
-                <element signature="method#achieveGoalFour#0;class#optimiser#0" expanded="false" />
-                <element signature="e#12865#12867#0" expanded="false" />
-                <element signature="method#highStageGoalOne#0;class#optimiser#0" expanded="false" />
-                <element signature="method#achieveFinalGoalTwo#0;class#optimiser#0" expanded="false" />
-                <element signature="method#highStageGoalTwo#0;class#optimiser#0" expanded="false" />
-                <element signature="method#highStageGoalThree#0;class#optimiser#0" expanded="false" />
-                <element signature="method#generateThePossibility#0;class#optimiser#0" expanded="false" />
-                <element signature="method#mineralCalculatorGoal#0;class#optimiser#0" expanded="false" />
-                <element signature="method#gasCalculatorGoal#0;class#optimiser#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="162">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainTesting.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
+      <file leaf-file-name="gateWay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gateWay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="36">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="probe.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/probe.java">
+      <file leaf-file-name="roboticsFac.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/roboticsFac.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="543">
+              <caret line="31" column="85" lean-forward="false" selection-start-line="31" selection-start-column="85" selection-end-line="31" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stalker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/stalker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -100,6 +100,67 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="templarArch.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/templarArch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zealot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zealot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="810">
+              <caret line="51" column="40" lean-forward="false" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="typeOfConstruction.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="142" column="37" lean-forward="false" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
+              <folding>
+                <element signature="method#printMap#0;class#typeOfConstruction#0" expanded="false" />
+                <element signature="method#judgementPylonExist#0;class#typeOfConstruction#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="probe.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/probe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="30" column="54" lean-forward="false" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
+              <folding>
+                <element signature="method#probe#0;class#probe#0" expanded="false" />
+                <element signature="method#assignPatchJudgement#0;class#probe#0" expanded="false" />
+                <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
+                <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="assimilator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assimilator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="864">
+              <caret line="50" column="1" lean-forward="false" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+              <folding>
+                <element signature="e#2048#2049#0" expanded="true" />
+                <element signature="e#2126#2127#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -108,6 +169,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>gasList</find>
+    </findStrings>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -118,20 +184,20 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/cybernetics.java" />
-        <option value="$PROJECT_DIR$/src/assimilator.java" />
-        <option value="$PROJECT_DIR$/src/probe.java" />
         <option value="$PROJECT_DIR$/src/gateWay.java" />
         <option value="$PROJECT_DIR$/src/roboticsFac.java" />
         <option value="$PROJECT_DIR$/src/roboticsBay.java" />
         <option value="$PROJECT_DIR$/src/templarArch.java" />
         <option value="$PROJECT_DIR$/src/stalker.java" />
-        <option value="$PROJECT_DIR$/src/zealot.java" />
         <option value="$PROJECT_DIR$/src/observe.java" />
         <option value="$PROJECT_DIR$/src/phoenix.java" />
         <option value="$PROJECT_DIR$/src/typeOfConstruction.java" />
         <option value="$PROJECT_DIR$/src/mainTesting.java" />
-        <option value="$PROJECT_DIR$/src/process.java" />
         <option value="$PROJECT_DIR$/src/optimiser.java" />
+        <option value="$PROJECT_DIR$/src/assimilator.java" />
+        <option value="$PROJECT_DIR$/src/probe.java" />
+        <option value="$PROJECT_DIR$/src/zealot.java" />
+        <option value="$PROJECT_DIR$/src/process.java" />
       </list>
     </option>
   </component>
@@ -145,16 +211,46 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="875" />
-    <option name="y" value="27" />
-    <option name="width" value="1045" />
-    <option name="height" value="1020" />
+    <option name="x" value="2845" />
+    <option name="width" value="995" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="zz35Working" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zz35Working" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zz35Working" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zz35Working" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -298,15 +394,16 @@
       <workItem from="1524126385281" duration="12850000" />
       <workItem from="1524168744755" duration="4193000" />
       <workItem from="1524215651771" duration="22811000" />
-      <workItem from="1524494291784" duration="5546000" />
+      <workItem from="1524494291784" duration="5617000" />
+      <workItem from="1524500209293" duration="23652000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245608000" />
+    <option name="totallyTimeSpent" value="269331000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="875" y="27" width="1045" height="1020" extended-state="4" />
+    <frame x="2845" y="0" width="995" height="1080" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -321,7 +418,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22914466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -355,7 +452,7 @@
         <state relative-caret-position="36">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -365,15 +462,37 @@
         <state relative-caret-position="1980">
           <caret line="113" column="31" lean-forward="true" selection-start-line="113" selection-start-column="31" selection-end-line="113" selection-end-column="31" />
           <folding>
-            <element signature="method#templarArchExist#0;class#optimiser#0" expanded="false" />
-            <element signature="method#twilightCouncilExist#0;class#optimiser#0" expanded="false" />
-            <element signature="method#achieveGoalFour#0;class#optimiser#0" expanded="false" />
-            <element signature="e#12865#12867#0" expanded="false" />
+            <element signature="method#optimizerPrepare#0;class#optimiser#0" expanded="false" />
+            <element signature="method#generateThePossibility#0;class#optimiser#0" expanded="false" />
             <element signature="method#highStageGoalOne#0;class#optimiser#0" expanded="false" />
-            <element signature="method#achieveFinalGoalTwo#0;class#optimiser#0" expanded="false" />
             <element signature="method#highStageGoalTwo#0;class#optimiser#0" expanded="false" />
             <element signature="method#highStageGoalThree#0;class#optimiser#0" expanded="false" />
-            <element signature="method#generateThePossibility#0;class#optimiser#0" expanded="false" />
+            <element signature="method#highStageGoalFour#0;class#optimiser#0" expanded="false" />
+            <element signature="method#highStageProcessFive#0;class#optimiser#0" expanded="false" />
+            <element signature="method#earlyStageGoal#0;class#optimiser#0" expanded="false" />
+            <element signature="method#achieveFinalGoalOne#0;class#optimiser#0" expanded="false" />
+            <element signature="method#achieveFinalGoalTwo#0;class#optimiser#0" expanded="false" />
+            <element signature="method#achieveFinalGoalThree#0;class#optimiser#0" expanded="false" />
+            <element signature="method#achieveGoalFour#0;class#optimiser#0" expanded="false" />
+            <element signature="method#achieveGoalFive#0;class#optimiser#0" expanded="false" />
+            <element signature="method#templarArchExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#twilightCouncilExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#darkShineExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#starGateExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#beaExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#bayExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#roboticsFacilityExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#setBuildings#0;class#optimiser#0" expanded="false" />
+            <element signature="method#buildUnits#0;class#optimiser#0" expanded="false" />
+            <element signature="method#balanceTheGas#0;class#optimiser#0" expanded="false" />
+            <element signature="method#printGoalSelection#0;class#optimiser#0" expanded="false" />
+            <element signature="method#probesJudgeAvailable#0;class#optimiser#0" expanded="false" />
+            <element signature="method#setBuildingPrepare#0;class#optimiser#0" expanded="false" />
+            <element signature="method#probesConditionJudge#0;class#optimiser#0" expanded="false" />
+            <element signature="method#dependingBuildingAvailable#0;class#optimiser#0" expanded="false" />
+            <element signature="method#judgeNexusAvailable#0;class#optimiser#0" expanded="false" />
+            <element signature="method#deduceCurrency#0;class#optimiser#0" expanded="false" />
+            <element signature="method#currencyJudgement#0;class#optimiser#0" expanded="false" />
             <element signature="method#mineralCalculatorGoal#0;class#optimiser#0" expanded="false" />
             <element signature="method#gasCalculatorGoal#0;class#optimiser#0" expanded="false" />
           </folding>
@@ -618,64 +737,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assimilator.java">
+    <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="74" lean-forward="false" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
+        <state relative-caret-position="-165">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/roboticsFac.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="85" lean-forward="false" selection-start-line="31" selection-start-column="85" selection-end-line="31" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/templarArch.java" />
     <entry file="file://$PROJECT_DIR$/src/observe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/phoenix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="67" column="5" lean-forward="false" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gateWay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="-417">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/roboticsBay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zealot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="44" column="7" lean-forward="false" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="849">
-          <caret line="142" column="37" lean-forward="false" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
-          <folding>
-            <element signature="method#printMap#0;class#typeOfConstruction#0" expanded="false" />
-            <element signature="method#judgementPylonExist#0;class#typeOfConstruction#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -687,6 +763,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/templarArch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/optimiser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="936">
+          <caret line="58" column="30" lean-forward="false" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+          <folding>
+            <element signature="method#optimizerPrepare#0;class#optimiser#0" expanded="false" />
+            <element signature="method#generateThePossibility#0;class#optimiser#0" expanded="false" />
+            <element signature="method#highStageGoalOne#0;class#optimiser#0" expanded="false" />
+            <element signature="method#highStageGoalTwo#0;class#optimiser#0" expanded="false" />
+            <element signature="method#highStageGoalThree#0;class#optimiser#0" expanded="false" />
+            <element signature="method#highStageGoalFour#0;class#optimiser#0" expanded="false" />
+            <element signature="method#highStageProcessFive#0;class#optimiser#0" expanded="false" />
+            <element signature="method#earlyStageGoal#0;class#optimiser#0" expanded="false" />
+            <element signature="method#achieveFinalGoalOne#0;class#optimiser#0" expanded="false" />
+            <element signature="method#achieveFinalGoalTwo#0;class#optimiser#0" expanded="false" />
+            <element signature="method#achieveFinalGoalThree#0;class#optimiser#0" expanded="false" />
+            <element signature="method#achieveGoalFour#0;class#optimiser#0" expanded="false" />
+            <element signature="method#achieveGoalFive#0;class#optimiser#0" expanded="false" />
+            <element signature="method#templarArchExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#twilightCouncilExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#darkShineExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#starGateExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#beaExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#bayExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#roboticsFacilityExist#0;class#optimiser#0" expanded="false" />
+            <element signature="method#setBuildings#0;class#optimiser#0" expanded="false" />
+            <element signature="method#buildUnits#0;class#optimiser#0" expanded="false" />
+            <element signature="method#balanceTheGas#0;class#optimiser#0" expanded="false" />
+            <element signature="method#printGoalSelection#0;class#optimiser#0" expanded="false" />
+            <element signature="method#probesJudgeAvailable#0;class#optimiser#0" expanded="false" />
+            <element signature="method#setBuildingPrepare#0;class#optimiser#0" expanded="false" />
+            <element signature="method#probesConditionJudge#0;class#optimiser#0" expanded="false" />
+            <element signature="method#dependingBuildingAvailable#0;class#optimiser#0" expanded="false" />
+            <element signature="method#judgeNexusAvailable#0;class#optimiser#0" expanded="false" />
+            <element signature="method#deduceCurrency#0;class#optimiser#0" expanded="false" />
+            <element signature="method#currencyJudgement#0;class#optimiser#0" expanded="false" />
+            <element signature="method#mineralCalculatorGoal#0;class#optimiser#0" expanded="false" />
+            <element signature="method#gasCalculatorGoal#0;class#optimiser#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/phoenix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="67" column="5" lean-forward="false" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+          <folding>
+            <element signature="e#2596#2597#0" expanded="false" />
+            <element signature="e#2630#2631#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assimilator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="50" column="1" lean-forward="false" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+          <folding>
+            <element signature="e#2048#2049#0" expanded="true" />
+            <element signature="e#2126#2127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cybernetics.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -695,59 +843,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainTesting.java">
+    <entry file="file://$PROJECT_DIR$/src/roboticsBay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="162">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/roboticsFac.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="31" column="85" lean-forward="false" selection-start-line="31" selection-start-column="85" selection-end-line="31" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gateWay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/probe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="108">
+          <caret line="30" column="54" lean-forward="false" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
+          <folding>
+            <element signature="method#probe#0;class#probe#0" expanded="false" />
+            <element signature="method#assignPatchJudgement#0;class#probe#0" expanded="false" />
+            <element signature="method#setGatherMinerals#0;class#probe#0" expanded="false" />
+            <element signature="method#setGatherGas#0;class#probe#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zealot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="51" column="40" lean-forward="false" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/typeOfConstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="142" column="37" lean-forward="false" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
+          <folding>
+            <element signature="method#printMap#0;class#typeOfConstruction#0" expanded="false" />
+            <element signature="method#judgementPylonExist#0;class#typeOfConstruction#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/process.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="775">
+          <caret line="176" column="26" lean-forward="true" selection-start-line="176" selection-start-column="26" selection-end-line="176" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6355#6462#0" expanded="true" />
-            <element signature="e#6461#6462#0" expanded="true" />
             <element signature="method#printSituation#0;class#process#0" expanded="false" />
             <element signature="method#assignMineralBeginning#0;class#process#0" expanded="false" />
-            <element signature="e#8858#9142#0" expanded="true" />
-            <element signature="e#9141#9142#0" expanded="true" />
-            <element signature="e#9524#9757#0" expanded="true" />
-            <element signature="e#9756#9757#0" expanded="true" />
+            <element signature="method#printCurrency#0;class#process#0" expanded="false" />
+            <element signature="method#MineralCalculator#0;class#process#0" expanded="false" />
+            <element signature="method#gasCalculator#0;class#process#0" expanded="false" />
             <element signature="method#findNothingTaskProbes#0;class#process#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/optimiser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="870" column="39" lean-forward="false" selection-start-line="870" selection-start-column="39" selection-end-line="870" selection-end-column="39" />
-          <folding>
-            <element signature="method#templarArchExist#0;class#optimiser#0" expanded="false" />
-            <element signature="method#twilightCouncilExist#0;class#optimiser#0" expanded="false" />
-            <element signature="method#achieveGoalFour#0;class#optimiser#0" expanded="false" />
-            <element signature="e#12865#12867#0" expanded="false" />
-            <element signature="method#highStageGoalOne#0;class#optimiser#0" expanded="false" />
-            <element signature="method#achieveFinalGoalTwo#0;class#optimiser#0" expanded="false" />
-            <element signature="method#highStageGoalTwo#0;class#optimiser#0" expanded="false" />
-            <element signature="method#highStageGoalThree#0;class#optimiser#0" expanded="false" />
-            <element signature="method#generateThePossibility#0;class#optimiser#0" expanded="false" />
-            <element signature="method#mineralCalculatorGoal#0;class#optimiser#0" expanded="false" />
-            <element signature="method#gasCalculatorGoal#0;class#optimiser#0" expanded="false" />
+            <element signature="method#phoenixOfUnit#0;class#process#0" expanded="false" />
+            <element signature="method#observeOfUnit#0;class#process#0" expanded="false" />
+            <element signature="method#zealotOfUnit#0;class#process#0" expanded="false" />
+            <element signature="method#TemplarOfBuilding#0;class#process#0" expanded="false" />
+            <element signature="method#updateHashMapTotalAfterUnit#0;class#process#0" expanded="false" />
+            <element signature="method#setTotalFacilityUnavailable#0;class#process#0" expanded="false" />
+            <element signature="method#updateNexusMap#0;class#process#0" expanded="false" />
           </folding>
         </state>
       </provider>

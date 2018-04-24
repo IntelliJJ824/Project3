@@ -45,16 +45,20 @@ public class zealot extends typeOfConstruction {
      */
     public boolean judgementDependentBuilding() {
         if (type == 1) { //for zealot and sentry.
-            return (totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65));//find gate way
+            return ((totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65))
+            || (totalMap.containsKey(25001) && currTime - totalMap.get(25001) >= 10));//find gate way
         } else if (type == 2) { //for stalker.
-            return (totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65)
-                    && judgeCoreExist());
+            return ((totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65)
+                    && judgeCoreExist())
+            || (totalMap.containsKey(25001) && currTime - totalMap.get(25001) >= 10));
         } else if (type == 3) { //for high templar.
-            return (totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65)
-                    && totalMap.containsKey(17001) && (currTime - totalMap.get(17001) >= 50));
+            return ((totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65)
+                    && totalMap.containsKey(17001) && (currTime - totalMap.get(17001) >= 50))
+            || (totalMap.containsKey(25001) && currTime - totalMap.get(25001) >= 10));
         } else { //for dark templar.
-            return (totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65)
-            && totalMap.containsKey(18001) && (currTime - totalMap.get(18001)) >= 100);
+            return ((totalMap.containsKey(5001) && (currTime - totalMap.get(5001) >= 65)
+            && totalMap.containsKey(18001) && (currTime - totalMap.get(18001)) >= 100)
+            || (totalMap.containsKey(25001) && currTime - totalMap.get(25001) >= 10));
         }
     }
 

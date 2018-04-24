@@ -69,7 +69,7 @@ public class probe extends typeOfConstruction{
                         setComplexBuilding(nexusMap);
                         System.out.println("+++ Constructing the number of new probe " + numberOfAction + "...");
                     } else {
-                        System.out.println("--Invalid: Nexus has been already used to build other probe.");
+                        System.out.println("--Invalid: Nexus has been already used or not enough to build such an amount of probes.");
                     }
                 } else {
                     System.out.println("--Invalid: Minerals are not enough!!!");
@@ -195,7 +195,7 @@ public class probe extends typeOfConstruction{
      * @return true presents not excess.
      */
     public boolean assignPatchJudgement() { //there are 8 mineral patches, and up to 3 probes for each patch.
-        return (numberOfAction + numberOfPatchWorking <= 24);
+        return (numberOfAction + numberOfPatchWorking <= 3 * mineralPatchList.size() );
     }
 
     /**
@@ -244,15 +244,7 @@ public class probe extends typeOfConstruction{
             }
         }
     }
-//    /**
-//     * This method is to add the new building probes to the hash map.
-//     */
-//    public void setProbes() {
-//        for (int i = 0; i < numberOfAction; i++) {
-//            newId ++;
-//            totalMap.put(newId, currTime);
-//        }
-//    }
+
 
     //The following is getter method.
     /**

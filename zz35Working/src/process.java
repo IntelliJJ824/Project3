@@ -15,6 +15,10 @@ public class process {
     private final int PERIOD = 1000;
     protected int totalMinerals;
     protected int totalGas;
+    boolean gateWayUpdate = false;
+
+    //research time.
+    private int wrapGateResearchTime = 0;
 
     //The speed of gathering minerals.
     protected int numberMaxVelocity, numberMinVelocity, totalNumberPatchWorking;
@@ -52,6 +56,8 @@ public class process {
     static final int HIGH_TEMPLAR = 21;
     static final int DARK_TEMPLAR = 22;
     static final int CARRIER = 23;
+    //extension
+    static final int WARP_GATE = 24;
 
 
     //This is for Mineral patch.
@@ -86,13 +92,14 @@ public class process {
             "NEXUS", "PROBE", "PYLON", "ASSIMILATOR", "GATEWAY", "CYBERNETICS CORE", "ROBOTICS FACILITY", "STARGATE",
             "ZEALOT", "STALKER", "SENTRY", "OBSERVER", "IMMORTAL", "PHOENIX", "VOID RAY",
             "TWILIGHT COUNCIL", "TEMPLAR ARCHIVES", "DARK SHRINE", "ROBOTICS BAY", "FLEET BEACON",
-            "COLOSSI", "HIGH TEMPLAR", "DARK TEMPLAR", "CARRIER"};
+            "COLOSSI", "HIGH TEMPLAR", "DARK TEMPLAR", "CARRIER", "WARP GATE"};
 
     protected int[] timeList = {
             100, 17, 25, 30, 65, 50, 65, 60, //This is for buildings and probe.
             38, 42, 37, 40, 55, 35, 60, //This is for units
             50, 50, 100, 65, 60, //buildings after extending the spec
-            75, 55, 55, 120 //units.
+            75, 55, 55, 120, //units.
+            10
 
     };
 
@@ -100,30 +107,25 @@ public class process {
             0, 0, 0, 0, 0, 0, 100, 150, //This is for building and probe.
             0, 50, 100, 75, 100, 100, 150,
             100, 200, 250, 200, 200,//buildings after extending spec.
-            200, 150, 125, 250
+            200, 150, 125, 250, 0
     };
 
     protected int[] mineralsCostList = {
             400, 50, 100, 75, 150, 150, 200, 150,//This is for building and probes.
             100, 125, 50, 25, 250, 150, 250,    //This is for units.
             150, 150, 100, 200, 300,
-            300, 50, 125, 350 //units for extension.
+            300, 50, 125, 350, 0 //units for extension.
     };
 
     //This is the list of mineral patch, 0 presents there is no probe working for it.
-    private List<Integer> mineralPatchList = Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0);
+    private List<Integer> mineralPatchList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0));
     //This is the list of gas, 0 presents there is no probe working for it.
-    private List<Integer> gasList = Arrays.asList(0);
+    private List<Integer> gasList = new ArrayList<>();
 
 
     /**
-     * This constructor is to start the game.
+     * This is to start the game.
      */
-//    public process() {
-//        totalTimer = new Timer();
-//        start();
-//    }
-
     public void runTheGame() {
         totalTimer = new Timer();
         start();
@@ -147,7 +149,7 @@ public class process {
      */
     public void setIdList() {
         int id = 1000;
-        for (int i = 0; i < 24; i++) {
+        for (int i = 0; i < 25; i++) {
             idList.add(id);
             initialList.add(id);
             id += 1000;
@@ -266,9 +268,10 @@ public class process {
      */
     public void gasCalculator() {
         totalNumberGasWorking = 0;
-
-        for(int element : gasList) {
-            totalNumberGasWorking += element;
+        if (!gasList.isEmpty()) {
+            for (int element : gasList) {
+                totalNumberGasWorking += element;
+            }
         }
     }
 
@@ -317,7 +320,8 @@ public class process {
                   totalmap, idList.get(NEXUS), initialList.get(NEXUS),
                   timeList[NEXUS], secondsTotal,
                         totalMinerals, totalGas,
-                        400);
+                        400,
+                        idList.get(NEXUS), initialList.get(NEXUS));
                 nexusSelection.printIndivadualSituation();
                 nexusSelection.printGeneralSelection();
                 String actionNex = reader.next();
@@ -337,6 +341,9 @@ public class process {
                         idList.set(NEXUS, nexusSelection.getNewId());
                         //get current minerals.
                         totalMinerals = nexusSelection.getTotalMinerals();
+                        //add the patch list (extensions).
+                        increasePatchList(times);
+                        System.out.println(mineralPatchList);
                     }
 
                 }
@@ -397,7 +404,8 @@ public class process {
                         totalmap, idList.get(PYLON), initialList.get(PYLON),
                         timeList[PYLON], secondsTotal,
                         totalMinerals, totalGas,
-                        100);
+                        100,
+                        idList.get(NEXUS), initialList.get(NEXUS));
                 pylonSelection.printIndivadualSituation();
                 pylonSelection.printGeneralSelection();
                 String actionInputPy = reader.next();
@@ -422,7 +430,8 @@ public class process {
                         totalmap, idList.get(ASSIMILATOR), initialList.get(ASSIMILATOR),
                         timeList[ASSIMILATOR], secondsTotal,
                         totalMinerals, totalGas,
-                        75);
+                        75,
+                        idList.get(NEXUS), initialList.get(NEXUS));
                 assimilatorSelection.printIndivadualSituation();
                 assimilatorSelection.printGeneralSelection();//print the option for it.
                 String actionInputAs = reader.next();
@@ -432,16 +441,22 @@ public class process {
                     String amount = reader.next();
                     assimilatorSelection.processActionInput(amount);
 
-                    //update the hash map.
-                    totalmap.putAll(assimilatorSelection.getTotalMap());
                     //get new id.
                     int newestId = assimilatorSelection.getNewId();
-                    if (newestId == 4002) { //if the second gas assimilator is created
-                        gasList.add(0);
+                    int times = newestId - idList.get(ASSIMILATOR);
+
+                    if (times > 0 ) {
+                        //update the hash map.
+                        totalmap.putAll(assimilatorSelection.getTotalMap());
+                        //the new gas assimilator is created
+                        for (int i = 0; i < times; i++) {
+                            gasList.add(0);
+                        }
+                        //set the new Id.
+                        idList.set(ASSIMILATOR, newestId);
+                        //get current minerals.
+                        totalMinerals = assimilatorSelection.getTotalMinerals();
                     }
-                    idList.set(ASSIMILATOR, newestId);
-                    //get current minerals.
-                    totalMinerals = assimilatorSelection.getTotalMinerals();
                 }
                 break;
 
@@ -449,7 +464,6 @@ public class process {
             case("e"):
                 updateGateWayMap(); //checking the available gateway.
                 System.out.println(gateWayMap);     //printing method in here.
-
                 System.out.println(convertList[GATEWAY] + ": ");
                 gateWay gateWaySelection = new gateWay(
                         totalmap, idList.get(GATEWAY), initialList.get(GATEWAY),
@@ -458,7 +472,13 @@ public class process {
                         150 //spending  cost is the minerals that need to be deduced for each.
                 );
                 gateWaySelection.printIndivadualSituation();
+                int numebrOfWrapGate = idList.get(WARP_GATE) - initialList.get(WARP_GATE);
+                System.out.println("There are: " + numebrOfWrapGate + " Wrap Gate(s).");
                 gateWaySelection.printGeneralSelection();
+                if (gateWayUpdate) { //print out the option for updating the gateway.
+                    System.out.println("c.Update Gateway to Warp Gate.");
+                }
+
                 String actionInputGAT = reader.next();
 
                 if (actionInputGAT.toLowerCase().equals("a")) {
@@ -485,6 +505,17 @@ public class process {
                         totalMinerals = gateWaySelection.getTotalMinerals();
                     }
 
+                } else if (actionInputGAT.toLowerCase().equals("c")) {
+                        if ((wrapGateResearchTime != 0) && (secondsTotal - wrapGateResearchTime >= 160)) {
+                            updateToWarpGate();
+                            System.out.println("GateWay is updating...");
+//                            System.out.println(gateWayMap);
+//                            System.out.println(totalmap);
+//                            System.out.println(idList);
+//                            System.out.println(initialList);
+                        } else {//did not reach the researching time.
+                            System.out.println("--Invalid: Upgrades to Warp Gate is still in researching.");
+                        }
                 }
                 break;
 
@@ -497,6 +528,13 @@ public class process {
                   150);
                 cyberneticsSelection.printIndivadualSituation();
                 cyberneticsSelection.printGeneralSelection();
+                //research option
+                if (totalmap.containsKey(6001)
+                        && (secondsTotal - totalmap.get(6001) >= timeList[GATEWAY])
+                        && !gateWayUpdate) {
+                    System.out.println("c.Research Warp Gate.");
+                }
+
                 String actionInputCYB = reader.next();
 
                 //process the user's input
@@ -518,7 +556,18 @@ public class process {
                  * cyberneticsSelection.printMap(); before this part, testing is success,
                  * because deduce minerals, time, and building condition.
                  */
+                } else if (actionInputCYB.toLowerCase().equals("c")) {
+                    if (totalGas >= 50 && totalMinerals >= 50) {
+                        gateWayUpdate = true;
+                        totalGas = totalGas - 50;
+                        totalMinerals = totalMinerals - 50;
+                        wrapGateResearchTime = secondsTotal;    //the research begins.
+                        System.out.println("++Warp Gate is searching...");
+                    } else {
+                        System.out.println("--Invalid: Minerals or gas are not enough.");
+                    }
                 }
+
                 break;
             /**
              * The reason why ROBOTIC and STARGate share the same class.
@@ -644,7 +693,6 @@ public class process {
 
             case ("p"): //This is for twilight council.
                 System.out.println(convertList[COUNCIL] + ": ");
-//                System.out.println(idList + " " + timeList[COUNCIL] + " " + gasCostList[COUNCIL]);
                 roboticsFac councilSelection = new roboticsFac(
                         totalmap, idList.get(COUNCIL), initialList.get(COUNCIL),
                         timeList[COUNCIL], secondsTotal,
@@ -677,7 +725,6 @@ public class process {
 
             case ("q"):
                 System.out.println(convertList[TEMPLAR_ARCHIVES] + ": ");
-//                System.out.println(idList + " " + timeList[DARK_SHRINE] + " " + gasCostList[DARK_SHRINE]);
                 TemplarOfBuilding(TEMPLAR_ARCHIVES, 150, 1);
                 break;
             case ("r"):
@@ -719,6 +766,17 @@ public class process {
             default:
                 System.out.println("Invalid Selection!");
                 break;
+        }
+    }
+
+    /**
+     * This method is to add the minerals patch when new nexus is built.
+     * @param times the number of new nexus is built.
+     */
+    public void increasePatchList(int times) {
+        int addAmount = 8 * times;
+        for (int i = 0; i < addAmount; i++) {
+            mineralPatchList.add(0);
         }
     }
 
@@ -855,7 +913,6 @@ public class process {
                                             HashMap<Integer, Boolean> oldHashMap) {
        oldHashMap.clear();
        oldHashMap.putAll(newHashMap);
-//       System.out.println(oldHashMap);
     }
 
     /**
@@ -868,7 +925,6 @@ public class process {
             id++;
             facilityMap.put(id, false);
         }
-//        System.out.println(facilityMap);
     }
 
 
@@ -942,6 +998,53 @@ public class process {
         }
     }
 
+    public void updateToWarpGate() {
+        timeList[ZEALOT] = 28;
+        timeList[STALKER] = 32;
+        timeList[SENTRY] = 32;
+        timeList[HIGH_TEMPLAR] = 45;
+        timeList[DARK_TEMPLAR] = 45;
+        ArrayList<Integer> removeList = new ArrayList<>();
+
+        if (!gateWayMap.isEmpty()) { //if there is gate way.
+            Set set = gateWayMap.entrySet();
+            Iterator iterator = set.iterator();
+            int count = 0;
+            while (iterator.hasNext()) {
+                count++;
+                Map.Entry pair = (Map.Entry) iterator.next();
+                int id = (int) pair.getKey();
+                boolean available = (boolean) pair.getValue();
+
+                int gatWayId = initialList.get(GATEWAY) + count;       //The corresponding gate to be updated.
+                int warpGateId = initialList.get(WARP_GATE) + count;    //update to the gateway map.
+                //update warpGateId in the total map.
+                totalmap.remove(gatWayId);
+                totalmap.put(warpGateId, secondsTotal);
+
+                if (available) {
+                    removeList.add(id);
+                    removeList.add(warpGateId);
+                } else {//under constructing gateway.
+                    int initialTime = totalmap.get(id) - 20; //The meaning of 20 is including updating the time.
+                    totalmap.put(id, initialTime);
+                }
+            }
+            //update the id list.
+            int id = initialList.get(WARP_GATE);
+            id = id + count;
+            idList.set(WARP_GATE, id);
+
+            //this is for available gateWay
+            for (int i = 0; i < removeList.size(); i+=2) {
+                gateWayMap.remove(removeList.get(i));
+                gateWayMap.put(removeList.get(i + 1), false);
+            }
+        } else {
+            System.out.println("Please construct Gateway firstly.");
+        }
+    }
+
     /**
      * This method is to set the situation of the gate way, which is used for probes.
      * True presents available.
@@ -976,6 +1079,9 @@ public class process {
                         gateWayMap.put(id, true);
                     } else if (id < initialList.get(DARK_TEMPLAR) + 1000
                             && (secondsTotal - totalmap.get(id) >= timeList[DARK_TEMPLAR])) {
+                        gateWayMap.put(id, true);
+                    } else if (id < initialList.get(WARP_GATE) + 1000
+                            && (secondsTotal - totalmap.get(id) >= timeList[WARP_GATE])) {
                         gateWayMap.put(id, true);
                     }
                 }

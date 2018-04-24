@@ -3,12 +3,15 @@ import java.util.HashMap;
 public class assimilator extends typeOfConstruction {
     //This is the spending cost for assimilator or pylon.
     int spendingCost;
+    int nexusAmount;
     public assimilator(HashMap<Integer, Integer> totalmap, int newId, int initialId,
                        int constructTime, int currTime,
                        int totalMinerals, int totalGas,
-                       int spendingCost) {
+                       int spendingCost,
+                       int nexusId, int nexusOriginalId) {
         super(totalmap, newId, initialId, constructTime, currTime, totalMinerals, totalGas);
         this.spendingCost = spendingCost;
+        nexusAmount = nexusId - nexusOriginalId;
     }
 
     /**
@@ -18,9 +21,13 @@ public class assimilator extends typeOfConstruction {
     public void processActionInput(String amount) { // only selection for building.
         numberOfAction = Integer.parseInt(amount);
         if (assimilatorConstructionJudgement()) {
-            totalMinerals = totalMinerals - spendingCost * numberOfAction;
-            setBuilding();
-            System.out.println("+++ Constructing the number of new building " + numberOfAction + "...");
+            if ((initialId < 4000) || assimilatorLimitationJudge()) {
+                totalMinerals = totalMinerals - spendingCost * numberOfAction;
+                setBuilding();
+                System.out.println("+++ Constructing the number of new building " + numberOfAction + "...");
+            } else {
+                System.out.println("--Invalid construction: not enough gas geysers to build assimilator.");
+            }
         } else {
             System.out.println("--Invalid construction, Minerals are not enough!!!");
         }
@@ -32,5 +39,13 @@ public class assimilator extends typeOfConstruction {
      */
     public boolean assimilatorConstructionJudgement() {
         return (numberOfAction * spendingCost <= totalMinerals);
+    }
+
+    /**
+     * This method is to judge whether the number of assimilator construction excess the gas geysers.
+     * @return true presents not excess.
+     */
+    public boolean assimilatorLimitationJudge() {
+        return (numberOfAction + newId - initialId <= nexusAmount * 2);
     }
 }
